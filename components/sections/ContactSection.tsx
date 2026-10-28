@@ -14,6 +14,8 @@ import {
   Clock,
   Sparkles,
   Info,
+  Phone,
+  MapPin,
 } from "lucide-react";
 import { Github, Linkedin } from "@/components/ui/icons";
 
@@ -31,11 +33,18 @@ export function ContactSection() {
   const [submitStatus, setSubmitStatus] = useState<"idle" | "success" | "error" | "config_notice">("idle");
   const [statusMessage, setStatusMessage] = useState<string>("");
   const [copiedEmail, setCopiedEmail] = useState(false);
+  const [copiedPhone, setCopiedPhone] = useState(false);
 
   const handleCopyEmail = () => {
     navigator.clipboard.writeText(personalInfo.email);
     setCopiedEmail(true);
     setTimeout(() => setCopiedEmail(false), 2200);
+  };
+
+  const handleCopyPhone = () => {
+    navigator.clipboard.writeText(personalInfo.phone);
+    setCopiedPhone(true);
+    setTimeout(() => setCopiedPhone(false), 2200);
   };
 
   const handleChange = (
@@ -44,7 +53,6 @@ export function ContactSection() {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
 
-    // Clear field-level error on change
     if (errors[name as keyof ContactFormData]) {
       setErrors((prev) => ({ ...prev, [name]: undefined }));
     }
@@ -53,7 +61,6 @@ export function ContactSection() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    // 1. Client-side validation
     const validation = validateContactForm(formData);
     if (!validation.isValid) {
       setErrors(validation.errors);
@@ -80,7 +87,6 @@ export function ContactSection() {
         );
         setFormData({ name: "", email: "", subject: "", message: "", honeypot: "" });
 
-        // Celebration confetti effect
         try {
           confetti({
             particleCount: 80,
@@ -89,14 +95,13 @@ export function ContactSection() {
             colors: ["#00F0FF", "#3B82F6", "#8B5CF6"],
           });
         } catch (cErr) {
-          // Ignore if confetti not supported
+          // Confetti silent fallback
         }
       } else if (result.requiresConfiguration) {
-        // Explicitly handle unconfigured email backend without false success!
         setSubmitStatus("config_notice");
         setStatusMessage(
           result.error ||
-            "Email service requires RESEND_API_KEY in .env.local. Direct email is available below."
+            `Direct email is available below: ${personalInfo.email}`
         );
       } else {
         setSubmitStatus("error");
@@ -124,13 +129,13 @@ export function ContactSection() {
         <div className="flex flex-col items-start mb-16">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/20 text-cyan-400 text-xs font-mono uppercase tracking-wider mb-3">
             <Mail className="w-3.5 h-3.5" />
-            <span>06 // Communication Channel</span>
+            <span>06 // Communication &amp; Hiring</span>
           </div>
           <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-white light:text-slate-900">
-            Let&apos;s Build Something Impactful
+            Get in Touch with Samir Khan
           </h2>
           <p className="mt-2 text-slate-400 text-base max-w-xl">
-            Open to software engineering internships, technical collaborations, and full-time opportunities.
+            Currently in 3rd Year B.Tech CSE at SIET Prayagraj. Open to software engineering internships and technical roles.
           </p>
         </div>
 
@@ -139,16 +144,16 @@ export function ContactSection() {
           <div className="lg:col-span-5 space-y-6">
             <div className="p-6 rounded-2xl bg-surface-100 border border-white/10 space-y-6">
               <h3 className="text-lg font-bold text-white light:text-slate-900">
-                Direct Contact & Socials
+                Direct Contact &amp; Coordinates
               </h3>
               <p className="text-sm text-slate-300 light:text-slate-600 leading-relaxed">
-                Whether you have an engineering role to discuss or simply want to talk about systems architecture and AI, my inbox is open.
+                Feel free to reach out directly via email, phone, or LinkedIn for technical internships, project collaborations, or engineering discussions.
               </p>
 
-              {/* Copy Email Box */}
-              <div className="p-4 rounded-xl bg-surface-200/60 border border-white/5 space-y-2">
+              {/* Email Card */}
+              <div className="p-4 rounded-xl bg-surface-200/60 border border-white/5 space-y-1.5">
                 <span className="text-[11px] font-mono text-slate-400 uppercase tracking-wider">
-                  Primary Email
+                  Direct Email
                 </span>
                 <div className="flex items-center justify-between gap-3">
                   <a
@@ -172,24 +177,51 @@ export function ContactSection() {
                 </div>
               </div>
 
-              {/* Availability Notice */}
+              {/* Phone Card */}
+              <div className="p-4 rounded-xl bg-surface-200/60 border border-white/5 space-y-1.5">
+                <span className="text-[11px] font-mono text-slate-400 uppercase tracking-wider">
+                  Phone Number
+                </span>
+                <div className="flex items-center justify-between gap-3">
+                  <a
+                    href={personalInfo.social.phone}
+                    className="font-mono text-sm text-emerald-400 hover:underline truncate"
+                  >
+                    {personalInfo.phone}
+                  </a>
+                  <button
+                    onClick={handleCopyPhone}
+                    className="p-2 rounded-lg bg-surface-100 hover:bg-surface-300 border border-white/10 text-slate-300 hover:text-white transition-all shrink-0"
+                    title="Copy Phone Number"
+                    aria-label="Copy Phone Number"
+                  >
+                    {copiedPhone ? (
+                      <Check className="w-4 h-4 text-emerald-400" />
+                    ) : (
+                      <Copy className="w-4 h-4" />
+                    )}
+                  </button>
+                </div>
+              </div>
+
+              {/* Location Card */}
               <div className="flex items-start gap-3 p-4 rounded-xl bg-cyan-500/5 border border-cyan-500/20">
-                <Clock className="w-4 h-4 text-cyan-400 mt-0.5 shrink-0" />
+                <MapPin className="w-4 h-4 text-cyan-400 mt-0.5 shrink-0" />
                 <div className="text-xs text-slate-300">
-                  <p className="font-semibold text-white">Current Response Time</p>
+                  <p className="font-semibold text-white">Location &amp; Institution</p>
                   <p className="text-slate-400 mt-0.5">
-                    Typically within 24 to 48 hours for engineering inquiries and interview requests.
+                    {personalInfo.location} • {personalInfo.college}
                   </p>
                 </div>
               </div>
 
-              {/* Social Link Buttons */}
+              {/* Social Buttons */}
               <div className="flex items-center gap-3 pt-2">
                 <a
                   href={personalInfo.social.github}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex-1 py-2.5 px-4 rounded-xl bg-surface-200 hover:bg-surface-300 border border-white/5 text-slate-200 text-xs font-mono flex items-center justify-center gap-2 transition-all"
+                  className="flex-1 py-2.5 px-4 rounded-xl bg-surface-200 hover:bg-surface-300 border border-white/5 text-slate-200 text-xs font-mono flex items-center justify-center gap-2 transition-all hover:border-cyan-400/40"
                 >
                   <Github className="w-4 h-4 text-cyan-400" />
                   <span>GitHub</span>
@@ -198,7 +230,7 @@ export function ContactSection() {
                   href={personalInfo.social.linkedin}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex-1 py-2.5 px-4 rounded-xl bg-surface-200 hover:bg-surface-300 border border-white/5 text-slate-200 text-xs font-mono flex items-center justify-center gap-2 transition-all"
+                  className="flex-1 py-2.5 px-4 rounded-xl bg-surface-200 hover:bg-surface-300 border border-white/5 text-slate-200 text-xs font-mono flex items-center justify-center gap-2 transition-all hover:border-cyan-400/40"
                 >
                   <Linkedin className="w-4 h-4 text-cyan-400" />
                   <span>LinkedIn</span>
@@ -207,7 +239,7 @@ export function ContactSection() {
             </div>
           </div>
 
-          {/* Right Column: High-Performance Contact Form */}
+          {/* Right Column: Contact Form */}
           <div className="lg:col-span-7">
             <form
               onSubmit={handleSubmit}
@@ -244,7 +276,7 @@ export function ContactSection() {
                     required
                     value={formData.name}
                     onChange={handleChange}
-                    placeholder="e.g. Alex Mercer"
+                    placeholder="e.g. Technical Recruiter / Engineering Manager"
                     className={`w-full px-4 py-2.5 text-sm rounded-xl bg-surface-200 border text-white placeholder-slate-500 focus:outline-none transition-all ${
                       errors.name
                         ? "border-rose-500 focus:ring-1 focus:ring-rose-500"
@@ -265,7 +297,7 @@ export function ContactSection() {
                     htmlFor="email"
                     className="block text-xs font-mono text-slate-300 mb-1.5"
                   >
-                    Email Address <span className="text-cyan-400">*</span>
+                    Your Email Address <span className="text-cyan-400">*</span>
                   </label>
                   <input
                     id="email"
@@ -274,7 +306,7 @@ export function ContactSection() {
                     required
                     value={formData.email}
                     onChange={handleChange}
-                    placeholder="alex@example.com"
+                    placeholder="recruiter@company.com"
                     className={`w-full px-4 py-2.5 text-sm rounded-xl bg-surface-200 border text-white placeholder-slate-500 focus:outline-none transition-all ${
                       errors.email
                         ? "border-rose-500 focus:ring-1 focus:ring-rose-500"
@@ -305,7 +337,7 @@ export function ContactSection() {
                   required
                   value={formData.subject}
                   onChange={handleChange}
-                  placeholder="Software Engineering Internship / Full-Stack Role"
+                  placeholder="Software Engineering Internship / Full-Stack Role Inquiry"
                   className={`w-full px-4 py-2.5 text-sm rounded-xl bg-surface-200 border text-white placeholder-slate-500 focus:outline-none transition-all ${
                     errors.subject
                       ? "border-rose-500 focus:ring-1 focus:ring-rose-500"
@@ -335,7 +367,7 @@ export function ContactSection() {
                   required
                   value={formData.message}
                   onChange={handleChange}
-                  placeholder="Write your message, project details, or interview inquiry here..."
+                  placeholder="Hi Samir, we reviewed your projects and CV and would love to interview you for our engineering team..."
                   className={`w-full px-4 py-2.5 text-sm rounded-xl bg-surface-200 border text-white placeholder-slate-500 focus:outline-none transition-all resize-none ${
                     errors.message
                       ? "border-rose-500 focus:ring-1 focus:ring-rose-500"
@@ -368,7 +400,7 @@ export function ContactSection() {
                   <Info className="w-4 h-4 text-amber-400 mt-0.5 shrink-0" />
                   <div>
                     <span className="font-semibold block text-amber-400">
-                      Environment Notice
+                      Direct Email Routing
                     </span>
                     <span>{statusMessage}</span>
                     <button
@@ -376,7 +408,7 @@ export function ContactSection() {
                       onClick={handleCopyEmail}
                       className="mt-2 text-cyan-400 underline block"
                     >
-                      Copy direct email: {personalInfo.email}
+                      Click to copy: {personalInfo.email}
                     </button>
                   </div>
                 </div>
@@ -403,12 +435,12 @@ export function ContactSection() {
                 {isSubmitting ? (
                   <>
                     <span className="w-4 h-4 border-2 border-slate-950 border-t-transparent rounded-full animate-spin" />
-                    <span>Transmitting Message...</span>
+                    <span>Dispatching Message...</span>
                   </>
                 ) : (
                   <>
                     <Send className="w-4 h-4" />
-                    <span>Send Message</span>
+                    <span>Send Direct Message to Samir</span>
                   </>
                 )}
               </button>

@@ -143,6 +143,16 @@ export function CommandPalette({
       },
     },
     {
+      id: "act-copy-phone",
+      title: `Copy Phone (${personalInfo.phone})`,
+      category: "Actions",
+      icon: <Mail className="w-4 h-4 text-emerald-400" />,
+      action: () => {
+        navigator.clipboard.writeText(personalInfo.phone);
+        onClose();
+      },
+    },
+    {
       id: "act-theme",
       title: `Toggle Theme (${theme === "dark" ? "Light Mode" : "Dark Mode"})`,
       category: "Preferences",

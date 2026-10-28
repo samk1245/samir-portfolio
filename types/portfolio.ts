@@ -5,8 +5,14 @@ export interface PersonalInfo {
   headline: string;
   shortBio: string;
   aboutBio: string[];
+  college: string;
+  degree: string;
+  academicYear: string;
+  cgpa: string;
+  expectedGraduation: string;
   location: string;
   email: string;
+  phone: string;
   availability: {
     status: "available" | "busy" | "open_to_offers";
     label: string;
@@ -14,10 +20,17 @@ export interface PersonalInfo {
   social: {
     github: string;
     linkedin: string;
-    twitter?: string;
     email: string;
+    phone: string;
   };
   specialties: string[];
+  spokenLanguages: { name: string; level: string }[];
+  certifications: {
+    title: string;
+    issuer: string;
+    date: string;
+    credentialId?: string;
+  }[];
   resumeUrl: string;
 }
 
@@ -31,7 +44,6 @@ export interface StatItem {
 
 export interface SkillItem {
   name: string;
-  iconName?: string;
   level?: "Core" | "Proficient" | "Exploring";
   tags?: string[];
 }
@@ -48,7 +60,7 @@ export interface ProjectItem {
   id: string;
   title: string;
   tagline: string;
-  category: "AI/ML" | "Full-Stack" | "Developer Tools" | "Systems" | "All";
+  category: "AI/ML" | "Full-Stack" | "Backend" | "Data & Systems" | "All";
   image: string;
   featured: boolean;
   featuredOrder?: number;
@@ -59,13 +71,13 @@ export interface ProjectItem {
   actualContribution: string;
   githubUrl?: string;
   liveUrl?: string;
-  status: "Completed" | "In Development" | "Prototype";
+  status: "Completed" | "In Development" | "Production-Ready";
   metrics?: { label: string; value: string }[];
 }
 
 export interface TimelineItem {
   id: string;
-  type: "education" | "experience" | "achievement" | "extracurricular";
+  type: "education" | "experience" | "certification" | "achievement";
   title: string;
   organization: string;
   location?: string;
@@ -84,9 +96,4 @@ export interface GithubRepoItem {
   forks: number;
   url: string;
   topics: string[];
-}
-
-export interface TerminalCommandResponse {
-  output: string | string[];
-  isError?: boolean;
 }

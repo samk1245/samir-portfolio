@@ -110,8 +110,10 @@ export function InteractiveTerminal({
         response = (
           <div className="space-y-1 text-slate-300">
             <p><span className="text-cyan-400">Email:</span> {personalInfo.email}</p>
+            <p><span className="text-cyan-400">Phone:</span> {personalInfo.phone}</p>
             <p><span className="text-cyan-400">GitHub:</span> {personalInfo.social.github}</p>
             <p><span className="text-cyan-400">LinkedIn:</span> {personalInfo.social.linkedin}</p>
+            <p><span className="text-cyan-400">College:</span> {personalInfo.college}</p>
           </div>
         );
         break;

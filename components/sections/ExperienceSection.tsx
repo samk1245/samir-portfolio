@@ -15,10 +15,10 @@ import {
 } from "lucide-react";
 
 const filterTabs = [
-  { id: "all", label: "Complete Journey" },
+  { id: "all", label: "All Milestones" },
   { id: "education", label: "Education" },
-  { id: "experience", label: "Experience & Roles" },
-  { id: "achievement", label: "Achievements & Awards" },
+  { id: "experience", label: "Work & Internships" },
+  { id: "certification", label: "Certifications" },
 ];
 
 export function ExperienceSection() {
@@ -37,13 +37,13 @@ export function ExperienceSection() {
           <div>
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/20 text-cyan-400 text-xs font-mono uppercase tracking-wider mb-3">
               <Milestone className="w-3.5 h-3.5" />
-              <span>04 // Experience & Milestones</span>
+              <span>04 // Experience &amp; Academic Timeline</span>
             </div>
             <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-white light:text-slate-900">
-              Education & Engineering History
+              Education, Experience &amp; Certifications
             </h2>
             <p className="mt-2 text-slate-400 text-base max-w-xl">
-              Chronological milestones detailing academic training, hands-on engineering work, and technical honors.
+              Chronological records of degree coursework at SIET Prayagraj, web development internship, and verified industry credentials.
             </p>
           </div>
 
@@ -53,9 +53,9 @@ export function ExperienceSection() {
               <button
                 key={tab.id}
                 onClick={() => setActiveTab(tab.id)}
-                className={`px-3 py-1.5 rounded-lg text-xs font-mono whitespace-nowrap transition-all ${
+                className={`px-3.5 py-1.5 rounded-lg text-xs font-mono whitespace-nowrap transition-all ${
                   activeTab === tab.id
-                    ? "bg-cyan-500/20 border border-cyan-400 text-cyan-400 font-semibold"
+                    ? "bg-cyan-500/20 border border-cyan-400 text-cyan-400 font-bold"
                     : "bg-surface-100 border border-white/10 text-slate-400 hover:text-white"
                 }`}
               >
@@ -98,7 +98,20 @@ export function ExperienceSection() {
                     {/* Header info */}
                     <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
                       <div>
-                        <h3 className="text-lg font-bold text-white light:text-slate-900 group-hover:text-cyan-400 transition-colors">
+                        <div className="flex items-center gap-2">
+                          <span
+                            className={`text-[10px] font-mono uppercase px-2 py-0.5 rounded border ${
+                              item.type === "education"
+                                ? "bg-cyan-500/10 text-cyan-400 border-cyan-500/30"
+                                : item.type === "experience"
+                                ? "bg-blue-500/10 text-blue-400 border-blue-500/30"
+                                : "bg-amber-500/10 text-amber-400 border-amber-500/30"
+                            }`}
+                          >
+                            {item.type}
+                          </span>
+                        </div>
+                        <h3 className="text-lg font-bold text-white light:text-slate-900 group-hover:text-cyan-400 transition-colors mt-1">
                           {item.title}
                         </h3>
                         <div className="text-sm font-medium text-slate-300 light:text-slate-700 flex items-center gap-2 mt-0.5">

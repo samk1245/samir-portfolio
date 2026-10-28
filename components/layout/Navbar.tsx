@@ -87,14 +87,14 @@ export function Navbar({ onOpenCommandPalette, onOpenTerminal }: NavbarProps) {
           aria-label="Home"
         >
           <div className="w-9 h-9 rounded-lg bg-surface-100 border border-white/10 flex items-center justify-center font-mono font-bold text-cyan-400 group-hover:border-cyan-400/50 group-hover:shadow-[0_0_15px_rgba(0,240,255,0.3)] transition-all">
-            S
+            SK
           </div>
           <div className="flex flex-col">
             <span className="font-semibold text-sm tracking-tight text-white light:text-slate-900 group-hover:text-cyan-400 transition-colors">
-              {personalInfo.firstName}
+              {personalInfo.name}
             </span>
-            <span className="text-[10px] font-mono text-slate-400 -mt-1 tracking-wider uppercase">
-              Engineering
+            <span className="text-[10px] font-mono text-cyan-400/80 -mt-1 tracking-wider uppercase">
+              B.Tech CSE • SIET
             </span>
           </div>
         </Link>

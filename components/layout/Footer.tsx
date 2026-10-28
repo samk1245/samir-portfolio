@@ -9,6 +9,8 @@ import {
   Heart,
   Terminal,
   Cpu,
+  Phone,
+  GraduationCap,
 } from "lucide-react";
 import { Github, Linkedin } from "@/components/ui/icons";
 
@@ -31,17 +33,17 @@ export function Footer({ onOpenTerminal }: FooterProps) {
             <span className="font-bold text-white text-base">
               {personalInfo.name}
             </span>
-            <span className="text-xs font-mono text-slate-500">
-              // Engineering Portfolio
+            <span className="text-xs font-mono text-cyan-400">
+              // 3rd Year B.Tech CSE • SIET Prayagraj
             </span>
           </div>
           <p className="text-xs text-slate-500 mt-1 max-w-sm">
-            Architecting intelligent systems with Next.js, TypeScript, and modern AI models.
+            Backend development, distributed web architectures, Docker containerization, and applied AI systems.
           </p>
         </div>
 
         {/* Quick Actions & Socials */}
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-3">
           <button
             onClick={onOpenTerminal}
             className="p-2 rounded-lg bg-surface-100 border border-white/5 hover:border-cyan-400/40 text-slate-400 hover:text-cyan-400 transition-colors"
@@ -57,6 +59,7 @@ export function Footer({ onOpenTerminal }: FooterProps) {
             rel="noopener noreferrer"
             className="p-2 rounded-lg bg-surface-100 border border-white/5 hover:border-cyan-400/40 text-slate-400 hover:text-cyan-400 transition-colors"
             aria-label="GitHub Profile"
+            title="github.com/samk1245"
           >
             <Github className="w-4 h-4" />
           </a>
@@ -67,6 +70,7 @@ export function Footer({ onOpenTerminal }: FooterProps) {
             rel="noopener noreferrer"
             className="p-2 rounded-lg bg-surface-100 border border-white/5 hover:border-cyan-400/40 text-slate-400 hover:text-cyan-400 transition-colors"
             aria-label="LinkedIn Profile"
+            title="linkedin.com/in/samir-khan-59ss"
           >
             <Linkedin className="w-4 h-4" />
           </a>
@@ -75,8 +79,18 @@ export function Footer({ onOpenTerminal }: FooterProps) {
             href={`mailto:${personalInfo.email}`}
             className="p-2 rounded-lg bg-surface-100 border border-white/5 hover:border-cyan-400/40 text-slate-400 hover:text-cyan-400 transition-colors"
             aria-label="Direct Email"
+            title={personalInfo.email}
           >
             <Mail className="w-4 h-4" />
+          </a>
+
+          <a
+            href={personalInfo.social.phone}
+            className="p-2 rounded-lg bg-surface-100 border border-white/5 hover:border-cyan-400/40 text-slate-400 hover:text-cyan-400 transition-colors"
+            aria-label="Phone"
+            title={personalInfo.phone}
+          >
+            <Phone className="w-4 h-4" />
           </a>
 
           <button
@@ -92,8 +106,8 @@ export function Footer({ onOpenTerminal }: FooterProps) {
       </div>
 
       <div className="max-w-7xl mx-auto mt-8 pt-6 border-t border-white/5 flex flex-col sm:flex-row items-center justify-between text-[11px] font-mono text-slate-500 gap-2">
-        <span>© {new Date().getFullYear()} {personalInfo.name}. All verified rights reserved.</span>
-        <span>Built with Next.js 15, React 19, TypeScript & Tailwind CSS</span>
+        <span>© {new Date().getFullYear()} {personalInfo.name}. Shambhunath Institute of Engineering and Technology, Prayagraj.</span>
+        <span>Built with Next.js 15, Three.js 3D, React 19, TypeScript &amp; Tailwind CSS</span>
       </div>
     </footer>
   );

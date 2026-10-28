@@ -6,16 +6,22 @@ import { ScrollProgress } from "@/components/ui/ScrollProgress";
 import { personalInfo } from "@/data/portfolio";
 
 export const metadata: Metadata = {
-  title: `${personalInfo.name} — ${personalInfo.headline}`,
+  title: `${personalInfo.name} — B.Tech CSE (3rd Year) | SIET Prayagraj`,
   description: personalInfo.shortBio,
   keywords: [
-    "Samir",
+    "Samir Khan",
+    "Shambhunath Institute of Engineering and Technology",
+    "SIET Prayagraj",
+    "B.Tech CSE",
     "Software Engineer",
     "Full-Stack Developer",
-    "AI/ML Engineer",
-    "Computer Science Engineering",
-    "Next.js Portfolio",
-    "Distributed Systems",
+    "Backend Developer",
+    "Docker",
+    "MongoDB",
+    "React",
+    "FastAPI",
+    "Python",
+    "C++",
   ],
   authors: [{ name: personalInfo.name, url: personalInfo.social.github }],
   openGraph: {
