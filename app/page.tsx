@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
+import dynamic from "next/dynamic";
 import { Navbar } from "@/components/layout/Navbar";
 import { HeroSection } from "@/components/sections/HeroSection";
 import { AboutSection } from "@/components/sections/AboutSection";
@@ -10,8 +11,16 @@ import { ExperienceSection } from "@/components/sections/ExperienceSection";
 import { GithubSection } from "@/components/sections/GithubSection";
 import { ContactSection } from "@/components/sections/ContactSection";
 import { Footer } from "@/components/layout/Footer";
-import { CommandPalette } from "@/components/ui/CommandPalette";
-import { InteractiveTerminal } from "@/components/ui/InteractiveTerminal";
+
+const CommandPalette = dynamic(
+  () => import("@/components/ui/CommandPalette").then((m) => m.CommandPalette),
+  { ssr: false }
+);
+
+const InteractiveTerminal = dynamic(
+  () => import("@/components/ui/InteractiveTerminal").then((m) => m.InteractiveTerminal),
+  { ssr: false }
+);
 
 export default function HomePage() {
   const [commandPaletteOpen, setCommandPaletteOpen] = useState(false);

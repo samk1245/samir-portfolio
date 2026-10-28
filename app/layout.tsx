@@ -1,8 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import { ThemeProvider } from "@/components/ui/ThemeProvider";
-import { CustomCursor } from "@/components/ui/CustomCursor";
-import { ScrollProgress } from "@/components/ui/ScrollProgress";
+import { ClientProviders } from "@/components/ui/ClientProviders";
 import { personalInfo } from "@/data/portfolio";
 
 export const metadata: Metadata = {
@@ -50,11 +48,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="dark scroll-smooth" suppressHydrationWarning>
       <body className="bg-background text-foreground min-h-screen selection:bg-cyan-500/30 selection:text-cyan-200">
-        <ThemeProvider>
-          <ScrollProgress />
-          <CustomCursor />
-          {children}
-        </ThemeProvider>
+        <ClientProviders>{children}</ClientProviders>
       </body>
     </html>
   );

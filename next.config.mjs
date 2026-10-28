@@ -6,8 +6,9 @@ const __dirname = path.dirname(__filename);
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  reactStrictMode: true,
+  reactStrictMode: false, // Prevents double-invocation of canvas/three.js in dev
   outputFileTracingRoot: __dirname,
+  transpilePackages: ["three"],
   images: {
     remotePatterns: [
       {

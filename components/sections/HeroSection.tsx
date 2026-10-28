@@ -1,10 +1,20 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
+import dynamic from "next/dynamic";
 import { motion } from "framer-motion";
 import { personalInfo } from "@/data/portfolio";
-import { Hero3DScene } from "@/components/animations/Hero3DScene";
-import { HeroConstellation } from "@/components/animations/HeroConstellation";
+
+const Hero3DScene = dynamic(
+  () => import("@/components/animations/Hero3DScene").then((m) => m.Hero3DScene),
+  { ssr: false }
+);
+
+const HeroConstellation = dynamic(
+  () => import("@/components/animations/HeroConstellation").then((m) => m.HeroConstellation),
+  { ssr: false }
+);
+
 import {
   ArrowDown,
   Mail,
