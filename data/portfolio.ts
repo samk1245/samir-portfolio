@@ -221,12 +221,12 @@ export const projectsData: ProjectItem[] = [
     title: "ShopSphere — Multi-Tenant E-Commerce SaaS",
     tagline: "Scalable MERN multi-tenant e-commerce platform with Dockerized containerization",
     category: "Full-Stack",
-    image: "https://images.unsplash.com/photo-1556742049-0a67e557224f?auto=format&fit=crop&w=1200&q=80",
+    image: "https://images.unsplash.com/photo-1557821552-17105176677c?auto=format&fit=crop&w=1200&q=80",
     screenshots: [
       {
         title: "Multi-Tenant Storefront Experience",
         caption: "6 specialized tenant stores (Urban Sneaker Vault, Nordic Minimalist, Roastery, Audio) with dynamic tenant themes and 3D product cards.",
-        url: "https://images.unsplash.com/photo-1472851294608-062f824d29cc?auto=format&fit=crop&w=1200&q=80",
+        url: "https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=1200&q=80",
       },
       {
         title: "Merchant Analytics & Orders Dashboard",
