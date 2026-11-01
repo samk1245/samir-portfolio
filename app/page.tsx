@@ -52,7 +52,7 @@ export default function HomePage() {
   }, []);
 
   return (
-    <div className="relative min-h-screen bg-background text-foreground bg-grid-pattern selection:bg-cyan-500/30 selection:text-cyan-200">
+    <div className="relative min-h-screen bg-background text-foreground bg-grid-pattern selection:bg-blue-600/30 selection:text-blue-200">
       {/* Top Floating Navbar */}
       <Navbar
         onOpenCommandPalette={() => setCommandPaletteOpen(true)}

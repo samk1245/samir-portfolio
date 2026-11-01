@@ -47,7 +47,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="dark scroll-smooth" suppressHydrationWarning>
-      <body className="bg-background text-foreground min-h-screen selection:bg-cyan-500/30 selection:text-cyan-200">
+      <body className="bg-background text-foreground min-h-screen selection:bg-blue-600/30 selection:text-blue-200">
         <ClientProviders>{children}</ClientProviders>
       </body>
     </html>

@@ -2,7 +2,7 @@
 
 import React, { useState, useRef, useEffect } from "react";
 import { personalInfo, projectsData, skillCategories } from "@/data/portfolio";
-import { X, Terminal as TerminalIcon, Minimize2, Maximize2 } from "lucide-react";
+import { X, Terminal as TerminalIcon } from "lucide-react";
 
 interface InteractiveTerminalProps {
   isOpen: boolean;
@@ -24,11 +24,11 @@ export function InteractiveTerminal({
       command: "welcome",
       output: (
         <div className="space-y-1 text-slate-300">
-          <p className="text-cyan-400 font-bold">
-            Samir OS v2.5.0 (x86_64-pc-portfolio-engine)
+          <p className="text-blue-400 font-bold">
+            Samir Khan Shell v3.0 (x86_64 • SIET Prayagraj)
           </p>
           <p className="text-slate-400">
-            Type <span className="text-emerald-400">&apos;help&apos;</span> to explore available shell commands.
+            Type <span className="text-emerald-400">&apos;help&apos;</span> to explore available commands.
           </p>
         </div>
       ),
@@ -40,7 +40,7 @@ export function InteractiveTerminal({
 
   useEffect(() => {
     if (isOpen) {
-      setTimeout(() => inputRef.current?.focus(), 100);
+      setTimeout(() => inputRef.current?.focus(), 80);
       bottomRef.current?.scrollIntoView({ behavior: "smooth" });
     }
   }, [isOpen, history]);
@@ -53,12 +53,12 @@ export function InteractiveTerminal({
       case "help":
         response = (
           <div className="space-y-1 text-slate-300">
-            <p className="text-cyan-400 font-semibold mb-1">Available Commands:</p>
+            <p className="text-blue-400 font-semibold mb-1">Available Commands:</p>
             <p><span className="text-emerald-400 w-24 inline-block">about</span> : Summary of engineering background and vision</p>
-            <p><span className="text-emerald-400 w-24 inline-block">skills</span> : Core technical stack across languages & systems</p>
+            <p><span className="text-emerald-400 w-24 inline-block">skills</span> : Core technical stack across languages &amp; systems</p>
             <p><span className="text-emerald-400 w-24 inline-block">projects</span> : List of featured engineering projects</p>
-            <p><span className="text-emerald-400 w-24 inline-block">contact</span> : Direct email and communications</p>
-            <p><span className="text-emerald-400 w-24 inline-block">resume</span> : View or download resume</p>
+            <p><span className="text-emerald-400 w-24 inline-block">contact</span> : Direct email, phone, and coordinates</p>
+            <p><span className="text-emerald-400 w-24 inline-block">resume</span> : View or download resume (PDF)</p>
             <p><span className="text-emerald-400 w-24 inline-block">whoami</span> : Current session identity</p>
             <p><span className="text-emerald-400 w-24 inline-block">sudo</span> : Administrative escalation test</p>
             <p><span className="text-emerald-400 w-24 inline-block">clear</span> : Clear output stream</p>
@@ -69,7 +69,8 @@ export function InteractiveTerminal({
       case "about":
         response = (
           <div className="space-y-2 text-slate-300">
-            <p className="text-cyan-400 font-bold">{personalInfo.role}</p>
+            <p className="text-blue-400 font-bold">{personalInfo.name} — {personalInfo.role}</p>
+            <p>{personalInfo.college} • Expected 2026</p>
             <p>{personalInfo.shortBio}</p>
             <p className="text-slate-400 text-[11px]">Specialties: {personalInfo.specialties.join(" • ")}</p>
           </div>
@@ -79,10 +80,10 @@ export function InteractiveTerminal({
       case "skills":
         response = (
           <div className="space-y-2 text-slate-300">
-            <p className="text-cyan-400 font-bold">Core Technical Proficiencies:</p>
+            <p className="text-blue-400 font-bold">Core Technical Proficiencies:</p>
             {skillCategories.map((c) => (
               <p key={c.id}>
-                <span className="text-violet-400 font-semibold">{c.title}:</span>{" "}
+                <span className="text-emerald-400 font-semibold">{c.title}:</span>{" "}
                 {c.skills.map((s) => s.name).join(", ")}
               </p>
             ))}
@@ -93,9 +94,9 @@ export function InteractiveTerminal({
       case "projects":
         response = (
           <div className="space-y-2 text-slate-300">
-            <p className="text-cyan-400 font-bold">Featured Projects:</p>
+            <p className="text-blue-400 font-bold">Featured Projects:</p>
             {projectsData.map((p, idx) => (
-              <div key={p.id} className="pl-2 border-l border-cyan-400/30">
+              <div key={p.id} className="pl-2 border-l border-blue-500/30">
                 <p className="text-emerald-300 font-semibold">
                   [{idx + 1}] {p.title} ({p.category})
                 </p>
@@ -109,11 +110,11 @@ export function InteractiveTerminal({
       case "contact":
         response = (
           <div className="space-y-1 text-slate-300">
-            <p><span className="text-cyan-400">Email:</span> {personalInfo.email}</p>
-            <p><span className="text-cyan-400">Phone:</span> {personalInfo.phone}</p>
-            <p><span className="text-cyan-400">GitHub:</span> {personalInfo.social.github}</p>
-            <p><span className="text-cyan-400">LinkedIn:</span> {personalInfo.social.linkedin}</p>
-            <p><span className="text-cyan-400">College:</span> {personalInfo.college}</p>
+            <p><span className="text-blue-400">Email:</span> {personalInfo.email}</p>
+            <p><span className="text-blue-400">Phone:</span> {personalInfo.phone}</p>
+            <p><span className="text-blue-400">GitHub:</span> {personalInfo.social.github}</p>
+            <p><span className="text-blue-400">LinkedIn:</span> {personalInfo.social.linkedin}</p>
+            <p><span className="text-blue-400">College:</span> {personalInfo.college}</p>
           </div>
         );
         break;
@@ -121,7 +122,7 @@ export function InteractiveTerminal({
       case "resume":
         response = (
           <div className="text-slate-300">
-            <p>Resume document path: <span className="text-cyan-400">{personalInfo.resumeUrl}</span></p>
+            <p>Resume document path: <span className="text-blue-400">{personalInfo.resumeUrl}</span></p>
             <a
               href={personalInfo.resumeUrl}
               target="_blank"
@@ -137,7 +138,7 @@ export function InteractiveTerminal({
       case "whoami":
         response = (
           <p className="text-slate-300">
-            visitor@tech-recruiter: <span className="text-cyan-400">Authenticated Guest [Read-Only]</span>
+            visitor@tech-recruiter: <span className="text-emerald-400">Authenticated Guest [Read-Only]</span>
           </p>
         );
         break;
@@ -160,7 +161,7 @@ export function InteractiveTerminal({
       default:
         response = (
           <p className="text-rose-400">
-            Command not found: &apos;{trimmed}&apos;. Type <span className="text-cyan-400 font-bold">&apos;help&apos;</span> for valid commands.
+            Command not found: &apos;{trimmed}&apos;. Type <span className="text-blue-400 font-bold">&apos;help&apos;</span> for valid commands.
           </p>
         );
         break;
@@ -186,7 +187,7 @@ export function InteractiveTerminal({
       onClick={onClose}
     >
       <div
-        className="w-full max-w-2xl h-[520px] rounded-2xl bg-[#070a11] border border-cyan-500/30 shadow-[0_0_40px_rgba(0,240,255,0.15)] flex flex-col overflow-hidden"
+        className="w-full max-w-2xl h-[520px] rounded-2xl bg-[#090c12] border border-blue-500/30 shadow-2xl flex flex-col overflow-hidden text-left"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Terminal Header */}
@@ -196,8 +197,8 @@ export function InteractiveTerminal({
             <span className="w-3 h-3 rounded-full bg-amber-500 inline-block" />
             <span className="w-3 h-3 rounded-full bg-emerald-500 inline-block" />
             <span className="ml-2 text-xs font-mono text-slate-300 flex items-center gap-1.5">
-              <TerminalIcon className="w-3.5 h-3.5 text-cyan-400" />
-              <span>samir@portfolio: ~</span>
+              <TerminalIcon className="w-3.5 h-3.5 text-blue-400" />
+              <span>samir@siet: ~</span>
             </span>
           </div>
 
@@ -215,7 +216,7 @@ export function InteractiveTerminal({
           {history.map((item, idx) => (
             <div key={idx} className="space-y-1">
               <div className="flex items-center gap-2 text-slate-400">
-                <span className="text-cyan-400 font-bold">➜</span>
+                <span className="text-blue-400 font-bold">➜</span>
                 <span className="text-emerald-400 font-semibold">samir-shell</span>
                 <span>$</span>
                 <span className="text-white">{item.command}</span>
@@ -231,7 +232,7 @@ export function InteractiveTerminal({
           onSubmit={handleSubmit}
           className="p-3 bg-surface-100/90 border-t border-white/10 flex items-center gap-2 font-mono text-xs"
         >
-          <span className="text-cyan-400 font-bold">➜</span>
+          <span className="text-blue-400 font-bold">➜</span>
           <span className="text-emerald-400 font-semibold">samir-shell</span>
           <span className="text-slate-400">$</span>
           <input

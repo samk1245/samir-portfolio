@@ -3,29 +3,29 @@
 import React, { useEffect, useState } from "react";
 import { motion, useInView } from "framer-motion";
 import { personalInfo, verifiedStats } from "@/data/portfolio";
-import { Tilt3DCard } from "@/components/ui/Tilt3DCard";
 import {
-  Cpu,
   GraduationCap,
-  Sparkles,
+  Briefcase,
+  Layers,
+  Box,
   Terminal,
-  Zap,
   Globe,
   Award,
-  CheckCircle,
-  Briefcase,
+  CheckCircle2,
+  Code2,
+  ExternalLink,
 } from "lucide-react";
 
 function Counter({ target, suffix }: { target: number; suffix?: string }) {
   const [count, setCount] = useState(0);
   const ref = React.useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-50px" });
+  const isInView = useInView(ref, { once: true, margin: "-40px" });
 
   useEffect(() => {
     if (!isInView) return;
     let start = 0;
-    const duration = 1400;
-    const steps = 25;
+    const duration = 1200;
+    const steps = 24;
     const increment = target / steps;
     const stepTime = duration / steps;
 
@@ -43,186 +43,161 @@ function Counter({ target, suffix }: { target: number; suffix?: string }) {
   }, [isInView, target]);
 
   return (
-    <span ref={ref} className="font-mono text-3xl sm:text-4xl font-bold text-white light:text-slate-900">
+    <span ref={ref} className="font-mono text-3xl font-bold text-white light:text-slate-900">
       {count}
-      {suffix && <span className="text-cyan-400 text-2xl sm:text-3xl ml-0.5">{suffix}</span>}
+      {suffix && <span className="text-blue-400 text-2xl ml-0.5">{suffix}</span>}
     </span>
   );
 }
 
 export function AboutSection() {
   return (
-    <section id="about" className="py-24 px-4 sm:px-6 lg:px-8 relative">
+    <section id="about" className="py-24 px-4 sm:px-6 lg:px-8 relative border-t border-white/5">
       <div className="max-w-7xl mx-auto">
         {/* Section Header */}
-        <div className="flex flex-col items-start mb-16">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/20 text-cyan-400 text-xs font-mono uppercase tracking-wider mb-3">
-            <Cpu className="w-3.5 h-3.5" />
-            <span>01 // Academic & Professional Profile</span>
-          </div>
+        <div className="max-w-3xl mb-16 text-left">
+          <span className="text-xs font-mono font-semibold uppercase tracking-wider text-blue-400 mb-2 block">
+            Academic &amp; Professional Background
+          </span>
           <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-white light:text-slate-900">
-            About Samir Khan
+            Engineering Foundations &amp; Hands-On Experience
           </h2>
-          <p className="mt-2 text-slate-400 text-base max-w-xl">
-            B.Tech CSE 3rd Year student at Shambhunath Institute of Engineering and Technology, Prayagraj.
+          <p className="mt-3 text-slate-400 text-base leading-relaxed">
+            3rd Year B.Tech Computer Science &amp; Engineering student at Shambhunath Institute of Engineering and Technology (SIET), Prayagraj, with practical industry experience in full-stack web and backend development.
           </p>
         </div>
 
-        {/* 2-Column Layout: Narrative + Interactive Architecture Terminal */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start mb-16">
+        {/* 2-Column Grid: Narrative & Highlights */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start mb-16">
           {/* Left Column: Narrative paragraphs */}
-          <div className="lg:col-span-7 space-y-6 text-slate-300 light:text-slate-600 leading-relaxed text-base">
-            {personalInfo.aboutBio.map((paragraph, idx) => (
-              <p key={idx}>{paragraph}</p>
-            ))}
+          <div className="lg:col-span-7 space-y-5 text-slate-300 light:text-slate-600 leading-relaxed text-sm sm:text-base text-left">
+            <p>
+              I am an engineering undergraduate focused on backend architectures, full-stack web development, and applied machine learning. My technical foundation centers on Data Structures, Algorithms, and Object-Oriented Programming in C++, combined with practical experience building scalable web applications in JavaScript, Node.js, and Python.
+            </p>
+            <p>
+              During my 3-month internship at <strong>The Zaalima Development</strong>, I actively contributed to building and testing modular RESTful APIs using Express.js, maintaining responsive user interfaces with React.js, and containerizing application development workflows with Docker to ensure zero configuration drift across the team.
+            </p>
+            <p>
+              I prioritize robust architecture over superficial complexity—structuring decoupled services, ensuring clean version control with Git, and integrating intelligent features where they solve genuine operational bottlenecks.
+            </p>
 
-            {/* Academic & Languages Highlights */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
-              {/* Education Card */}
-              <div className="p-4 rounded-xl bg-surface-100 border border-white/10 hover:border-cyan-400/40 transition-all space-y-1.5">
-                <div className="flex items-center gap-2 text-cyan-400 text-sm font-semibold">
-                  <GraduationCap className="w-4 h-4" />
-                  <span>College & Degree</span>
-                </div>
-                <p className="text-xs text-white light:text-slate-900 font-medium">
-                  {personalInfo.college}
-                </p>
-                <p className="text-[11px] font-mono text-slate-400">
-                  {personalInfo.degree} • CGPA: {personalInfo.cgpa}
-                </p>
-              </div>
-
-              {/* Languages Spoken */}
-              <div className="p-4 rounded-xl bg-surface-100 border border-white/10 hover:border-violet-400/40 transition-all space-y-1.5">
-                <div className="flex items-center gap-2 text-violet-400 text-sm font-semibold">
-                  <Globe className="w-4 h-4" />
-                  <span>Languages</span>
-                </div>
-                <div className="space-y-1 pt-0.5">
-                  {personalInfo.spokenLanguages.map((lang) => (
-                    <div key={lang.name} className="flex items-center justify-between text-xs">
-                      <span className="font-medium text-slate-200">{lang.name}</span>
-                      <span className="text-[10px] font-mono text-cyan-400 bg-cyan-500/10 px-1.5 py-0.5 rounded border border-cyan-500/20">
-                        {lang.level}
-                      </span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
-
-            {/* Certifications Snapshot */}
-            <div className="p-4 rounded-xl bg-surface-100 border border-white/10">
-              <div className="flex items-center gap-2 text-amber-400 text-sm font-semibold mb-2.5">
-                <Award className="w-4 h-4" />
-                <span>Industry Job Simulations & Certifications</span>
-              </div>
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-2">
-                {personalInfo.certifications.map((c, i) => (
-                  <div key={i} className="p-2.5 rounded-lg bg-surface-200/60 border border-white/5">
-                    <p className="text-xs font-semibold text-white truncate">{c.title}</p>
-                    <p className="text-[11px] text-cyan-400 font-mono mt-0.5">{c.issuer}</p>
-                    <p className="text-[10px] text-slate-500 font-mono">{c.date}</p>
+            {/* Language Proficiency Bar */}
+            <div className="pt-2">
+              <span className="text-xs font-mono text-slate-400 block mb-2 uppercase tracking-wider">
+                Language Proficiencies
+              </span>
+              <div className="grid grid-cols-2 gap-3">
+                {personalInfo.spokenLanguages.map((lang) => (
+                  <div
+                    key={lang.name}
+                    className="p-3 rounded-xl bg-surface-100 border border-white/5 flex items-center justify-between text-xs"
+                  >
+                    <span className="font-semibold text-white">{lang.name}</span>
+                    <span className="font-mono text-blue-400 text-[11px]">{lang.level}</span>
                   </div>
                 ))}
               </div>
             </div>
           </div>
 
-          {/* Right Column: Visual Architecture System Card */}
-          <div className="lg:col-span-5">
-            <Tilt3DCard>
-              <div className="rounded-2xl bg-surface-100 border border-white/10 overflow-hidden shadow-2xl relative">
-                {/* Terminal Window Header */}
-                <div className="px-4 py-3 bg-surface-200/60 border-b border-white/5 flex items-center justify-between">
-                  <div className="flex items-center gap-2">
-                    <span className="w-3 h-3 rounded-full bg-red-500/80 inline-block" />
-                    <span className="w-3 h-3 rounded-full bg-amber-500/80 inline-block" />
-                    <span className="w-3 h-3 rounded-full bg-emerald-500/80 inline-block" />
-                  </div>
-                  <div className="text-[11px] font-mono text-slate-400 flex items-center gap-1.5">
-                    <Terminal className="w-3 h-3 text-cyan-400" />
-                    <span>samir_profile.sys</span>
-                  </div>
-                </div>
-
-                {/* Code / Visual Representation */}
-                <div className="p-5 font-mono text-xs space-y-3 leading-relaxed">
-                  <div>
-                    <span className="text-slate-500">const</span>{" "}
-                    <span className="text-cyan-400">engineer</span> = &#123;
-                  </div>
-                  <div className="pl-4 text-slate-300">
-                    <span className="text-violet-400">name</span>:{" "}
-                    <span className="text-emerald-300">&quot;{personalInfo.name}&quot;</span>,
-                  </div>
-                  <div className="pl-4 text-slate-300">
-                    <span className="text-violet-400">college</span>:{" "}
-                    <span className="text-emerald-300">&quot;SIET, Prayagraj&quot;</span>,
-                  </div>
-                  <div className="pl-4 text-slate-300">
-                    <span className="text-violet-400">academicYear</span>:{" "}
-                    <span className="text-cyan-400">3</span> <span className="text-slate-500">// B.Tech CSE</span>,
-                  </div>
-                  <div className="pl-4 text-slate-300">
-                    <span className="text-violet-400">cgpa</span>:{" "}
-                    <span className="text-cyan-400">6.9</span>,
-                  </div>
-                  <div className="pl-4 text-slate-300">
-                    <span className="text-violet-400">recentExperience</span>: &#123;
-                    <div className="pl-4 text-slate-400">
-                      role: <span className="text-emerald-300">&quot;Web Development Intern&quot;</span>,
-                      <br />
-                      company: <span className="text-emerald-300">&quot;The Zaalima Development&quot;</span>,
-                      <br />
-                      stack: [&quot;React.js&quot;, &quot;Node.js&quot;, &quot;Express&quot;, &quot;Docker&quot;]
-                    </div>
-                    &#125;,
-                  </div>
-                  <div className="pl-4 text-slate-300">
-                    <span className="text-violet-400">focusAreas</span>: [
-                    <div className="pl-4 text-slate-400">
-                      &quot;Backend Development&quot;, &quot;AI Engineering&quot;, &quot;Docker&quot;
-                    </div>
-                    ],
-                  </div>
-                  <div className="pl-4 text-slate-300">
-                    <span className="text-violet-400">availableForRoles</span>:{" "}
-                    <span className="text-cyan-400">true</span>
-                  </div>
-                  <div>&#125;;</div>
-
-                  <div className="pt-2 border-t border-white/5 text-[11px] text-slate-400 flex items-center justify-between">
-                    <span className="flex items-center gap-1 text-emerald-400">
-                      <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
-                      Verified CV Credentials
-                    </span>
-                    <span className="text-slate-500">3D Tilt Enabled</span>
-                  </div>
+          {/* Right Column: Verified Credentials Cards */}
+          <div className="lg:col-span-5 space-y-4 text-left">
+            {/* Institution Card */}
+            <div className="p-5 rounded-2xl bg-surface-100 border border-white/10 space-y-3">
+              <div className="flex items-center gap-2.5 text-blue-400 text-sm font-semibold">
+                <GraduationCap className="w-5 h-5" />
+                <span>Undergraduate Degree</span>
+              </div>
+              <div>
+                <h3 className="text-base font-bold text-white light:text-slate-900">
+                  {personalInfo.degree}
+                </h3>
+                <p className="text-xs text-slate-400 mt-1">
+                  {personalInfo.college}
+                </p>
+                <div className="flex items-center gap-3 mt-3 text-xs font-mono text-slate-300">
+                  <span className="px-2 py-0.5 rounded bg-blue-500/10 text-blue-400 border border-blue-500/20">
+                    Status: 3rd Year (Expected 2026)
+                  </span>
+                  <span className="px-2 py-0.5 rounded bg-surface-200 border border-white/5">
+                    CGPA: {personalInfo.cgpa}
+                  </span>
                 </div>
               </div>
-            </Tilt3DCard>
+            </div>
+
+            {/* Internship Card */}
+            <div className="p-5 rounded-2xl bg-surface-100 border border-white/10 space-y-3">
+              <div className="flex items-center gap-2.5 text-emerald-400 text-sm font-semibold">
+                <Briefcase className="w-5 h-5" />
+                <span>Web Development Internship</span>
+              </div>
+              <div>
+                <div className="flex items-center justify-between">
+                  <h3 className="text-base font-bold text-white light:text-slate-900">
+                    The Zaalima Development
+                  </h3>
+                  <span className="text-xs font-mono text-slate-400">Duration: 3 Months</span>
+                </div>
+                <p className="text-xs text-slate-400 mt-1 leading-relaxed">
+                  Developed responsive web application features using React.js and Node.js. Built and tested RESTful APIs using Express.js. Containerized development environments using Docker.
+                </p>
+                <div className="flex flex-wrap gap-1.5 mt-3">
+                  {["React.js", "Node.js", "Express.js", "Docker", "REST APIs", "Git"].map((tech) => (
+                    <span
+                      key={tech}
+                      className="px-2 py-0.5 rounded text-[10px] font-mono bg-surface-200 text-slate-300 border border-white/5"
+                    >
+                      {tech}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            {/* Industry Certifications */}
+            <div className="p-5 rounded-2xl bg-surface-100 border border-white/10 space-y-3">
+              <div className="flex items-center gap-2 text-amber-400 text-sm font-semibold">
+                <Award className="w-4 h-4" />
+                <span>Job Simulations &amp; Certifications</span>
+              </div>
+              <div className="space-y-2">
+                {personalInfo.certifications.map((c, i) => (
+                  <div
+                    key={i}
+                    className="p-2.5 rounded-xl bg-surface-200/50 border border-white/5 flex items-center justify-between text-xs"
+                  >
+                    <div>
+                      <span className="font-medium text-white block">{c.title}</span>
+                      <span className="text-[11px] text-blue-400 font-mono">{c.issuer}</span>
+                    </div>
+                    <span className="text-[10px] font-mono text-slate-400">{c.date}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
         </div>
 
-        {/* Compact Verified Statistics Cards with 3D Tilt */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+        {/* Compact Verified Statistics Counter Cards */}
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-left">
           {verifiedStats.map((stat) => (
-            <Tilt3DCard key={stat.id}>
-              <div className="p-5 rounded-xl bg-surface-100 border border-white/10 hover:border-cyan-400/40 transition-all group h-full flex flex-col justify-between">
-                <div>
-                  <div className="mb-2">
-                    <Counter target={stat.value} suffix={stat.suffix} />
-                  </div>
-                  <h3 className="text-sm font-semibold text-white light:text-slate-900 group-hover:text-cyan-400 transition-colors">
-                    {stat.label}
-                  </h3>
+            <div
+              key={stat.id}
+              className="p-5 rounded-2xl bg-surface-100 border border-white/10 hover:border-blue-500/40 transition-all flex flex-col justify-between"
+            >
+              <div>
+                <div className="mb-2">
+                  <Counter target={stat.value} suffix={stat.suffix} />
                 </div>
-                <p className="text-xs text-slate-400 mt-2 line-clamp-2">
-                  {stat.description}
-                </p>
+                <h3 className="text-sm font-semibold text-white light:text-slate-900">
+                  {stat.label}
+                </h3>
               </div>
-            </Tilt3DCard>
+              <p className="text-xs text-slate-400 mt-2 line-clamp-2">
+                {stat.description}
+              </p>
+            </div>
           ))}
         </div>
       </div>

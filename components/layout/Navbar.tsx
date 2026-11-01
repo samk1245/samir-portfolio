@@ -36,9 +36,8 @@ export function Navbar({ onOpenCommandPalette, onOpenTerminal }: NavbarProps) {
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 30);
+      setIsScrolled(window.scrollY > 25);
 
-      // Detect active section
       const sections = ["about", "skills", "projects", "experience", "github", "contact"];
       const scrollPos = window.scrollY + 180;
 
@@ -62,7 +61,6 @@ export function Navbar({ onOpenCommandPalette, onOpenTerminal }: NavbarProps) {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Prevent scroll when mobile drawer is open
   useEffect(() => {
     if (mobileMenuOpen) {
       document.body.style.overflow = "hidden";
@@ -75,7 +73,7 @@ export function Navbar({ onOpenCommandPalette, onOpenTerminal }: NavbarProps) {
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled
-          ? "bg-[#06080e]/80 dark:bg-[#06080e]/85 light:bg-white/85 backdrop-blur-md border-b border-white/5 light:border-black/5 shadow-lg shadow-black/20"
+          ? "bg-[#090b10]/85 light:bg-white/90 backdrop-blur-md border-b border-white/5 light:border-black/5 shadow-md shadow-black/10"
           : "bg-transparent border-b border-transparent pt-3"
       }`}
     >
@@ -83,17 +81,17 @@ export function Navbar({ onOpenCommandPalette, onOpenTerminal }: NavbarProps) {
         {/* Monogram Brand */}
         <Link
           href="#"
-          className="group flex items-center gap-2.5 focus:outline-none focus:ring-2 focus:ring-cyan-400 rounded-lg p-1"
+          className="group flex items-center gap-2.5 focus:outline-none rounded-lg p-1"
           aria-label="Home"
         >
-          <div className="w-9 h-9 rounded-lg bg-surface-100 border border-white/10 flex items-center justify-center font-mono font-bold text-cyan-400 group-hover:border-cyan-400/50 group-hover:shadow-[0_0_15px_rgba(0,240,255,0.3)] transition-all">
+          <div className="w-8 h-8 rounded-lg bg-blue-600 text-white flex items-center justify-center font-mono font-bold text-xs shadow-sm group-hover:bg-blue-500 transition-colors">
             SK
           </div>
-          <div className="flex flex-col">
-            <span className="font-semibold text-sm tracking-tight text-white light:text-slate-900 group-hover:text-cyan-400 transition-colors">
+          <div className="flex flex-col text-left">
+            <span className="font-semibold text-sm tracking-tight text-white light:text-slate-900 group-hover:text-blue-400 transition-colors">
               {personalInfo.name}
             </span>
-            <span className="text-[10px] font-mono text-cyan-400/80 -mt-1 tracking-wider uppercase">
+            <span className="text-[10px] font-mono text-slate-400 -mt-0.5 tracking-wider uppercase">
               B.Tech CSE • SIET
             </span>
           </div>
@@ -108,15 +106,15 @@ export function Navbar({ onOpenCommandPalette, onOpenTerminal }: NavbarProps) {
               <a
                 key={link.name}
                 href={link.href}
-                className={`relative px-3 py-1.5 text-xs lg:text-sm font-medium transition-colors rounded-md ${
+                className={`relative px-3 py-1.5 text-xs lg:text-sm font-medium transition-colors rounded-lg ${
                   isActive
-                    ? "text-cyan-400 font-semibold"
+                    ? "text-blue-400 font-semibold"
                     : "text-slate-300 light:text-slate-600 hover:text-white light:hover:text-slate-900"
                 }`}
               >
                 {link.name}
                 {isActive && (
-                  <span className="absolute bottom-0 left-2 right-2 h-0.5 bg-gradient-to-r from-cyan-400 to-blue-500 rounded-full" />
+                  <span className="absolute bottom-0 left-2 right-2 h-0.5 bg-blue-500 rounded-full" />
                 )}
               </a>
             );
@@ -128,18 +126,18 @@ export function Navbar({ onOpenCommandPalette, onOpenTerminal }: NavbarProps) {
           {/* Command Palette Trigger */}
           <button
             onClick={onOpenCommandPalette}
-            className="hidden sm:flex items-center gap-1.5 px-2.5 py-1.5 text-xs rounded-md bg-surface-100 border border-white/10 hover:border-cyan-400/40 text-slate-300 light:text-slate-700 hover:text-white light:hover:text-black transition-all"
+            className="hidden sm:flex items-center gap-1.5 px-2.5 py-1.5 text-xs rounded-xl bg-surface-100 border border-white/10 hover:border-blue-400/40 text-slate-300 light:text-slate-700 hover:text-white light:hover:text-black transition-all"
             title="Open Command Palette (Ctrl+K)"
           >
-            <CommandIcon className="w-3.5 h-3.5 text-cyan-400" />
+            <CommandIcon className="w-3.5 h-3.5 text-blue-400" />
             <span className="font-mono text-[11px] opacity-75">Ctrl+K</span>
           </button>
 
           {/* Terminal Launcher */}
           <button
             onClick={onOpenTerminal}
-            className="p-2 rounded-md bg-surface-100 border border-white/10 hover:border-cyan-400/40 text-slate-300 light:text-slate-700 hover:text-cyan-400 transition-colors"
-            title="Interactive Terminal"
+            className="p-2 rounded-xl bg-surface-100 border border-white/10 hover:border-blue-400/40 text-slate-300 light:text-slate-700 hover:text-blue-400 transition-colors"
+            title="Interactive Shell (Backtick key)"
             aria-label="Open Interactive Terminal"
           >
             <Terminal className="w-4 h-4" />
@@ -148,7 +146,7 @@ export function Navbar({ onOpenCommandPalette, onOpenTerminal }: NavbarProps) {
           {/* Theme Toggle */}
           <button
             onClick={toggleTheme}
-            className="p-2 rounded-md bg-surface-100 border border-white/10 hover:border-cyan-400/40 text-slate-300 light:text-slate-700 hover:text-cyan-400 transition-colors"
+            className="p-2 rounded-xl bg-surface-100 border border-white/10 hover:border-blue-400/40 text-slate-300 light:text-slate-700 hover:text-blue-400 transition-colors"
             title={`Switch to ${theme === "dark" ? "light" : "dark"} mode`}
             aria-label="Toggle theme"
           >
@@ -160,16 +158,16 @@ export function Navbar({ onOpenCommandPalette, onOpenTerminal }: NavbarProps) {
             href={personalInfo.resumeUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="hidden lg:flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium rounded-md bg-gradient-to-r from-cyan-500/10 to-blue-500/10 border border-cyan-500/30 text-cyan-400 hover:bg-cyan-500/20 hover:border-cyan-400 transition-all shadow-[0_0_12px_rgba(0,240,255,0.15)]"
+            className="hidden lg:flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold rounded-xl bg-blue-600/15 border border-blue-500/30 text-blue-400 hover:bg-blue-600 hover:text-white transition-all shadow-sm"
           >
             <FileText className="w-3.5 h-3.5" />
-            <span>Resume</span>
+            <span>CV</span>
           </a>
 
           {/* Mobile Menu Hamburger */}
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="md:hidden p-2 rounded-md bg-surface-100 border border-white/10 text-slate-300 light:text-slate-700 hover:text-white"
+            className="md:hidden p-2 rounded-xl bg-surface-100 border border-white/10 text-slate-300 light:text-slate-700 hover:text-white"
             aria-label="Open menu"
             aria-expanded={mobileMenuOpen}
           >
@@ -183,18 +181,18 @@ export function Navbar({ onOpenCommandPalette, onOpenTerminal }: NavbarProps) {
         <div
           role="dialog"
           aria-modal="true"
-          className="md:hidden fixed inset-x-0 top-16 bg-[#06080e]/95 light:bg-white/95 backdrop-blur-xl border-b border-white/10 light:border-black/10 px-6 py-6 transition-all shadow-2xl animate-in slide-in-from-top-2"
+          className="md:hidden fixed inset-x-0 top-16 bg-[#090b10]/95 light:bg-white/95 backdrop-blur-xl border-b border-white/10 light:border-black/10 px-6 py-6 transition-all shadow-2xl animate-in slide-in-from-top-2"
         >
-          <nav className="flex flex-col space-y-4">
+          <nav className="flex flex-col space-y-4 text-left">
             {navLinks.map((link) => (
               <a
                 key={link.name}
                 href={link.href}
                 onClick={() => setMobileMenuOpen(false)}
-                className="text-base font-medium text-slate-200 light:text-slate-800 hover:text-cyan-400 transition-colors py-1 flex items-center justify-between border-b border-white/5"
+                className="text-base font-medium text-slate-200 light:text-slate-800 hover:text-blue-400 transition-colors py-1 flex items-center justify-between border-b border-white/5"
               >
                 <span>{link.name}</span>
-                <span className="text-xs font-mono text-cyan-400/60">→</span>
+                <span className="text-xs font-mono text-blue-400">→</span>
               </a>
             ))}
 
@@ -204,10 +202,10 @@ export function Navbar({ onOpenCommandPalette, onOpenTerminal }: NavbarProps) {
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={() => setMobileMenuOpen(false)}
-                className="flex items-center justify-center gap-2 w-full py-2.5 rounded-lg bg-cyan-500/10 border border-cyan-400/40 text-cyan-400 font-medium text-sm"
+                className="flex items-center justify-center gap-2 w-full py-2.5 rounded-xl bg-blue-600 text-white font-semibold text-sm shadow-sm"
               >
                 <FileText className="w-4 h-4" />
-                <span>View Full Resume</span>
+                <span>View Full CV (PDF)</span>
               </a>
 
               <button
@@ -215,9 +213,9 @@ export function Navbar({ onOpenCommandPalette, onOpenTerminal }: NavbarProps) {
                   setMobileMenuOpen(false);
                   onOpenCommandPalette();
                 }}
-                className="flex items-center justify-center gap-2 w-full py-2 rounded-lg bg-surface-100 border border-white/10 text-slate-300 text-xs font-mono"
+                className="flex items-center justify-center gap-2 w-full py-2 rounded-xl bg-surface-100 border border-white/10 text-slate-300 text-xs font-mono"
               >
-                <CommandIcon className="w-3.5 h-3.5 text-cyan-400" />
+                <CommandIcon className="w-3.5 h-3.5 text-blue-400" />
                 <span>Command Palette (Ctrl + K)</span>
               </button>
             </div>
