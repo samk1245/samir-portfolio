@@ -183,6 +183,18 @@ export const projectsData: ProjectItem[] = [
     tagline: "AI-powered civic and community action platform identifying unmet societal needs",
     category: "AI/ML",
     image: "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1200&q=80",
+    screenshots: [
+      {
+        title: "Needs Priority Heatmap",
+        caption: "Interactive geographical map highlighting urgent community utility reports and cluster density.",
+        url: "https://images.unsplash.com/photo-1524661135-423995f22d0b?auto=format&fit=crop&w=1200&q=80",
+      },
+      {
+        title: "AI NLP Analytics Dashboard",
+        caption: "Natural language categorization engine scoring report urgency and routing civic alerts.",
+        url: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=80",
+      },
+    ],
     featured: true,
     featuredOrder: 1,
     tags: ["TypeScript", "Next.js", "AI Intelligence", "FastAPI", "Tailwind CSS"],
@@ -205,13 +217,70 @@ export const projectsData: ProjectItem[] = [
     ],
   },
   {
+    id: "shopsphere-ecommerce",
+    title: "ShopSphere — Multi-Tenant E-Commerce SaaS",
+    tagline: "Scalable MERN multi-tenant e-commerce platform with Dockerized containerization",
+    category: "Full-Stack",
+    image: "https://images.unsplash.com/photo-1556742049-0a67e557224f?auto=format&fit=crop&w=1200&q=80",
+    screenshots: [
+      {
+        title: "Multi-Tenant Storefront Experience",
+        caption: "6 specialized tenant stores (Urban Sneaker Vault, Nordic Minimalist, Roastery, Audio) with dynamic tenant themes and 3D product cards.",
+        url: "https://images.unsplash.com/photo-1472851294608-062f824d29cc?auto=format&fit=crop&w=1200&q=80",
+      },
+      {
+        title: "Merchant Analytics & Orders Dashboard",
+        caption: "Store owner administration console with real-time revenue analytics, order status updates, and catalog inventory control.",
+        url: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1200&q=80",
+      },
+      {
+        title: "6-in-1 Interactive Payment Suite",
+        caption: "Dynamic UPI QR codes with live countdown, 3D animated credit cards with tokenization, Net Banking, and GST tax invoice printing.",
+        url: "https://images.unsplash.com/photo-1559526324-4b87b5e36e44?auto=format&fit=crop&w=1200&q=80",
+      },
+      {
+        title: "Dockerized Multi-Container Pipeline",
+        caption: "Docker Compose environment isolating MongoDB persistence, Express.js microservices, and client single page application.",
+        url: "https://images.unsplash.com/photo-1607799279861-4dd421887fb3?auto=format&fit=crop&w=1200&q=80",
+      },
+    ],
+    featured: true,
+    featuredOrder: 2,
+    tags: ["React.js", "Node.js", "Express.js", "MongoDB", "Docker"],
+    problem:
+      "Independent merchants require isolated store data, customized catalogues, and independent checkout flows without bearing enterprise hosting overhead.",
+    solution:
+      "Built a modular multi-tenant web application separating tenant schemas in MongoDB, protected by role-based JWT authentication and fully containerized with Docker.",
+    architectureHighlights: [
+      "Modular Express.js backend architecture with tenant isolation middleware",
+      "RESTful API endpoints for catalog management, shopping cart, and orders",
+      "Complete Dockerfile and Docker Compose environment for seamless dev-to-prod parity",
+      "Integrated 6-tier interactive checkout suite and real-time shipment courier tracker",
+    ],
+    actualContribution:
+      "Engineered the full-stack architecture: built MongoDB schemas, created Express API endpoints, built responsive React components, and wrote Docker orchestration scripts.",
+    githubUrl: "https://github.com/samk1245/shopsphere-multitenant-ecommerce",
+    status: "Completed",
+    metrics: [
+      { label: "Architecture", value: "Modular MERN" },
+      { label: "Environment", value: "Dockerized" },
+    ],
+  },
+  {
     id: "evocode-ai",
     title: "EvoCode-AI — Evolutionary Code Intelligence",
     tagline: "Autonomous Python-based code optimization and algorithm evolution engine",
     category: "AI/ML",
     image: "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&w=1200&q=80",
+    screenshots: [
+      {
+        title: "AST Syntactic Analyzer",
+        caption: "Abstract syntax tree parsing verifying safe mutations and execution delta.",
+        url: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=1200&q=80",
+      },
+    ],
     featured: true,
-    featuredOrder: 2,
+    featuredOrder: 3,
     tags: ["Python", "Machine Learning", "AST", "Algorithms", "AI Agents"],
     problem:
       "Developers spend repetitive manual hours profiling algorithmic bottlenecks and generating optimized variants of computationally heavy code routines.",
@@ -232,38 +301,23 @@ export const projectsData: ProjectItem[] = [
     ],
   },
   {
-    id: "shopsphere-ecommerce",
-    title: "ShopSphere — Multi-Tenant E-Commerce SaaS",
-    tagline: "Scalable MERN multi-tenant e-commerce platform with Dockerized containerization",
-    category: "Full-Stack",
-    image: "https://images.unsplash.com/photo-1556742049-0a67e557224f?auto=format&fit=crop&w=1200&q=80",
-    featured: true,
-    featuredOrder: 3,
-    tags: ["React.js", "Node.js", "Express.js", "MongoDB", "Docker"],
-    problem:
-      "Independent merchants require isolated store data, customized catalogues, and independent checkout flows without bearing enterprise hosting overhead.",
-    solution:
-      "Built a modular multi-tenant web application separating tenant schemas in MongoDB, protected by role-based JWT authentication and fully containerized with Docker.",
-    architectureHighlights: [
-      "Modular Express.js backend architecture with tenant isolation middleware",
-      "RESTful API endpoints for catalog management, shopping cart, and orders",
-      "Complete Dockerfile and Docker Compose environment for seamless dev-to-prod parity",
-    ],
-    actualContribution:
-      "Engineered the full-stack architecture: built MongoDB schemas, created Express API endpoints, built responsive React components, and wrote Docker orchestration scripts.",
-    githubUrl: "https://github.com/samk1245/shopsphere-multitenant-ecommerce",
-    status: "Completed",
-    metrics: [
-      { label: "Architecture", value: "Modular MERN" },
-      { label: "Environment", value: "Dockerized" },
-    ],
-  },
-  {
     id: "smartcity-airguard",
     title: "SmartCity AirGuard — Environmental Telemetry AI",
     tagline: "IoT air quality monitoring, pollution forecasting, and citizen alert network",
     category: "Data & Systems",
     image: "https://images.unsplash.com/photo-1532601224476-15c79f2f7a51?auto=format&fit=crop&w=1200&q=80",
+    screenshots: [
+      {
+        title: "Telemetry Sensor Graph",
+        caption: "Continuous PM2.5 and atmospheric telemetry collection and outlier filtration.",
+        url: "https://images.unsplash.com/photo-1509228468518-180dd4864904?auto=format&fit=crop&w=1200&q=80",
+      },
+      {
+        title: "FastAPI Predictive Alert Stream",
+        caption: "Automated regression forecast endpoints serving sub-40ms citizen alert feeds.",
+        url: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1200&q=80",
+      },
+    ],
     featured: true,
     featuredOrder: 4,
     tags: ["TypeScript", "FastAPI", "Python", "Data Analytics", "Docker"],
@@ -432,15 +486,6 @@ export const manualGithubRepos: GithubRepoItem[] = [
     topics: ["ai-intelligence", "nextjs", "typescript", "civic-tech"],
   },
   {
-    name: "EvoCode-AI",
-    description: "Autonomous Python-based code optimization and evolutionary algorithm engine",
-    language: "Python",
-    stars: 15,
-    forks: 4,
-    url: "https://github.com/samk1245/EvoCode-AI",
-    topics: ["python", "ai-agents", "ast-analysis", "code-optimization"],
-  },
-  {
     name: "shopsphere-multitenant-ecommerce",
     description: "Multi-tenant e-commerce SaaS built with MERN stack & Docker containerization",
     language: "JavaScript",
@@ -448,6 +493,15 @@ export const manualGithubRepos: GithubRepoItem[] = [
     forks: 5,
     url: "https://github.com/samk1245/shopsphere-multitenant-ecommerce",
     topics: ["mern-stack", "docker", "ecommerce", "multi-tenant", "express"],
+  },
+  {
+    name: "EvoCode-AI",
+    description: "Autonomous Python-based code optimization and evolutionary algorithm engine",
+    language: "Python",
+    stars: 15,
+    forks: 4,
+    url: "https://github.com/samk1245/EvoCode-AI",
+    topics: ["python", "ai-agents", "ast-analysis", "code-optimization"],
   },
   {
     name: "SmartCity-AirGuard-AI-System",

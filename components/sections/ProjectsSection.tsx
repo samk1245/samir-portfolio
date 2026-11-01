@@ -12,6 +12,7 @@ import {
   ArrowUpRight,
   Info,
   GitBranch,
+  Images,
 } from "lucide-react";
 import { Github } from "@/components/ui/icons";
 
@@ -93,9 +94,17 @@ export function ProjectsSection() {
                     <span className="px-2.5 py-1 rounded-md bg-black/60 backdrop-blur-md border border-white/10 text-blue-400 text-[10px] font-mono font-semibold">
                       {project.category}
                     </span>
-                    <span className="px-2.5 py-1 rounded-md bg-black/60 backdrop-blur-md border border-white/10 text-slate-300 text-[10px] font-mono">
-                      {project.status}
-                    </span>
+                    <div className="flex items-center gap-1.5">
+                      {project.screenshots && project.screenshots.length > 0 && (
+                        <span className="px-2 py-0.5 rounded-md bg-blue-600/80 backdrop-blur-md text-white text-[10px] font-mono font-medium flex items-center gap-1 shadow-sm">
+                          <Images className="w-3 h-3" />
+                          <span>{project.screenshots.length + 1} Visuals</span>
+                        </span>
+                      )}
+                      <span className="px-2.5 py-1 rounded-md bg-black/60 backdrop-blur-md border border-white/10 text-slate-300 text-[10px] font-mono">
+                        {project.status}
+                      </span>
+                    </div>
                   </div>
 
                   {/* Hover Inspect Hint */}

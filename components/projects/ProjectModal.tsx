@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import { ProjectItem } from "@/types/portfolio";
 import {
@@ -9,9 +9,9 @@ import {
   CheckCircle,
   Cpu,
   Layers,
-  Sparkles,
-  Activity,
-  Code2,
+  ChevronLeft,
+  ChevronRight,
+  Images,
 } from "lucide-react";
 import { Github } from "@/components/ui/icons";
 
@@ -21,9 +21,22 @@ interface ProjectModalProps {
 }
 
 export function ProjectModal({ project, onClose }: ProjectModalProps) {
+  const [activeIndex, setActiveIndex] = useState(0);
+
+  // Reset active image index whenever a different project is opened
+  useEffect(() => {
+    setActiveIndex(0);
+  }, [project?.id]);
+
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === "Escape") onClose();
+      if (e.key === "ArrowLeft") {
+        setActiveIndex((prev) => (prev > 0 ? prev - 1 : gallery.length - 1));
+      }
+      if (e.key === "ArrowRight") {
+        setActiveIndex((prev) => (prev < gallery.length - 1 ? prev + 1 : 0));
+      }
     };
 
     if (project) {
@@ -39,11 +52,33 @@ export function ProjectModal({ project, onClose }: ProjectModalProps) {
 
   if (!project) return null;
 
+  // Build gallery from primary image plus all screenshots
+  const gallery = [
+    {
+      title: "Architecture Overview",
+      caption: project.tagline,
+      url: project.image,
+    },
+    ...(project.screenshots || []),
+  ];
+
+  const currentMedia = gallery[activeIndex] || gallery[0];
+
+  const handlePrev = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    setActiveIndex((prev) => (prev > 0 ? prev - 1 : gallery.length - 1));
+  };
+
+  const handleNext = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    setActiveIndex((prev) => (prev < gallery.length - 1 ? prev + 1 : 0));
+  };
+
   return (
     <div
       role="dialog"
       aria-modal="true"
-      className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 overflow-y-auto bg-black/85 backdrop-blur-md animate-in fade-in"
+      className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 overflow-y-auto bg-black/85 backdrop-blur-md animate-in fade-in"
       onClick={onClose}
     >
       <div
@@ -53,37 +88,106 @@ export function ProjectModal({ project, onClose }: ProjectModalProps) {
         {/* Close Button */}
         <button
           onClick={onClose}
-          className="absolute top-4 right-4 z-20 p-2 rounded-full bg-black/60 hover:bg-black/90 border border-white/10 text-slate-300 hover:text-white transition-all"
+          className="absolute top-4 right-4 z-30 p-2 rounded-full bg-black/70 hover:bg-black/90 border border-white/15 text-slate-300 hover:text-white transition-all shadow-lg"
           aria-label="Close project modal"
         >
           <X className="w-5 h-5" />
         </button>
 
-        {/* Hero Image / Banner */}
-        <div className="relative h-60 sm:h-72 w-full overflow-hidden bg-surface-200">
+        {/* Hero Image / Screenshot Interactive Viewer */}
+        <div className="relative h-64 sm:h-80 w-full overflow-hidden bg-surface-200 group">
           <Image
-            src={project.image}
-            alt={project.title}
+            key={currentMedia.url}
+            src={currentMedia.url}
+            alt={`${project.title} - ${currentMedia.title}`}
             fill
-            className="object-cover"
+            className="object-cover transition-all duration-300"
             sizes="(max-width: 768px) 100vw, 768px"
             priority
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#0c0f17] via-[#0c0f17]/40 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#0c0f17] via-[#0c0f17]/40 to-black/20" />
 
-          {/* Badges on image */}
-          <div className="absolute bottom-4 left-6 right-6 flex items-center justify-between">
-            <span className="px-3 py-1 rounded-full bg-blue-600/30 border border-blue-400 text-blue-300 text-xs font-mono font-semibold backdrop-blur-md">
+          {/* Top Badges */}
+          <div className="absolute top-4 left-4 z-20 flex items-center gap-2">
+            <span className="px-3 py-1 rounded-full bg-blue-600/40 border border-blue-400 text-blue-300 text-xs font-mono font-semibold backdrop-blur-md">
               {project.category}
             </span>
-            <span className="px-3 py-1 rounded-full bg-surface-100/90 border border-white/10 text-slate-300 text-xs font-mono">
-              Status: {project.status}
-            </span>
+            {gallery.length > 1 && (
+              <span className="px-2.5 py-1 rounded-full bg-black/60 border border-white/10 text-slate-300 text-[11px] font-mono flex items-center gap-1.5 backdrop-blur-md">
+                <Images className="w-3 h-3 text-blue-400" />
+                <span>
+                  {activeIndex + 1} / {gallery.length}
+                </span>
+              </span>
+            )}
+          </div>
+
+          {/* Gallery Navigation Arrows (if multiple screenshots) */}
+          {gallery.length > 1 && (
+            <>
+              <button
+                onClick={handlePrev}
+                aria-label="Previous screenshot"
+                className="absolute left-3 top-1/2 -translate-y-1/2 z-20 p-2 rounded-full bg-black/60 hover:bg-black/80 text-white border border-white/15 transition-all shadow-lg opacity-80 group-hover:opacity-100"
+              >
+                <ChevronLeft className="w-5 h-5" />
+              </button>
+              <button
+                onClick={handleNext}
+                aria-label="Next screenshot"
+                className="absolute right-3 top-1/2 -translate-y-1/2 z-20 p-2 rounded-full bg-black/60 hover:bg-black/80 text-white border border-white/15 transition-all shadow-lg opacity-80 group-hover:opacity-100"
+              >
+                <ChevronRight className="w-5 h-5" />
+              </button>
+            </>
+          )}
+
+          {/* Bottom Active Image Title & Caption Banner */}
+          <div className="absolute bottom-3 left-4 right-4 z-20 bg-black/60 backdrop-blur-md border border-white/10 rounded-xl p-3">
+            <div className="flex items-center justify-between text-xs font-mono text-blue-400 font-semibold mb-0.5">
+              <span>{currentMedia.title}</span>
+              <span className="text-[10px] text-slate-400">
+                {project.status}
+              </span>
+            </div>
+            <p className="text-[11px] sm:text-xs text-slate-300 line-clamp-2">
+              {currentMedia.caption}
+            </p>
           </div>
         </div>
 
+        {/* Thumbnail Selector Strip (if more than 1 image) */}
+        {gallery.length > 1 && (
+          <div className="px-6 pt-3 pb-1 bg-[#090c13] border-b border-white/10 flex items-center gap-2.5 overflow-x-auto no-scrollbar">
+            {gallery.map((item, idx) => (
+              <button
+                key={idx}
+                onClick={() => setActiveIndex(idx)}
+                className={`flex-shrink-0 flex items-center gap-2 px-2.5 py-1.5 rounded-lg border text-left transition-all ${
+                  activeIndex === idx
+                    ? "bg-blue-600/20 border-blue-500 text-white shadow-sm"
+                    : "bg-surface-100/60 border-white/5 text-slate-400 hover:border-white/20 hover:text-slate-200"
+                }`}
+              >
+                <div className="relative w-8 h-6 rounded overflow-hidden flex-shrink-0">
+                  <Image
+                    src={item.url}
+                    alt={item.title}
+                    fill
+                    className="object-cover"
+                    sizes="32px"
+                  />
+                </div>
+                <div className="text-[11px] font-mono leading-tight max-w-[130px] truncate">
+                  {item.title}
+                </div>
+              </button>
+            ))}
+          </div>
+        )}
+
         {/* Content Body */}
-        <div className="p-6 sm:p-8 space-y-6">
+        <div className="p-6 sm:p-8 space-y-6 max-h-[55vh] overflow-y-auto">
           <div>
             <h3 className="text-2xl sm:text-3xl font-bold text-white tracking-tight">
               {project.title}

@@ -62,6 +62,7 @@ export interface ProjectItem {
   tagline: string;
   category: "AI/ML" | "Full-Stack" | "Backend" | "Data & Systems" | "All";
   image: string;
+  screenshots?: { title: string; url: string; caption: string }[];
   featured: boolean;
   featuredOrder?: number;
   tags: string[];
