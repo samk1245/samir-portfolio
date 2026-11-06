@@ -1,0 +1,92 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --bg-main: #E8EBF1;
+    --text-main: #12141B;
+    --cobalt: #2F4BF0;
+    --mustard: #F2B31B;
+    --light-gray: #F6F7FA;
+    --card-bg: #FFFFFF;
+    --card-border: rgba(18, 20, 27, 0.08);
+  }
+
+  .dark {
+    --bg-main: #0E1015;
+    --text-main: #EEF0F5;
+    --cobalt: #2F4BF0;
+    --mustard: #F2B31B;
+    --light-gray: #171A21;
+    --card-bg: #171A21;
+    --card-border: rgba(238, 240, 245, 0.08);
+  }
+
+  html {
+    scroll-behavior: smooth;
+    font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  }
+
+  body {
+    background-color: var(--bg-main);
+    color: var(--text-main);
+    overflow-x: hidden;
+  }
+}
+
+/* Mustard-Yellow Marker Highlighter Effect */
+.mustard-marker {
+  position: relative;
+  display: inline-block;
+  white-space: nowrap;
+}
+
+.mustard-marker::before {
+  content: "";
+  position: absolute;
+  left: -0.1em;
+  right: -0.1em;
+  bottom: 0.08em;
+  height: 0.38em;
+  background-color: #F2B31B;
+  z-index: -1;
+  transform: rotate(-1.2deg);
+  border-radius: 6px;
+  opacity: 0.95;
+  transition: transform 0.3s ease;
+}
+
+.mustard-marker:hover::before {
+  transform: rotate(0.5deg) scaleY(1.15);
+}
+
+/* Subtle Editorial Background Grid */
+.editorial-grid {
+  background-size: 48px 48px;
+  background-image: 
+    linear-gradient(to right, rgba(18, 20, 27, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(18, 20, 27, 0.04) 1px, transparent 1px);
+}
+
+.dark .editorial-grid {
+  background-image: 
+    linear-gradient(to right, rgba(238, 240, 245, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(238, 240, 245, 0.04) 1px, transparent 1px);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 9px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(47, 75, 240, 0.3);
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(47, 75, 240, 0.7);
+}
