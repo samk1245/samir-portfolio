@@ -342,7 +342,7 @@ volumes:
             onClick={onClose}
             className="px-4 py-2 rounded-xl text-xs font-mono font-bold text-slate-500 hover:text-black dark:hover:text-white transition-colors"
           >
-            Slide to Close &rarr;
+            Close Inspector &times;
           </button>
         </div>
       </div>

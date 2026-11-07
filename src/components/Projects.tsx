@@ -132,7 +132,7 @@ export function Projects() {
                   className="px-4 py-2.5 rounded-xl bg-[#2F4BF0] hover:bg-[#233bc7] text-white font-mono text-xs font-bold uppercase tracking-wide flex items-center gap-2 transition-all shadow-md shadow-[#2F4BF0]/20 hover:scale-[1.02]"
                 >
                   <Layers className="w-3.5 h-3.5" />
-                  <span>Slide to Inspect</span>
+                  <span>Architecture &amp; API ↗</span>
                 </button>
 
                 <div className="flex items-center gap-2">

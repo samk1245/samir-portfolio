@@ -153,7 +153,7 @@ export function QuickTerminal() {
           <div className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
           <Terminal className="w-4 h-4 text-[#2F4BF0] group-hover:text-[#F2B31B] transition-colors" />
           <span className="text-xs font-mono font-bold tracking-wider">
-            {isOpen ? "CLOSE CLI" : "SLIDE TO OPEN CLI"}
+            {isOpen ? "CLOSE CLI" : "SAMIR.CLI [⌘K]"}
           </span>
         </button>
       </div>

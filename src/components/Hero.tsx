@@ -1,7 +1,7 @@
 import React from "react";
 import { personalInfo } from "@/data/portfolio";
 import { FaceCanvas } from "@/face/FaceCanvas";
-import { SlideToExplore } from "./SlideToExplore";
+import { HeroCommandDeck } from "./HeroCommandDeck";
 import { Code2, Sparkles, Terminal, FileText, Send } from "lucide-react";
 
 export function Hero() {
@@ -98,10 +98,8 @@ export function Hero() {
         </div>
       </div>
 
-      {/* Interactive Slide to Explore Component */}
-      <div className="mt-8 sm:mt-12 w-full flex flex-col items-center">
-        <SlideToExplore targetId="about" />
-      </div>
+      {/* Holographic Command Deck & Editorial Scroll Indicator */}
+      <HeroCommandDeck />
     </section>
   );
 }
