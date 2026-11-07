@@ -300,9 +300,9 @@ export class FacePhysicsEngine {
   }
 
   /**
-   * Procedurally paints the realistic modern anime developer character
-   * with high detail, anime eyes, angel-ring hair gloss, cyber headphones,
-   * expressive anime mouths, and dynamic blinking.
+   * Procedurally paints the realistic handsome anime protagonist developer character
+   * with sharp chiseled jawline, textured curtain bangs, captivating almond anime eyes,
+   * angel-ring hair gloss, silver ear piercings, and cyber techwear.
    */
   private renderCharacterTexture() {
     const ctx = this.offscreenCtx;
@@ -335,14 +335,14 @@ export class FacePhysicsEngine {
     // Subtle anime breathing idle offset
     const breatheY = Math.sin(this.idleTime * 2.2) * 2.5;
 
-    // --- 1. SHOULDERS & COBALT / DARK TECHWEAR JACKET ---
+    // --- 1. SHOULDERS & SLEEK TECHWEAR JACKET ---
     ctx.save();
     // Torso base
     const jacketGrad = ctx.createLinearGradient(cx - 300, cy + 200, cx + 300, cy + 500);
-    jacketGrad.addColorStop(0, "#0E1528");
-    jacketGrad.addColorStop(0.35, "#1B2754");
-    jacketGrad.addColorStop(0.7, "#17234D");
-    jacketGrad.addColorStop(1, "#0A0F1F");
+    jacketGrad.addColorStop(0, "#0B101E");
+    jacketGrad.addColorStop(0.35, "#151F3D");
+    jacketGrad.addColorStop(0.7, "#121C38");
+    jacketGrad.addColorStop(1, "#070B16");
 
     ctx.fillStyle = jacketGrad;
     ctx.beginPath();
@@ -353,14 +353,14 @@ export class FacePhysicsEngine {
     ctx.closePath();
     ctx.fill();
 
-    // Cobalt Blue Shoulder Panels (Cyber techwear look)
+    // Cobalt Blue Shoulder Lapels (Asymmetric futuristic streetwear)
     const cobaltStripe = ctx.createLinearGradient(cx - 240, cy + 240, cx - 180, cy + 340);
     cobaltStripe.addColorStop(0, "#2F4BF0");
     cobaltStripe.addColorStop(1, "#182CAA");
     ctx.fillStyle = cobaltStripe;
     ctx.beginPath();
     ctx.moveTo(cx - 310, cy + 290 + breatheY);
-    ctx.lineTo(cx - 180, cy + 240 + breatheY);
+    ctx.lineTo(cx - 180, cy + 235 + breatheY);
     ctx.lineTo(cx - 160, cy + 265 + breatheY);
     ctx.lineTo(cx - 280, cy + 340 + breatheY);
     ctx.closePath();
@@ -368,424 +368,460 @@ export class FacePhysicsEngine {
 
     ctx.beginPath();
     ctx.moveTo(cx + 310, cy + 290 + breatheY);
-    ctx.lineTo(cx + 180, cy + 240 + breatheY);
+    ctx.lineTo(cx + 180, cy + 235 + breatheY);
     ctx.lineTo(cx + 160, cy + 265 + breatheY);
     ctx.lineTo(cx + 280, cy + 340 + breatheY);
     ctx.closePath();
     ctx.fill();
 
-    // High Techwear Collar
-    ctx.fillStyle = "#121A30";
+    // High Techwear Stand Collar
+    ctx.fillStyle = "#10162B";
     ctx.beginPath();
-    ctx.ellipse(cx, cy + 245 + breatheY, 195, 70, 0, 0, Math.PI * 2);
+    ctx.ellipse(cx, cy + 245 + breatheY, 190, 68, 0, 0, Math.PI * 2);
     ctx.fill();
 
-    // Mustard Yellow Zipper / Accent Stripe
+    // Inner Collar Cobalt Rim Accent
+    ctx.strokeStyle = "#2F4BF0";
+    ctx.lineWidth = 4;
+    ctx.beginPath();
+    ctx.ellipse(cx, cy + 240 + breatheY, 182, 60, 0, Math.PI * 0.1, Math.PI * 0.9);
+    ctx.stroke();
+
+    // Mustard Yellow Center Zipper & Trim
     ctx.strokeStyle = "#F2B31B";
     ctx.lineWidth = 6;
     ctx.lineCap = "round";
     ctx.beginPath();
-    ctx.moveTo(cx, cy + 270 + breatheY);
+    ctx.moveTo(cx, cy + 265 + breatheY);
     ctx.lineTo(cx, h);
     ctx.stroke();
 
-    // Cyber Tag / Patch on Collar ("SK // DEV")
+    // Techwear Tag ("SAMIR // 01")
     ctx.fillStyle = "#F2B31B";
-    ctx.fillRect(cx - 110, cy + 280 + breatheY, 44, 16);
-    ctx.fillStyle = "#12141B";
+    ctx.fillRect(cx - 110, cy + 280 + breatheY, 48, 16);
+    ctx.fillStyle = "#0E1015";
     ctx.font = "bold 9px monospace";
-    ctx.fillText("SK.DEV", cx - 105, cy + 292 + breatheY);
+    ctx.fillText("SK.AI//01", cx - 106, cy + 292 + breatheY);
 
     // --- 2. CYBER AUDIO STUDIO HEADPHONES AROUND NECK ---
-    // Padded headband behind neck
-    ctx.lineWidth = 20;
-    ctx.strokeStyle = "#1A1D28";
+    ctx.lineWidth = 18;
+    ctx.strokeStyle = "#161924";
     ctx.beginPath();
-    ctx.ellipse(cx, cy + 230 + breatheY, 140, 50, 0, Math.PI * 0.15, Math.PI * 0.85);
+    ctx.ellipse(cx, cy + 230 + breatheY, 138, 48, 0, Math.PI * 0.15, Math.PI * 0.85);
     ctx.stroke();
 
-    // Left Ear Cup
     const drawHeadphoneCup = (x: number, isRight: boolean) => {
       ctx.save();
       ctx.translate(x, cy + 200 + breatheY);
-      ctx.rotate(isRight ? -0.25 : 0.25);
+      ctx.rotate(isRight ? -0.22 : 0.22);
 
       // Outer metallic pivot
-      ctx.fillStyle = "#323A50";
+      ctx.fillStyle = "#2D3447";
       ctx.beginPath();
-      ctx.roundRect(-24, -45, 48, 90, 20);
+      ctx.roundRect(-22, -42, 44, 84, 18);
       ctx.fill();
 
       // Cobalt Blue Core Body
       ctx.fillStyle = "#2F4BF0";
       ctx.beginPath();
-      ctx.roundRect(-20, -40, 40, 80, 18);
+      ctx.roundRect(-18, -38, 36, 76, 16);
       ctx.fill();
 
       // Glowing Cyan / Mustard LED Status Ring
       ctx.strokeStyle = expr === "cyber" ? "#00F0FF" : "#F2B31B";
-      ctx.lineWidth = 3.5;
+      ctx.lineWidth = 3;
       ctx.beginPath();
-      ctx.ellipse(0, 0, 14, 26, 0, 0, Math.PI * 2);
+      ctx.ellipse(0, 0, 12, 24, 0, 0, Math.PI * 2);
       ctx.stroke();
 
       // Inner Cushion
-      ctx.fillStyle = "#11141E";
+      ctx.fillStyle = "#0E111A";
       ctx.beginPath();
-      ctx.ellipse(isRight ? -14 : 14, 0, 10, 28, 0, 0, Math.PI * 2);
+      ctx.ellipse(isRight ? -13 : 13, 0, 9, 26, 0, 0, Math.PI * 2);
       ctx.fill();
 
       ctx.restore();
     };
 
-    drawHeadphoneCup(cx - 145, false);
-    drawHeadphoneCup(cx + 145, true);
+    drawHeadphoneCup(cx - 142, false);
+    drawHeadphoneCup(cx + 142, true);
 
     // Under-neck ambient shadow
-    ctx.fillStyle = "rgba(10, 14, 30, 0.55)";
+    ctx.fillStyle = "rgba(8, 12, 26, 0.58)";
     ctx.beginPath();
-    ctx.ellipse(cx, cy + 205 + breatheY, 90, 28, 0, 0, Math.PI * 2);
+    ctx.ellipse(cx, cy + 202 + breatheY, 88, 26, 0, 0, Math.PI * 2);
     ctx.fill();
 
-    // --- 3. ANIME NECK & CLAVICLE CEL-SHADING ---
-    const neckGrad = ctx.createLinearGradient(cx - 65, cy + 120, cx + 65, cy + 225);
-    neckGrad.addColorStop(0, "#F5C3A5");
-    neckGrad.addColorStop(0.5, "#E8AC89");
-    neckGrad.addColorStop(1, "#D08F6B");
+    // --- 3. MASCULINE ANIME NECK & ADAM'S APPLE ---
+    const neckGrad = ctx.createLinearGradient(cx - 60, cy + 120, cx + 60, cy + 225);
+    neckGrad.addColorStop(0, "#F5C5A8");
+    neckGrad.addColorStop(0.5, "#E8AF8D");
+    neckGrad.addColorStop(1, "#CE8F6C");
     ctx.fillStyle = neckGrad;
 
     ctx.beginPath();
-    ctx.moveTo(cx - 65, cy + 125);
-    ctx.lineTo(cx - 70, cy + 225 + breatheY);
-    ctx.quadraticCurveTo(cx, cy + 242 + breatheY, cx + 70, cy + 225 + breatheY);
-    ctx.lineTo(cx + 65, cy + 125);
+    ctx.moveTo(cx - 62, cy + 122);
+    ctx.lineTo(cx - 66, cy + 222 + breatheY);
+    ctx.quadraticCurveTo(cx, cy + 238 + breatheY, cx + 66, cy + 222 + breatheY);
+    ctx.lineTo(cx + 62, cy + 122);
+    ctx.closePath();
+    ctx.fill();
+
+    // Sternocleidomastoid Muscle Shadow lines (handsome neck definition)
+    ctx.strokeStyle = "rgba(175, 95, 70, 0.35)";
+    ctx.lineWidth = 3.5;
+    ctx.beginPath();
+    ctx.moveTo(cx - 48, cy + 140);
+    ctx.quadraticCurveTo(cx - 42, cy + 185, cx - 22, cy + 220 + breatheY);
+    ctx.stroke();
+
+    ctx.beginPath();
+    ctx.moveTo(cx + 48, cy + 140);
+    ctx.quadraticCurveTo(cx + 42, cy + 185, cx + 22, cy + 220 + breatheY);
+    ctx.stroke();
+
+    // Subtle Handsome Adam's Apple shadow
+    ctx.fillStyle = "rgba(165, 85, 60, 0.4)";
+    ctx.beginPath();
+    ctx.moveTo(cx, cy + 172 + breatheY);
+    ctx.lineTo(cx - 7, cy + 186 + breatheY);
+    ctx.lineTo(cx + 7, cy + 186 + breatheY);
     ctx.closePath();
     ctx.fill();
 
     // Shadow cast under anime jaw onto neck
-    ctx.fillStyle = "rgba(175, 95, 70, 0.35)";
+    ctx.fillStyle = "rgba(170, 90, 65, 0.38)";
     ctx.beginPath();
-    ctx.moveTo(cx - 65, cy + 130);
-    ctx.quadraticCurveTo(cx, cy + 185, cx + 65, cy + 130);
-    ctx.quadraticCurveTo(cx, cy + 155, cx - 65, cy + 130);
+    ctx.moveTo(cx - 62, cy + 126);
+    ctx.quadraticCurveTo(cx, cy + 178, cx + 62, cy + 126);
+    ctx.quadraticCurveTo(cx, cy + 150, cx - 62, cy + 126);
     ctx.closePath();
     ctx.fill();
 
-    // --- 4. ANIME EARS ---
-    const drawAnimeEar = (x: number, isRight: boolean) => {
+    // --- 4. ANIME EARS WITH SILVER PIERCINGS ---
+    const drawHandsomeAnimeEar = (x: number, isRight: boolean) => {
       ctx.save();
-      const earGrad = ctx.createRadialGradient(x, cy + 15, 10, x, cy + 15, 55);
-      earGrad.addColorStop(0, "#FFD6BA");
-      earGrad.addColorStop(0.7, "#EEAD87");
-      earGrad.addColorStop(1, "#CF8862");
+      const earGrad = ctx.createRadialGradient(x, cy + 12, 10, x, cy + 12, 55);
+      earGrad.addColorStop(0, "#FFD9BF");
+      earGrad.addColorStop(0.7, "#EEB18C");
+      earGrad.addColorStop(1, "#CF8B65");
 
       ctx.fillStyle = earGrad;
       ctx.beginPath();
-      // Anime tapered ear shape
-      ctx.ellipse(x, cy + 15, 36, 56, isRight ? 0.22 : -0.22, 0, Math.PI * 2);
+      // Elegant, tapered anime ear shape
+      ctx.ellipse(x, cy + 12, 34, 54, isRight ? 0.2 : -0.2, 0, Math.PI * 2);
       ctx.fill();
 
       // Inner ear anime ridge
       ctx.strokeStyle = "rgba(180, 85, 65, 0.4)";
-      ctx.lineWidth = 4;
+      ctx.lineWidth = 3.5;
       ctx.beginPath();
-      ctx.ellipse(x + (isRight ? -4 : 4), cy + 12, 16, 30, isRight ? 0.15 : -0.15, 0, Math.PI * 1.5);
+      ctx.ellipse(x + (isRight ? -4 : 4), cy + 10, 15, 28, isRight ? 0.12 : -0.12, 0, Math.PI * 1.5);
       ctx.stroke();
+
+      // Left Ear Silver Piercings (Silver huggie hoop & stud - classic handsome anime aesthetic!)
+      if (!isRight) {
+        // Silver stud on lobe
+        ctx.fillStyle = "#E8EBF1";
+        ctx.beginPath();
+        ctx.arc(x + 4, cy + 38, 3.5, 0, Math.PI * 2);
+        ctx.fill();
+
+        // Silver hoop on helix
+        ctx.strokeStyle = "#FFFFFF";
+        ctx.lineWidth = 2.5;
+        ctx.beginPath();
+        ctx.arc(x - 14, cy - 8, 4.5, -0.2 * Math.PI, 1.2 * Math.PI);
+        ctx.stroke();
+      }
 
       ctx.restore();
     };
 
-    drawAnimeEar(cx - 215, false);
-    drawAnimeEar(cx + 215, true);
+    drawHandsomeAnimeEar(cx - 212, false);
+    drawHandsomeAnimeEar(cx + 212, true);
 
-    // --- 5. ANIME HEAD & TAPERED JAWLINE ---
-    const faceGrad = ctx.createRadialGradient(cx, cy - 30, 40, cx, cy + 20, 260);
-    faceGrad.addColorStop(0, "#FFF0E4");
-    faceGrad.addColorStop(0.45, "#FDE1CE");
-    faceGrad.addColorStop(0.85, "#F3C4A5");
-    faceGrad.addColorStop(1, "#DF9C75");
+    // --- 5. CHISELED JAWLINE & HANDSOME CHIN ---
+    const faceGrad = ctx.createRadialGradient(cx, cy - 35, 35, cx, cy + 15, 255);
+    faceGrad.addColorStop(0, "#FFF2E8");
+    faceGrad.addColorStop(0.45, "#FDE4D2");
+    faceGrad.addColorStop(0.85, "#F4C7A8");
+    faceGrad.addColorStop(1, "#DE9F78");
 
     ctx.fillStyle = faceGrad;
     ctx.beginPath();
-    // Sleek anime jawline contour tapering gracefully into a defined chin
-    ctx.moveTo(cx - 195, cy - 100);
-    ctx.quadraticCurveTo(cx - 215, cy + 25, cx - 165, cy + 115);
-    ctx.quadraticCurveTo(cx - 95, cy + 195, cx, cy + 212); // Tapered anime chin
-    ctx.quadraticCurveTo(cx + 95, cy + 195, cx + 165, cy + 115);
-    ctx.quadraticCurveTo(cx + 215, cy + 25, cx + 195, cy - 100);
-    ctx.quadraticCurveTo(cx, cy - 210, cx - 195, cy - 100);
+    // Chiseled, sharp handsome anime jawline
+    ctx.moveTo(cx - 192, cy - 95);
+    ctx.quadraticCurveTo(cx - 210, cy + 20, cx - 162, cy + 110);
+    ctx.quadraticCurveTo(cx - 90, cy + 185, cx, cy + 204); // Clean, sharp tapered chin
+    ctx.quadraticCurveTo(cx + 90, cy + 185, cx + 162, cy + 110);
+    ctx.quadraticCurveTo(cx + 210, cy + 20, cx + 192, cy - 95);
+    ctx.quadraticCurveTo(cx, cy - 205, cx - 192, cy - 95);
     ctx.closePath();
     ctx.fill();
 
-    // Subtle anime chin crease
-    ctx.strokeStyle = "rgba(180, 95, 75, 0.35)";
-    ctx.lineWidth = 3;
+    // Subtle handsome chin cleft shadow
+    ctx.strokeStyle = "rgba(175, 90, 70, 0.35)";
+    ctx.lineWidth = 2.5;
     ctx.beginPath();
-    ctx.arc(cx, cy + 196, 12, 0.2 * Math.PI, 0.8 * Math.PI);
+    ctx.arc(cx, cy + 190, 10, 0.2 * Math.PI, 0.8 * Math.PI);
     ctx.stroke();
 
-    // --- 6. ANIME BLUSH & CHEEKS ---
-    // Soft airbrushed cheek gradient
-    const leftCheekGlow = ctx.createRadialGradient(cx - 110, cy + 50, 5, cx - 110, cy + 50, 65);
-    leftCheekGlow.addColorStop(0, "rgba(255, 120, 130, 0.38)");
-    leftCheekGlow.addColorStop(1, "rgba(255, 120, 130, 0)");
-    ctx.fillStyle = leftCheekGlow;
-    ctx.fillRect(cx - 180, cy - 10, 140, 120);
+    // --- 6. HIGH CHEEKBONE CONTOUR & SUBTLE BLUSH ---
+    // Subtle high cheekbone shading for handsome bone structure
+    ctx.fillStyle = "rgba(220, 110, 90, 0.14)";
+    ctx.beginPath();
+    ctx.ellipse(cx - 115, cy + 45, 60, 24, -0.2, 0, Math.PI * 2);
+    ctx.fill();
 
-    const rightCheekGlow = ctx.createRadialGradient(cx + 110, cy + 50, 5, cx + 110, cy + 50, 65);
-    rightCheekGlow.addColorStop(0, "rgba(255, 120, 130, 0.38)");
-    rightCheekGlow.addColorStop(1, "rgba(255, 120, 130, 0)");
-    ctx.fillStyle = rightCheekGlow;
-    ctx.fillRect(cx + 40, cy - 10, 140, 120);
+    ctx.beginPath();
+    ctx.ellipse(cx + 115, cy + 45, 60, 24, 0.2, 0, Math.PI * 2);
+    ctx.fill();
 
     // Manga Blush Hatch Lines (///) when flushed or stretched or blush expression
-    if (this.flushIntensity > 0.25 || expr === "stretched" || expr === "blush" || expr === "startled") {
+    if (this.flushIntensity > 0.22 || expr === "stretched" || expr === "blush" || expr === "startled") {
       ctx.save();
-      ctx.strokeStyle = "rgba(225, 70, 90, 0.65)";
-      ctx.lineWidth = 3.5;
+      ctx.strokeStyle = "rgba(235, 75, 95, 0.65)";
+      ctx.lineWidth = 3;
       ctx.lineCap = "round";
 
-      // Left cheek hatching
       for (let i = 0; i < 4; i++) {
-        const lx = cx - 130 + i * 11;
+        const lx = cx - 125 + i * 11;
         ctx.beginPath();
-        ctx.moveTo(lx, cy + 56);
-        ctx.lineTo(lx + 8, cy + 40);
+        ctx.moveTo(lx, cy + 52);
+        ctx.lineTo(lx + 8, cy + 38);
         ctx.stroke();
-      }
 
-      // Right cheek hatching
-      for (let i = 0; i < 4; i++) {
-        const rx = cx + 95 + i * 11;
+        const rx = cx + 92 + i * 11;
         ctx.beginPath();
-        ctx.moveTo(rx, cy + 56);
-        ctx.lineTo(rx + 8, cy + 40);
+        ctx.moveTo(rx, cy + 52);
+        ctx.lineTo(rx + 8, cy + 38);
         ctx.stroke();
       }
       ctx.restore();
     }
 
-    // --- 7. ANIME NOSE ---
-    // High-end anime style: delicate shadowed bridge + tiny clean specular dot
+    // --- 7. SLENDER ANIME NOSE (SHARP & REFINED) ---
     ctx.save();
-    ctx.strokeStyle = "rgba(175, 90, 65, 0.45)";
-    ctx.lineWidth = 3;
+    // Nose bridge line
+    ctx.strokeStyle = "rgba(170, 85, 60, 0.5)";
+    ctx.lineWidth = 2.5;
     ctx.beginPath();
-    ctx.moveTo(cx - 3, cy - 8);
-    ctx.quadraticCurveTo(cx - 8, cy + 28, cx - 2, cy + 42);
+    ctx.moveTo(cx - 2, cy - 12);
+    ctx.quadraticCurveTo(cx - 6, cy + 24, cx - 2, cy + 40);
     ctx.stroke();
 
-    // Cute anime nose tip shadow
+    // Clean anime nose tip facet
     ctx.fillStyle = "#CE7C58";
     ctx.beginPath();
-    ctx.ellipse(cx, cy + 43, 7, 4.5, 0, 0, Math.PI * 2);
+    ctx.ellipse(cx, cy + 41, 6, 4, 0, 0, Math.PI * 2);
     ctx.fill();
 
-    // Specular shine on nose tip
-    ctx.fillStyle = "rgba(255, 255, 255, 0.85)";
+    // Piercing specular glint on nose tip
+    ctx.fillStyle = "#FFFFFF";
     ctx.beginPath();
-    ctx.arc(cx - 2, cy + 39, 2.5, 0, Math.PI * 2);
+    ctx.arc(cx - 1.5, cy + 37.5, 2.2, 0, Math.PI * 2);
     ctx.fill();
     ctx.restore();
 
-    // --- 8. ANIME EYES (LUMINOUS, MULTI-TIER WITH CATCHLIGHTS) ---
+    // --- 8. PIERCING, CHARISMATIC ALMOND ANIME EYES ---
     const leftEyeCx = cx - 78;
     const rightEyeCx = cx + 78;
     const eyeCy = cy - 24;
 
-    // Eyebrows
-    ctx.fillStyle = "#12141F";
-    ctx.strokeStyle = "#12141F";
-    ctx.lineCap = "round";
-
-    const drawEyebrow = (x: number, isRight: boolean) => {
+    // Handsome Eyebrows (Well-groomed, confident, stylish arch)
+    const drawHandsomeEyebrow = (x: number, isRight: boolean) => {
       ctx.save();
-      ctx.lineWidth = 8;
+      ctx.fillStyle = "#0F121C";
+      ctx.strokeStyle = "#0F121C";
+      ctx.lineCap = "round";
+      ctx.lineWidth = 7.5;
       ctx.beginPath();
 
       if (expr === "startled") {
-        // High arched surprised anime brows
-        ctx.moveTo(x - 45, eyeCy - 75);
-        ctx.quadraticCurveTo(x, eyeCy - 98, x + 45, eyeCy - 72);
+        ctx.moveTo(x - 44, eyeCy - 72);
+        ctx.quadraticCurveTo(x, eyeCy - 95, x + 44, eyeCy - 70);
       } else if (expr === "annoyed") {
-        // Slanted inward glare brows
         if (isRight) {
-          ctx.moveTo(x - 45, eyeCy - 45);
-          ctx.quadraticCurveTo(x, eyeCy - 62, x + 45, eyeCy - 68);
+          ctx.moveTo(x - 44, eyeCy - 45);
+          ctx.quadraticCurveTo(x, eyeCy - 62, x + 44, eyeCy - 68);
         } else {
-          ctx.moveTo(x - 45, eyeCy - 68);
-          ctx.quadraticCurveTo(x, eyeCy - 62, x + 45, eyeCy - 45);
+          ctx.moveTo(x - 44, eyeCy - 68);
+          ctx.quadraticCurveTo(x, eyeCy - 62, x + 44, eyeCy - 45);
         }
-      } else if (expr === "laughing" || expr === "blush") {
-        // Gentle relaxed arched brows
-        ctx.moveTo(x - 45, eyeCy - 58);
-        ctx.quadraticCurveTo(x, eyeCy - 72, x + 45, eyeCy - 62);
       } else {
-        // Cool stylish confident anime brows
+        // Confident, sharp handsome arch
         if (isRight) {
-          ctx.moveTo(x - 45, eyeCy - 56);
-          ctx.quadraticCurveTo(x, eyeCy - 68, x + 45, eyeCy - 54);
+          ctx.moveTo(x - 44, eyeCy - 55);
+          ctx.quadraticCurveTo(x, eyeCy - 68, x + 44, eyeCy - 52);
         } else {
-          ctx.moveTo(x - 45, eyeCy - 54);
-          ctx.quadraticCurveTo(x, eyeCy - 68, x + 45, eyeCy - 56);
+          ctx.moveTo(x - 44, eyeCy - 52);
+          ctx.quadraticCurveTo(x, eyeCy - 68, x + 44, eyeCy - 55);
         }
       }
       ctx.stroke();
       ctx.restore();
     };
 
-    drawEyebrow(leftEyeCx, false);
-    drawEyebrow(rightEyeCx, true);
+    drawHandsomeEyebrow(leftEyeCx, false);
+    drawHandsomeEyebrow(rightEyeCx, true);
 
-    // Eye Geometry Parameters
-    const eyeWidth = expr === "startled" ? 44 : 40;
-    const eyeHeight = expr === "startled" ? 44 : 33;
+    // Eye Geometry: Handsome almond ratio (slightly narrower, more piercing)
+    const eyeWidth = expr === "startled" ? 44 : 41;
+    const eyeHeight = expr === "startled" ? 40 : 28;
     const blinkScale = 1.0 - this.blinkProgress;
 
-    const drawAnimeEye = (x: number, isRight: boolean) => {
+    const drawHandsomeEye = (x: number, isRight: boolean) => {
       ctx.save();
 
-      // If closed from blinking or laughing
+      // Closed state during blink or laughing
       if (blinkScale < 0.25 || expr === "laughing") {
-        // Closed stylish anime smiling lash curve (^_^)
-        ctx.strokeStyle = "#101322";
-        ctx.lineWidth = 7;
+        ctx.strokeStyle = "#0E111C";
+        ctx.lineWidth = 6.5;
         ctx.lineCap = "round";
         ctx.beginPath();
         ctx.moveTo(x - 38, eyeCy);
-        ctx.quadraticCurveTo(x, eyeCy - 20, x + 38, eyeCy);
+        ctx.quadraticCurveTo(x, eyeCy - 18, x + 38, eyeCy);
         ctx.stroke();
 
-        // Delicate lower lash wing
-        ctx.lineWidth = 3.5;
+        ctx.lineWidth = 3;
         ctx.beginPath();
-        ctx.moveTo(isRight ? x + 36 : x - 36, eyeCy + 2);
-        ctx.lineTo(isRight ? x + 46 : x - 46, eyeCy - 4);
+        ctx.moveTo(isRight ? x + 35 : x - 35, eyeCy + 2);
+        ctx.lineTo(isRight ? x + 45 : x - 45, eyeCy - 4);
         ctx.stroke();
 
         ctx.restore();
         return;
       }
 
-      // Sclera (Eye White with Soft Cel Shading)
+      // Sclera with soft top-shadow
       ctx.beginPath();
       ctx.ellipse(x, eyeCy, eyeWidth, eyeHeight * blinkScale, 0, 0, Math.PI * 2);
       ctx.fillStyle = "#FFFFFF";
       ctx.fill();
 
-      // Top eyelid cast shadow inside sclera
-      ctx.fillStyle = "rgba(25, 20, 50, 0.16)";
+      // Sclera top shadow (creates deep, focused gaze)
+      ctx.fillStyle = "rgba(20, 18, 42, 0.18)";
       ctx.beginPath();
       ctx.ellipse(x, eyeCy - eyeHeight * 0.35 * blinkScale, eyeWidth * 0.95, eyeHeight * 0.5 * blinkScale, 0, 0, Math.PI);
       ctx.fill();
 
-      // Pupil / Iris positions
-      let pupilOffsetPxX = lookX * 13;
-      let pupilOffsetPxY = lookY * 9;
+      // Pupil / Iris positions tracking pointer
+      let pupilOffsetPxX = lookX * 12;
+      let pupilOffsetPxY = lookY * 8;
 
       if (isCrossEyed) {
-        pupilOffsetPxX = isRight ? -17 : 17;
+        pupilOffsetPxX = isRight ? -16 : 16;
         pupilOffsetPxY = 3;
       }
 
       const pupilX = x + pupilOffsetPxX;
       const pupilY = eyeCy + pupilOffsetPxY;
-      const irisRadius = expr === "startled" ? 17 : 20;
+      const irisRadius = expr === "startled" ? 17 : 19;
 
-      // --- MULTI-TIER LUMINOUS ANIME IRIS ---
-      // Base Iris Gradient (Midnight Navy -> Deep Cobalt Sapphire)
+      // --- STRIKING SAPPHIRE-COBALT ANIME IRIS ---
       const irisGrad = ctx.createLinearGradient(pupilX, pupilY - irisRadius, pupilX, pupilY + irisRadius);
-      irisGrad.addColorStop(0, "#080B1A");
-      irisGrad.addColorStop(0.3, "#142566");
-      irisGrad.addColorStop(0.7, "#284CE8");
-      irisGrad.addColorStop(1, "#4E73FF");
+      irisGrad.addColorStop(0, "#060814");
+      irisGrad.addColorStop(0.3, "#102058");
+      irisGrad.addColorStop(0.65, "#2447E0");
+      irisGrad.addColorStop(1, "#456DFF");
 
       ctx.fillStyle = irisGrad;
       ctx.beginPath();
       ctx.ellipse(pupilX, pupilY, irisRadius, irisRadius * blinkScale, 0, 0, Math.PI * 2);
       ctx.fill();
 
-      // Inner Glowing Crescent Reflection (Anime lower light ring)
-      ctx.fillStyle = "rgba(130, 185, 255, 0.65)";
+      // Radiating crystalline striations (adds incredible realism!)
+      ctx.strokeStyle = "rgba(100, 160, 255, 0.45)";
+      ctx.lineWidth = 1.5;
+      for (let a = 0; a < Math.PI * 2; a += Math.PI / 6) {
+        ctx.beginPath();
+        ctx.moveTo(pupilX + Math.cos(a) * (irisRadius * 0.4), pupilY + Math.sin(a) * (irisRadius * 0.4 * blinkScale));
+        ctx.lineTo(pupilX + Math.cos(a) * (irisRadius * 0.85), pupilY + Math.sin(a) * (irisRadius * 0.85 * blinkScale));
+        ctx.stroke();
+      }
+
+      // Lower crescent illumination (glowing starlight ring)
+      ctx.fillStyle = "rgba(140, 195, 255, 0.7)";
       ctx.beginPath();
       ctx.ellipse(
         pupilX,
         pupilY + irisRadius * 0.45 * blinkScale,
         irisRadius * 0.72,
-        irisRadius * 0.42 * blinkScale,
+        irisRadius * 0.4 * blinkScale,
         0,
         0,
         Math.PI
       );
       ctx.fill();
 
-      // Pupil Core
-      ctx.fillStyle = "#04050A";
+      // Velvety black pupil center
+      ctx.fillStyle = "#020306";
       ctx.beginPath();
-      ctx.ellipse(pupilX, pupilY, irisRadius * 0.48, irisRadius * 0.52 * blinkScale, 0, 0, Math.PI * 2);
+      ctx.ellipse(pupilX, pupilY, irisRadius * 0.46, irisRadius * 0.5 * blinkScale, 0, 0, Math.PI * 2);
       ctx.fill();
 
-      // Cross-eyed special anime swirl
+      // Catchlights
       if (isCrossEyed || expr === "crosseyed") {
         ctx.strokeStyle = "#FFFFFF";
         ctx.lineWidth = 2.5;
         ctx.beginPath();
-        ctx.arc(pupilX, pupilY, 6, 0, Math.PI * 2);
+        ctx.arc(pupilX, pupilY, 5.5, 0, Math.PI * 2);
         ctx.stroke();
       } else {
-        // Primary Catchlight (Crisp Starlight Diamond / Circle in upper quadrant)
+        // Primary crisp diamond catchlight
         ctx.fillStyle = "#FFFFFF";
         ctx.beginPath();
-        ctx.arc(pupilX - irisRadius * 0.38, pupilY - irisRadius * 0.35 * blinkScale, 5.5, 0, Math.PI * 2);
+        ctx.arc(pupilX - irisRadius * 0.36, pupilY - irisRadius * 0.32 * blinkScale, 5, 0, Math.PI * 2);
         ctx.fill();
 
-        // Secondary Soft Twinkle Catchlight (Bottom right)
+        // Secondary soft twinkle catchlight
         ctx.fillStyle = "rgba(255, 255, 255, 0.85)";
         ctx.beginPath();
-        ctx.arc(pupilX + irisRadius * 0.35, pupilY + irisRadius * 0.3 * blinkScale, 2.8, 0, Math.PI * 2);
+        ctx.arc(pupilX + irisRadius * 0.35, pupilY + irisRadius * 0.28 * blinkScale, 2.5, 0, Math.PI * 2);
         ctx.fill();
 
-        // Tiny starlight point
+        // Starlight reflection
         ctx.fillStyle = "#FFFFFF";
         ctx.beginPath();
-        ctx.arc(pupilX - irisRadius * 0.1, pupilY + irisRadius * 0.4 * blinkScale, 1.8, 0, Math.PI * 2);
+        ctx.arc(pupilX - irisRadius * 0.08, pupilY + irisRadius * 0.38 * blinkScale, 1.6, 0, Math.PI * 2);
         ctx.fill();
       }
 
-      // Upper Eyelash & Wing Liner (Iconic Anime Eyeliner)
-      ctx.strokeStyle = "#10121C";
-      ctx.fillStyle = "#10121C";
-      ctx.lineWidth = 7;
+      // Upper Eyeliner & Wing (Sharp masculine definition)
+      ctx.strokeStyle = "#0B0E18";
+      ctx.fillStyle = "#0B0E18";
+      ctx.lineWidth = 6.5;
       ctx.lineCap = "round";
 
       ctx.beginPath();
-      ctx.moveTo(x - eyeWidth - 3, eyeCy - eyeHeight * 0.1 * blinkScale);
+      ctx.moveTo(x - eyeWidth - 2, eyeCy - eyeHeight * 0.08 * blinkScale);
       ctx.quadraticCurveTo(
         x,
         eyeCy - eyeHeight * 1.05 * blinkScale,
         x + eyeWidth + 4,
-        eyeCy - eyeHeight * 0.1 * blinkScale
+        eyeCy - eyeHeight * 0.08 * blinkScale
       );
       ctx.stroke();
 
-      // Wing tip
+      // Sharp masculine wing flick
       ctx.lineWidth = 3.5;
       ctx.beginPath();
       const wingStartX = isRight ? x + eyeWidth + 2 : x - eyeWidth - 2;
-      const wingEndX = isRight ? x + eyeWidth + 12 : x - eyeWidth - 12;
-      ctx.moveTo(wingStartX, eyeCy - eyeHeight * 0.1 * blinkScale);
-      ctx.lineTo(wingEndX, eyeCy - eyeHeight * 0.45 * blinkScale);
+      const wingEndX = isRight ? x + eyeWidth + 11 : x - eyeWidth - 11;
+      ctx.moveTo(wingStartX, eyeCy - eyeHeight * 0.08 * blinkScale);
+      ctx.lineTo(wingEndX, eyeCy - eyeHeight * 0.42 * blinkScale);
       ctx.stroke();
 
-      // Futae (Anime Double Eyelid Crease)
-      ctx.strokeStyle = "rgba(140, 75, 55, 0.4)";
-      ctx.lineWidth = 2.5;
+      // Double Eyelid Crease (Futae)
+      ctx.strokeStyle = "rgba(135, 70, 50, 0.42)";
+      ctx.lineWidth = 2.2;
       ctx.beginPath();
       ctx.ellipse(
         x,
         eyeCy - eyeHeight * 1.15 * blinkScale,
-        eyeWidth * 0.75,
-        6 * blinkScale,
+        eyeWidth * 0.72,
+        5.5 * blinkScale,
         0,
         Math.PI * 0.95,
         Math.PI * 2.05
@@ -795,27 +831,25 @@ export class FacePhysicsEngine {
       ctx.restore();
     };
 
-    drawAnimeEye(leftEyeCx, false);
-    drawAnimeEye(rightEyeCx, true);
+    drawHandsomeEye(leftEyeCx, false);
+    drawHandsomeEye(rightEyeCx, true);
 
-    // --- 9. ANIME MOUTH & EXPRESSIVE LIPS ---
+    // --- 9. CHARMING SCULPTED ANIME LIPS ---
     ctx.save();
     const mouthY = cy + 124;
 
     if (expr === "startled") {
-      // Anime wide shocked round "O" mouth
-      ctx.fillStyle = "#381016";
+      ctx.fillStyle = "#341016";
       ctx.beginPath();
-      ctx.ellipse(cx, mouthY + 12, 22, 32, 0, 0, Math.PI * 2);
+      ctx.ellipse(cx, mouthY + 10, 20, 28, 0, 0, Math.PI * 2);
       ctx.fill();
 
-      // Tongue
       ctx.fillStyle = "#E46A7B";
       ctx.beginPath();
-      ctx.ellipse(cx, mouthY + 30, 15, 12, 0, 0, Math.PI);
+      ctx.ellipse(cx, mouthY + 26, 14, 10, 0, 0, Math.PI);
       ctx.fill();
 
-      // Anime sweat drop on temple
+      // Sweat drop
       ctx.fillStyle = "#7EC8FF";
       ctx.beginPath();
       ctx.moveTo(cx + 175, cy - 80);
@@ -823,157 +857,163 @@ export class FacePhysicsEngine {
       ctx.quadraticCurveTo(cx + 190, cy - 50, cx + 175, cy - 80);
       ctx.fill();
     } else if (expr === "laughing") {
-      // Joyful open anime smile with cute fang accent
-      ctx.fillStyle = "#3D1318";
+      ctx.fillStyle = "#361217";
       ctx.beginPath();
-      ctx.moveTo(cx - 56, mouthY - 4);
-      ctx.quadraticCurveTo(cx, mouthY + 54, cx + 56, mouthY - 4);
-      ctx.quadraticCurveTo(cx, mouthY + 8, cx - 56, mouthY - 4);
+      ctx.moveTo(cx - 52, mouthY - 4);
+      ctx.quadraticCurveTo(cx, mouthY + 50, cx + 52, mouthY - 4);
+      ctx.quadraticCurveTo(cx, mouthY + 8, cx - 52, mouthY - 4);
       ctx.closePath();
       ctx.fill();
 
-      // Top teeth & cute anime corner tooth
+      // Teeth
       ctx.fillStyle = "#FFFFFF";
       ctx.beginPath();
-      ctx.moveTo(cx - 46, mouthY - 2);
-      ctx.quadraticCurveTo(cx, mouthY + 16, cx + 46, mouthY - 2);
-      ctx.quadraticCurveTo(cx, mouthY + 4, cx - 46, mouthY - 2);
+      ctx.moveTo(cx - 42, mouthY - 2);
+      ctx.quadraticCurveTo(cx, mouthY + 14, cx + 42, mouthY - 2);
+      ctx.quadraticCurveTo(cx, mouthY + 4, cx - 42, mouthY - 2);
       ctx.fill();
 
-      // Pink tongue
       ctx.fillStyle = "#E66B7D";
       ctx.beginPath();
-      ctx.ellipse(cx, mouthY + 30, 30, 16, 0, 0, Math.PI);
+      ctx.ellipse(cx, mouthY + 28, 28, 14, 0, 0, Math.PI);
       ctx.fill();
     } else if (expr === "annoyed") {
-      // Pouted wavy mouth
-      ctx.strokeStyle = "#4D1A22";
-      ctx.lineWidth = 7;
+      ctx.strokeStyle = "#461820";
+      ctx.lineWidth = 6.5;
       ctx.lineCap = "round";
       ctx.beginPath();
-      ctx.moveTo(cx - 40, mouthY + 10);
-      ctx.quadraticCurveTo(cx - 10, mouthY - 4, cx + 10, mouthY + 8);
-      ctx.quadraticCurveTo(cx + 25, mouthY + 14, cx + 40, mouthY + 4);
+      ctx.moveTo(cx - 38, mouthY + 8);
+      ctx.quadraticCurveTo(cx - 8, mouthY - 4, cx + 8, mouthY + 6);
+      ctx.quadraticCurveTo(cx + 22, mouthY + 12, cx + 38, mouthY + 4);
       ctx.stroke();
 
-      // Anime Anger Mark (💢) on forehead
+      // Anger Mark (💢)
       ctx.strokeStyle = "#EF4444";
-      ctx.lineWidth = 6;
+      ctx.lineWidth = 5.5;
       ctx.lineCap = "round";
-      const fx = cx + 130;
-      const fy = cy - 130;
+      const fx = cx + 128;
+      const fy = cy - 128;
       ctx.beginPath();
-      ctx.arc(fx - 14, fy, 14, -0.4 * Math.PI, 0.4 * Math.PI);
+      ctx.arc(fx - 13, fy, 13, -0.4 * Math.PI, 0.4 * Math.PI);
       ctx.stroke();
       ctx.beginPath();
-      ctx.arc(fx + 14, fy, 14, 0.6 * Math.PI, 1.4 * Math.PI);
+      ctx.arc(fx + 13, fy, 13, 0.6 * Math.PI, 1.4 * Math.PI);
       ctx.stroke();
       ctx.beginPath();
-      ctx.arc(fx, fy - 14, 14, 0.1 * Math.PI, 0.9 * Math.PI);
+      ctx.arc(fx, fy - 13, 13, 0.1 * Math.PI, 0.9 * Math.PI);
       ctx.stroke();
       ctx.beginPath();
-      ctx.arc(fx, fy + 14, 14, 1.1 * Math.PI, 1.9 * Math.PI);
+      ctx.arc(fx, fy + 13, 13, 1.1 * Math.PI, 1.9 * Math.PI);
       ctx.stroke();
     } else {
-      // Confident, charming anime protagonist smirk
-      ctx.strokeStyle = "#381419";
-      ctx.lineWidth = 7.5;
+      // Confident, charming ikemen smirk
+      ctx.strokeStyle = "#2E1116";
+      ctx.lineWidth = 6.8;
       ctx.lineCap = "round";
 
       ctx.beginPath();
-      ctx.moveTo(cx - 46, mouthY);
-      ctx.quadraticCurveTo(cx - 5, mouthY + 28, cx + 48, mouthY - 2);
+      ctx.moveTo(cx - 44, mouthY);
+      ctx.quadraticCurveTo(cx - 4, mouthY + 26, cx + 46, mouthY - 2);
       ctx.stroke();
 
-      // Subtle lower lip accent
-      ctx.fillStyle = "rgba(210, 85, 95, 0.45)";
+      // Natural rosy lower lip definition
+      ctx.fillStyle = "rgba(215, 88, 98, 0.38)";
       ctx.beginPath();
-      ctx.ellipse(cx + 2, mouthY + 22, 22, 6, 0, 0, Math.PI);
+      ctx.ellipse(cx + 2, mouthY + 20, 20, 5.5, 0, 0, Math.PI);
       ctx.fill();
 
-      // Playful anime smirk notch
+      // Lower lip gloss highlight
+      ctx.fillStyle = "rgba(255, 255, 255, 0.45)";
       ctx.beginPath();
-      ctx.moveTo(cx + 46, mouthY - 6);
-      ctx.lineTo(cx + 51, mouthY + 2);
+      ctx.ellipse(cx + 4, mouthY + 22, 6, 2, 0, 0, Math.PI);
+      ctx.fill();
+
+      // Smirk corner notch
+      ctx.beginPath();
+      ctx.moveTo(cx + 44, mouthY - 5);
+      ctx.lineTo(cx + 49, mouthY + 2);
       ctx.stroke();
     }
     ctx.restore();
 
-    // --- 10. ANIME HAIR (TEXTURED SPIKY BANGS & ANGEL RING SHINE) ---
+    // --- 10. TEXTURED CURTAIN BANGS & HANDSOME ANIME HAIR ---
     ctx.save();
-    // Hair Gradient (Midnight Black with Cobalt/Indigo Undertones)
+    // Hair Gradient (Midnight Obsidian with Slate-Cobalt Tones)
     const hairGrad = ctx.createLinearGradient(cx - 200, cy - 280, cx + 200, cy - 40);
-    hairGrad.addColorStop(0, "#0C0F1A");
-    hairGrad.addColorStop(0.35, "#161C33");
-    hairGrad.addColorStop(0.7, "#1F2847");
-    hairGrad.addColorStop(1, "#0A0D17");
+    hairGrad.addColorStop(0, "#080B14");
+    hairGrad.addColorStop(0.35, "#12182D");
+    hairGrad.addColorStop(0.7, "#1B2444");
+    hairGrad.addColorStop(1, "#070912");
 
     ctx.fillStyle = hairGrad;
 
-    // Layer 1: Voluminous Top Anime Crown
+    // Layer 1: Voluminous Top Anime Crown with Layered Locks
     ctx.beginPath();
-    ctx.moveTo(cx - 215, cy - 80);
-    // Left spiky flow
-    ctx.quadraticCurveTo(cx - 250, cy - 180, cx - 185, cy - 265);
-    ctx.lineTo(cx - 165, cy - 245);
+    ctx.moveTo(cx - 215, cy - 75);
+    ctx.quadraticCurveTo(cx - 252, cy - 175, cx - 188, cy - 265);
+    ctx.lineTo(cx - 168, cy - 245);
     ctx.quadraticCurveTo(cx - 110, cy - 325, cx, cy - 320);
-    ctx.lineTo(cx + 35, cy - 300);
-    // Right crown locks
-    ctx.quadraticCurveTo(cx + 175, cy - 315, cx + 235, cy - 225);
+    ctx.lineTo(cx + 35, cy - 302);
+    ctx.quadraticCurveTo(cx + 175, cy - 315, cx + 236, cy - 225);
     ctx.lineTo(cx + 215, cy - 200);
     ctx.quadraticCurveTo(cx + 258, cy - 115, cx + 220, cy - 65);
 
-    // Layer 2: Sideburns & Layered Face-Framing Bangs
+    // Layer 2: Side Undercut & Tapered Cheekbone Framing Locks
     ctx.lineTo(cx + 210, cy + 10);
     ctx.quadraticCurveTo(cx + 185, cy - 50, cx + 160, cy - 90);
 
-    // Front Anime Bang Locks (Parted across forehead with sharp tips)
-    // Lock 1 (Right)
-    ctx.quadraticCurveTo(cx + 125, cy - 40, cx + 90, cy - 95);
-    // Lock 2 (Center-Right falling between eyes)
-    ctx.quadraticCurveTo(cx + 55, cy - 15, cx + 20, cy - 105);
-    // Lock 3 (Center-Left swoop)
-    ctx.quadraticCurveTo(cx - 15, cy - 25, cx - 55, cy - 110);
-    // Lock 4 (Left)
-    ctx.quadraticCurveTo(cx - 95, cy - 45, cx - 140, cy - 90);
-    // Left sideburn
-    ctx.lineTo(cx - 195, cy - 35);
-    ctx.lineTo(cx - 210, cy + 10);
+    // Front Textured Curtain Bangs (Parted slightly off-center with handsome flow)
+    // Right Curtain Flow
+    ctx.quadraticCurveTo(cx + 130, cy - 35, cx + 96, cy - 95);
+    // Right Center Lock
+    ctx.quadraticCurveTo(cx + 65, cy - 8, cx + 26, cy - 105);
+    // Slender Loose Center Strand falling between eyes (iconic handsome anime feature!)
+    ctx.quadraticCurveTo(cx + 6, cy + 12, cx - 12, cy - 108);
+    // Left Center Swoop
+    ctx.quadraticCurveTo(cx - 45, cy - 20, cx - 78, cy - 112);
+    // Left Cheekbone Lock
+    ctx.quadraticCurveTo(cx - 118, cy - 40, cx - 150, cy - 88);
+    // Left Sideburn Lock
+    ctx.lineTo(cx - 198, cy - 30);
+    ctx.lineTo(cx - 212, cy + 10);
     ctx.closePath();
     ctx.fill();
 
-    // Layer 3: Anime "Angel Ring" (Tenshi no wa) Gloss Shine Arc
+    // Layer 3: Angel-Ring (Tenshi no wa) Gloss Arc
     ctx.save();
-    ctx.strokeStyle = "rgba(110, 150, 255, 0.38)";
+    ctx.strokeStyle = "rgba(100, 145, 255, 0.42)";
     ctx.lineWidth = 14;
     ctx.lineCap = "round";
 
-    // Stepped gloss highlight band across hair crown
     ctx.beginPath();
-    ctx.arc(cx, cy - 180, 115, 1.15 * Math.PI, 1.85 * Math.PI);
+    ctx.arc(cx, cy - 182, 115, 1.15 * Math.PI, 1.85 * Math.PI);
     ctx.stroke();
 
-    // Crisper inner specular arc
-    ctx.strokeStyle = "rgba(255, 255, 255, 0.45)";
-    ctx.lineWidth = 5;
+    ctx.strokeStyle = "rgba(255, 255, 255, 0.5)";
+    ctx.lineWidth = 4.5;
     ctx.beginPath();
-    ctx.arc(cx, cy - 180, 116, 1.25 * Math.PI, 1.75 * Math.PI);
+    ctx.arc(cx, cy - 182, 116, 1.25 * Math.PI, 1.75 * Math.PI);
     ctx.stroke();
     ctx.restore();
 
-    // Fine anime hair strand highlights
-    ctx.strokeStyle = "rgba(140, 175, 255, 0.28)";
-    ctx.lineWidth = 4;
+    // Layer 4: Fine Textured Hair Strands (Sharp, glossy lock highlights)
+    ctx.strokeStyle = "rgba(135, 175, 255, 0.35)";
+    ctx.lineWidth = 3.5;
     ctx.lineCap = "round";
 
     ctx.beginPath();
-    ctx.moveTo(cx - 120, cy - 250);
-    ctx.quadraticCurveTo(cx - 50, cy - 280, cx + 40, cy - 265);
+    ctx.moveTo(cx - 125, cy - 250);
+    ctx.quadraticCurveTo(cx - 50, cy - 280, cx + 45, cy - 265);
     ctx.stroke();
 
     ctx.beginPath();
-    ctx.moveTo(cx - 30, cy - 80);
-    ctx.quadraticCurveTo(cx + 10, cy - 50, cx + 30, cy - 70);
+    ctx.moveTo(cx - 35, cy - 75);
+    ctx.quadraticCurveTo(cx + 8, cy - 45, cx + 28, cy - 65);
+    ctx.stroke();
+
+    ctx.beginPath();
+    ctx.moveTo(cx + 40, cy - 70);
+    ctx.quadraticCurveTo(cx + 80, cy - 40, cx + 110, cy - 60);
     ctx.stroke();
 
     ctx.restore();
