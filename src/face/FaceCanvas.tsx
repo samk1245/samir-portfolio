@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import { FacePhysicsEngine, ExpressionType } from "./engine";
-import { Sparkles, RefreshCcw } from "lucide-react";
+import { Sparkles, RefreshCcw, Smile, Zap, Heart, Headphones, HelpCircle, Eye } from "lucide-react";
 
 export function FaceCanvas() {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
@@ -8,7 +8,7 @@ export function FaceCanvas() {
   const engineRef = useRef<FacePhysicsEngine | null>(null);
 
   const [patience, setPatience] = useState(100);
-  const [stateText, setStateText] = useState("Calm & Friendly 😊");
+  const [stateText, setStateText] = useState("Calm & Friendly (Protagonist Mode) ✨");
   const [expression, setExpression] = useState<ExpressionType>("neutral");
 
   useEffect(() => {
@@ -49,29 +49,46 @@ export function FaceCanvas() {
     };
   }, []);
 
+  const handleSetExpression = (expr: ExpressionType) => {
+    if (engineRef.current) {
+      engineRef.current.setExpressionDirect(expr);
+      setExpression(expr);
+    }
+  };
+
+  const handleBlink = () => {
+    if (engineRef.current) {
+      engineRef.current.triggerBlink();
+    }
+  };
+
   return (
     <div
       ref={containerRef}
       className="relative flex flex-col items-center justify-center w-full max-w-[560px] mx-auto select-none"
     >
-      {/* Cobalt-Blue Circular Disc Background */}
+      {/* Cobalt-Blue Circular Disc Background with Anime Radial Pulse */}
       <div
-        className="absolute w-[340px] h-[340px] sm:w-[440px] sm:h-[440px] lg:w-[480px] lg:h-[480px] rounded-full bg-[#2F4BF0] -z-10 shadow-[0_20px_60px_rgba(47,75,240,0.35)] transition-transform duration-700 ease-out"
+        className="absolute w-[340px] h-[340px] sm:w-[440px] sm:h-[440px] lg:w-[480px] lg:h-[480px] rounded-full bg-[#2F4BF0] -z-10 shadow-[0_20px_70px_rgba(47,75,240,0.4)] transition-transform duration-700 ease-out"
         style={{
-          transform: `scale(${1 + (100 - patience) * 0.0012})`,
+          transform: `scale(${1 + (100 - patience) * 0.0015})`,
         }}
       >
-        {/* Subtle radial inner glow on disc */}
-        <div className="absolute inset-0 rounded-full bg-radial from-white/20 via-transparent to-black/20 pointer-events-none" />
+        {/* Radial highlight on disc */}
+        <div className="absolute inset-0 rounded-full bg-radial from-white/25 via-transparent to-black/25 pointer-events-none" />
 
-        {/* Ambient Orbit Accent Ring */}
-        <div className="absolute -inset-3.5 sm:-inset-5 rounded-full border-2 border-dashed border-[#F2B31B]/40 pointer-events-none animate-[spin_45s_linear_infinite]" />
+        {/* Ambient Orbit Accent Ring with Neon Dash */}
+        <div className="absolute -inset-4 sm:-inset-6 rounded-full border-2 border-dashed border-[#F2B31B]/50 pointer-events-none animate-[spin_40s_linear_infinite]" />
+
+        {/* Cyber Inner Pulse Ring */}
+        <div className="absolute inset-4 rounded-full border border-white/20 pointer-events-none animate-pulse" />
       </div>
 
-      {/* Handwritten "Try interacting with me" Hint with Mustard Yellow Doodle */}
+      {/* Handwritten "Try interacting with me" Hint with Anime Marker */}
       <div className="absolute -top-4 -right-2 sm:-right-8 sm:-top-6 z-20 pointer-events-none flex flex-col items-center rotate-6">
-        <span className="font-['Caveat',cursive] text-lg sm:text-2xl font-bold text-[#F2B31B] bg-[#12141B] dark:bg-[#0E1015] px-3.5 py-1 rounded-full border border-[#F2B31B]/50 shadow-lg tracking-wide">
-          Try stretching my cheeks! ↗
+        <span className="font-['Caveat',cursive] text-lg sm:text-2xl font-bold text-[#F2B31B] bg-[#12141B] dark:bg-[#0E1015] px-3.5 py-1 rounded-full border border-[#F2B31B]/60 shadow-xl tracking-wide flex items-center gap-1.5">
+          <span>Stretch my anime cheeks!</span>
+          <span className="text-sm">↗</span>
         </span>
         <svg
           className="w-8 h-8 text-[#F2B31B] -mt-1 -scale-x-100"
@@ -95,14 +112,14 @@ export function FaceCanvas() {
       </div>
 
       {/* Live Patience Meter & Status Bar */}
-      <div className="w-full max-w-[380px] mt-2 px-4 py-3 rounded-2xl bg-white/90 dark:bg-[#171A21]/90 backdrop-blur-md border border-[#12141B]/10 dark:border-white/10 shadow-xl flex flex-col gap-2 z-10 transition-all">
+      <div className="w-full max-w-[420px] mt-2 px-4 py-3.5 rounded-2xl bg-white/95 dark:bg-[#171A21]/95 backdrop-blur-md border border-[#12141B]/10 dark:border-white/10 shadow-2xl flex flex-col gap-2.5 z-10 transition-all">
         <div className="flex items-center justify-between text-xs font-mono">
           <span className="flex items-center gap-1.5 font-bold uppercase tracking-wider text-[#12141B] dark:text-[#EEF0F5]">
             <Sparkles className="w-3.5 h-3.5 text-[#F2B31B]" />
-            Patience Meter
+            Anime Character Elasticity
           </span>
           <span
-            className={`font-semibold transition-colors ${
+            className={`font-bold transition-colors ${
               patience > 60
                 ? "text-[#2F4BF0]"
                 : patience > 30
@@ -110,7 +127,7 @@ export function FaceCanvas() {
                   : "text-[#EF4444]"
             }`}
           >
-            {patience}%
+            {patience}% Patience
           </span>
         </div>
 
@@ -119,21 +136,89 @@ export function FaceCanvas() {
           <div
             className={`h-full transition-all duration-150 rounded-full ${
               patience > 60
-                ? "bg-[#2F4BF0]"
+                ? "bg-gradient-to-r from-[#2F4BF0] to-[#577CFA]"
                 : patience > 30
-                  ? "bg-[#F2B31B]"
-                  : "bg-[#EF4444] animate-pulse"
+                  ? "bg-gradient-to-r from-[#F2B31B] to-[#F59E0B]"
+                  : "bg-gradient-to-r from-[#EF4444] to-[#DC2626] animate-pulse"
             }`}
             style={{ width: `${patience}%` }}
           />
         </div>
 
-        {/* Dynamic Reaction Line */}
-        <div className="flex items-center justify-between text-[11px] font-sans text-slate-500 dark:text-slate-400">
-          <span className="italic">{stateText}</span>
-          <span className="text-[10px] uppercase font-mono px-2 py-0.5 rounded bg-slate-100 dark:bg-white/5 font-medium">
-            State: {expression}
+        {/* Reaction Status */}
+        <div className="flex items-center justify-between text-[11px] font-sans text-slate-600 dark:text-slate-300">
+          <span className="italic font-medium">{stateText}</span>
+          <span className="text-[10px] uppercase font-mono px-2 py-0.5 rounded-md bg-slate-100 dark:bg-white/10 font-bold text-[#2F4BF0] dark:text-[#F2B31B]">
+            {expression}
           </span>
+        </div>
+
+        {/* Quick Anime Expression Switcher Bar */}
+        <div className="pt-2 border-t border-slate-100 dark:border-white/10 flex items-center justify-between gap-1">
+          <span className="text-[10px] font-mono uppercase tracking-wider text-slate-400 font-bold hidden sm:inline">
+            Expressions:
+          </span>
+          <div className="flex items-center gap-1.5 flex-wrap">
+            <button
+              onClick={() => handleSetExpression("neutral")}
+              className={`px-2 py-1 rounded-lg text-[10px] font-mono font-bold transition-all flex items-center gap-1 ${
+                expression === "neutral"
+                  ? "bg-[#2F4BF0] text-white shadow-sm"
+                  : "bg-slate-100 dark:bg-white/5 text-slate-600 dark:text-slate-300 hover:bg-slate-200"
+              }`}
+              title="Confident Anime Smirk"
+            >
+              <Smile className="w-3 h-3 text-[#F2B31B]" />
+              <span>Smirk</span>
+            </button>
+
+            <button
+              onClick={() => handleSetExpression("startled")}
+              className={`px-2 py-1 rounded-lg text-[10px] font-mono font-bold transition-all flex items-center gap-1 ${
+                expression === "startled"
+                  ? "bg-[#2F4BF0] text-white shadow-sm"
+                  : "bg-slate-100 dark:bg-white/5 text-slate-600 dark:text-slate-300 hover:bg-slate-200"
+              }`}
+              title="Shocked Anime Reaction"
+            >
+              <Zap className="w-3 h-3 text-[#F2B31B]" />
+              <span>Shock</span>
+            </button>
+
+            <button
+              onClick={() => handleSetExpression("blush")}
+              className={`px-2 py-1 rounded-lg text-[10px] font-mono font-bold transition-all flex items-center gap-1 ${
+                expression === "blush"
+                  ? "bg-[#2F4BF0] text-white shadow-sm"
+                  : "bg-slate-100 dark:bg-white/5 text-slate-600 dark:text-slate-300 hover:bg-slate-200"
+              }`}
+              title="Manga Cheek Blush"
+            >
+              <Heart className="w-3 h-3 text-pink-400" />
+              <span>Blush</span>
+            </button>
+
+            <button
+              onClick={() => handleSetExpression("cyber")}
+              className={`px-2 py-1 rounded-lg text-[10px] font-mono font-bold transition-all flex items-center gap-1 ${
+                expression === "cyber"
+                  ? "bg-[#2F4BF0] text-white shadow-sm"
+                  : "bg-slate-100 dark:bg-white/5 text-slate-600 dark:text-slate-300 hover:bg-slate-200"
+              }`}
+              title="Cyber Techwear Audio Vibe"
+            >
+              <Headphones className="w-3 h-3 text-cyan-400" />
+              <span>Cyber</span>
+            </button>
+
+            <button
+              onClick={handleBlink}
+              className="p-1 rounded-lg bg-slate-100 dark:bg-white/5 text-slate-600 dark:text-slate-300 hover:bg-slate-200 transition-all"
+              title="Trigger Anime Eye Blink"
+            >
+              <Eye className="w-3.5 h-3.5 text-[#2F4BF0]" />
+            </button>
+          </div>
         </div>
       </div>
     </div>

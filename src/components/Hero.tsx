@@ -1,18 +1,19 @@
 import React from "react";
 import { personalInfo } from "@/data/portfolio";
 import { FaceCanvas } from "@/face/FaceCanvas";
-import { ArrowDown, Code2, Sparkles, Terminal, FileText, Send } from "lucide-react";
+import { SlideToExplore } from "./SlideToExplore";
+import { Code2, Sparkles, Terminal, FileText, Send } from "lucide-react";
 
 export function Hero() {
   return (
-    <section className="relative min-h-screen pt-28 pb-16 lg:pt-36 lg:pb-24 px-4 sm:px-6 lg:px-8 flex flex-col justify-between overflow-hidden">
+    <section className="relative min-h-screen pt-28 pb-12 lg:pt-36 lg:pb-16 px-4 sm:px-6 lg:px-8 flex flex-col justify-between overflow-hidden">
       <div className="max-w-7xl mx-auto w-full flex-1 flex flex-col justify-center">
         {/* Top Badges / Context Pills */}
         <div className="flex flex-wrap items-center justify-between gap-4 mb-8">
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white dark:bg-[#171A21] border border-black/5 dark:border-white/10 text-xs font-mono font-semibold tracking-wide shadow-sm">
             <span className="w-2 h-2 rounded-full bg-[#2F4BF0]" />
             <span className="text-[#12141B] dark:text-[#EEF0F5]">
-              Full-Stack &amp; AI/ML Developer
+              Full-Stack &amp; AI/ML Developer &bull; Anime Dev Edition
             </span>
           </div>
 
@@ -32,7 +33,7 @@ export function Hero() {
           </h1>
         </div>
 
-        {/* 2-Column Editorial Grid: Left Copy & CTAs, Right 3D Face Physics */}
+        {/* 2-Column Editorial Grid: Left Copy & CTAs, Right 3D Anime Face Physics */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center mt-2">
           {/* Left Column: Supporting Statement, Bio, CTAs */}
           <div className="lg:col-span-6 flex flex-col justify-center text-left space-y-6">
@@ -90,20 +91,16 @@ export function Hero() {
             </div>
           </div>
 
-          {/* Right Column: Interactive Face Physics Experience */}
+          {/* Right Column: Interactive Anime Face Physics Experience */}
           <div className="lg:col-span-6 flex justify-center items-center relative">
             <FaceCanvas />
           </div>
         </div>
       </div>
 
-      {/* Bottom Scroll Indicator */}
-      <div className="max-w-7xl mx-auto w-full pt-8 flex items-center justify-between text-xs font-mono text-slate-500 dark:text-slate-400">
-        <span className="flex items-center gap-2">
-          <span>Scroll down to explore</span>
-          <ArrowDown className="w-3.5 h-3.5 animate-bounce text-[#2F4BF0]" />
-        </span>
-        <span className="hidden sm:inline">25°27'N 81°51'E &bull; Prayagraj, India</span>
+      {/* Interactive Slide to Explore Component */}
+      <div className="mt-8 sm:mt-12 w-full flex flex-col items-center">
+        <SlideToExplore targetId="about" />
       </div>
     </section>
   );

@@ -1,10 +1,12 @@
 import React, { useState } from "react";
 import { projectsData, ProjectItem } from "@/data/portfolio";
-import { ExternalLink, CheckCircle, Cpu } from "lucide-react";
+import { ExternalLink, CheckCircle, Cpu, Eye, Layers } from "lucide-react";
 import { GithubIcon } from "./icons";
+import { ProjectDrawer } from "./ProjectDrawer";
 
 export function Projects() {
   const [activeCategory, setActiveCategory] = useState<string>("All");
+  const [selectedProject, setSelectedProject] = useState<ProjectItem | null>(null);
 
   const categories = ["All", "Full-Stack", "Data & Systems", "AI/ML"] as const;
 
@@ -64,7 +66,7 @@ export function Projects() {
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                     loading="lazy"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent" />
 
                   {/* Top Badges */}
                   <div className="absolute top-4 left-4 right-4 flex items-center justify-between">
@@ -100,33 +102,21 @@ export function Projects() {
                       Key Features &amp; Architecture:
                     </h4>
                     <ul className="space-y-1.5">
-                      {project.features.map((feat, i) => (
-                        <li key={i} className="flex items-start gap-2 text-xs text-slate-600 dark:text-slate-300">
-                          <CheckCircle className="w-3.5 h-3.5 text-[#2F4BF0] shrink-0 mt-0.5" />
+                      {project.features.slice(0, 3).map((feat, i) => (
+                        <li key={i} className="flex items-start gap-2.5 text-xs sm:text-sm text-slate-600 dark:text-slate-300">
+                          <CheckCircle className="w-4 h-4 text-[#F2B31B] shrink-0 mt-0.5" />
                           <span>{feat}</span>
                         </li>
                       ))}
                     </ul>
                   </div>
 
-                  {/* Metrics Badges if present */}
-                  {project.metrics && project.metrics.length > 0 && (
-                    <div className="grid grid-cols-2 sm:grid-cols-3 gap-2.5 p-3.5 rounded-2xl bg-[#E8EBF1]/60 dark:bg-white/5 border border-black/5 dark:border-white/5">
-                      {project.metrics.map((m, i) => (
-                        <div key={i} className="flex flex-col">
-                          <span className="text-[10px] font-mono text-slate-500 uppercase">{m.label}</span>
-                          <span className="text-xs sm:text-sm font-bold text-[#2F4BF0]">{m.value}</span>
-                        </div>
-                      ))}
-                    </div>
-                  )}
-
-                  {/* Tech Stack Badges */}
-                  <div className="flex flex-wrap gap-1.5 pt-1">
+                  {/* Tech Stack Pills */}
+                  <div className="pt-2 flex flex-wrap gap-2">
                     {project.tags.map((tag) => (
                       <span
                         key={tag}
-                        className="px-2.5 py-1 rounded-lg bg-[#E8EBF1] dark:bg-white/5 text-[11px] font-mono font-semibold text-slate-700 dark:text-slate-300 border border-black/5 dark:border-white/5"
+                        className="px-3 py-1 rounded-lg bg-[#E8EBF1] dark:bg-white/5 text-xs font-mono font-semibold text-[#12141B] dark:text-[#EEF0F5] border border-black/5 dark:border-white/5"
                       >
                         {tag}
                       </span>
@@ -135,18 +125,26 @@ export function Projects() {
                 </div>
               </div>
 
-              {/* Bottom Card Actions */}
-              <div className="px-6 sm:px-8 pb-6 sm:pb-8 pt-2 flex items-center justify-between border-t border-slate-100 dark:border-white/5">
-                <div className="flex items-center gap-3">
+              {/* Action Buttons & Slide-to-Open Inspector */}
+              <div className="p-6 sm:p-8 pt-0 flex flex-wrap items-center justify-between gap-3 border-t border-slate-100 dark:border-white/5 mt-4">
+                <button
+                  onClick={() => setSelectedProject(project)}
+                  className="px-4 py-2.5 rounded-xl bg-[#2F4BF0] hover:bg-[#233bc7] text-white font-mono text-xs font-bold uppercase tracking-wide flex items-center gap-2 transition-all shadow-md shadow-[#2F4BF0]/20 hover:scale-[1.02]"
+                >
+                  <Layers className="w-3.5 h-3.5" />
+                  <span>Slide to Inspect</span>
+                </button>
+
+                <div className="flex items-center gap-2">
                   {project.githubUrl ? (
                     <a
                       href={project.githubUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="px-4 py-2 rounded-xl bg-white dark:bg-[#171A21] hover:bg-[#2F4BF0] hover:text-white border border-black/10 dark:border-white/10 text-xs font-mono font-bold flex items-center gap-2 transition-all shadow-sm"
+                      className="px-3.5 py-2.5 rounded-xl bg-slate-100 dark:bg-white/5 hover:bg-slate-200 dark:hover:bg-white/10 text-slate-700 dark:text-slate-200 font-mono text-xs font-bold flex items-center gap-1.5 transition-colors"
                     >
-                      <GithubIcon className="w-4 h-4" />
-                      <span>Source Code</span>
+                      <GithubIcon className="w-3.5 h-3.5 fill-current" />
+                      <span>Code</span>
                     </a>
                   ) : (
                     <span className="text-xs font-mono text-slate-400 italic">
@@ -159,22 +157,24 @@ export function Projects() {
                       href={project.liveUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="px-4 py-2 rounded-xl bg-[#2F4BF0] text-white hover:bg-[#233bc7] text-xs font-mono font-bold flex items-center gap-1.5 transition-all shadow-sm"
+                      className="p-2.5 rounded-xl bg-slate-100 dark:bg-white/5 hover:bg-slate-200 dark:hover:bg-white/10 text-slate-700 dark:text-slate-200 transition-colors"
+                      title="Live Demo"
                     >
-                      <ExternalLink className="w-3.5 h-3.5" />
-                      <span>Live Demo</span>
+                      <ExternalLink className="w-4 h-4" />
                     </a>
                   )}
                 </div>
-
-                <span className="text-xs font-mono font-bold text-emerald-600 dark:text-emerald-400">
-                  &bull; {project.status}
-                </span>
               </div>
             </div>
           ))}
         </div>
       </div>
+
+      {/* Interactive Project Slide-Over Drawer */}
+      <ProjectDrawer
+        project={selectedProject}
+        onClose={() => setSelectedProject(null)}
+      />
     </section>
   );
 }

@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import { experienceData } from "@/data/portfolio";
-import { Briefcase, Calendar, MapPin, CheckCircle2, Terminal } from "lucide-react";
+import { Briefcase, Calendar, MapPin, CheckCircle2, Terminal, ChevronRight, Sparkles } from "lucide-react";
 
 export function Experience() {
+  const [activeStep, setActiveStep] = useState(0);
+
   return (
     <section id="experience" className="py-24 sm:py-32 px-4 sm:px-6 lg:px-8 border-t border-black/5 dark:border-white/5 relative">
       <div className="max-w-7xl mx-auto text-left">
@@ -22,15 +24,40 @@ export function Experience() {
           </div>
         </div>
 
+        {/* Interactive Slide Scrubber Bar */}
+        <div className="mb-12 p-4 rounded-2xl bg-white dark:bg-[#171A21] border border-black/5 dark:border-white/10 shadow-sm flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+          <div className="flex items-center gap-2 text-xs font-mono font-bold text-slate-600 dark:text-slate-300">
+            <Sparkles className="w-4 h-4 text-[#F2B31B]" />
+            <span>TIMELINE MILESTONE FOCUS:</span>
+          </div>
+
+          <div className="flex items-center gap-2 overflow-x-auto">
+            {experienceData.map((exp, idx) => (
+              <button
+                key={exp.id}
+                onClick={() => setActiveStep(idx)}
+                className={`px-4 py-2 rounded-xl text-xs font-mono font-bold transition-all flex items-center gap-2 ${
+                  activeStep === idx
+                    ? "bg-[#2F4BF0] text-white shadow-md shadow-[#2F4BF0]/30"
+                    : "bg-slate-100 dark:bg-white/5 text-slate-600 dark:text-slate-300 hover:bg-slate-200"
+                }`}
+              >
+                <span>{exp.company}</span>
+                <span className="text-[10px] opacity-75">({exp.duration})</span>
+              </button>
+            ))}
+          </div>
+        </div>
+
         {/* Timeline Container */}
         <div className="relative pl-6 sm:pl-10 border-l-2 border-[#2F4BF0]/30 space-y-12">
-          {experienceData.map((exp) => (
+          {experienceData.map((exp, idx) => (
             <div key={exp.id} className="relative group">
               {/* Timeline Indicator Dot */}
               <div className="absolute -left-[31px] sm:-left-[47px] top-6 w-5 h-5 rounded-full bg-[#2F4BF0] border-4 border-[#E8EBF1] dark:border-[#0E1015] group-hover:scale-125 transition-transform shadow-md" />
 
-              {/* Main Experience Card */}
-              <div className="p-8 sm:p-10 rounded-3xl bg-white dark:bg-[#171A21] border border-black/5 dark:border-white/10 shadow-xl space-y-6">
+              {/* Main Experience Card with Slide-In Physics */}
+              <div className="p-8 sm:p-10 rounded-3xl bg-white dark:bg-[#171A21] border border-black/5 dark:border-white/10 shadow-xl space-y-6 hover:shadow-2xl transition-all duration-300">
                 <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
                   <div>
                     <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#2F4BF0]/10 text-[#2F4BF0] text-xs font-mono font-bold uppercase mb-2">
