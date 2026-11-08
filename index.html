@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Lumora — Independent Design & Engineering Studio</title>
-  <meta name="description" content="Lumora is an independent studio crafting brands, products, and the systems that connect them — bold ideas, shipped with quiet precision." />
+  <title>Samir Khan — Full-Stack Developer & Backend Engineer</title>
+  <meta name="description" content="Portfolio of Samir Khan, Computer Science Engineering student passionate about scalable web applications, backend engineering, and AI/ML systems." />
   <meta name="theme-color" content="#0a0a0a" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -186,6 +186,11 @@
       font-size: 0.875rem;
       white-space: nowrap;
     }
+    .tag-chip--dark {
+      border: 1px solid var(--line);
+      color: #111;
+      background: var(--surface);
+    }
 
     /* AnimatedLink */
     .animated-link {
@@ -318,7 +323,7 @@
       .loader-brand { font-size: 1.875rem; }
     }
     .loader-tagline {
-      max-width: 24ch;
+      max-width: 28ch;
       font-size: 0.875rem;
       color: rgba(255, 255, 255, 0.55);
       line-height: 1.4;
@@ -731,7 +736,7 @@
       .hero-card__btn:hover { color: #111; }
     }
 
-    /* Partners List */
+    /* Partners / Stack List */
     .partners-block {
       width: 100%;
       max-width: 24rem;
@@ -904,7 +909,7 @@
         transform: scale(1.18);
       }
     }
-    .social-chip--x {
+    .social-chip--accent {
       background: var(--accent);
       color: #fff;
     }
@@ -913,8 +918,42 @@
       color: rgba(17, 17, 17, 0.7);
     }
 
+    /* Summary highlights */
+    .about-highlights-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+    @media (min-width: 640px) {
+      .about-highlights-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+    .about-card-badge {
+      background: var(--surface);
+      border-radius: var(--radius-control);
+      padding: 1rem;
+      border: 1px solid var(--line);
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+    }
+    .about-card-badge__label {
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--accent);
+    }
+    .about-card-badge__val {
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: #111;
+    }
+
     /* =========================================================
-       CREATE BAND ("We Build → Better")
+       CREATE BAND ("Code Ship → Scale")
        ========================================================= */
     .create-band-section {
       background: #fff;
@@ -974,6 +1013,84 @@
     }
 
     /* =========================================================
+       EXPERIENCE & INTERNSHIP TIMELINE
+       ========================================================= */
+    #experience {
+      background: #fff;
+    }
+    .exp-shell {
+      padding: 2.5rem 1.25rem 5rem;
+    }
+    @media (min-width: 640px) {
+      .exp-shell { padding: 2.5rem 2rem 5rem; }
+    }
+    .exp-card {
+      border-radius: var(--radius-card);
+      background: var(--surface);
+      border: 1px solid var(--line);
+      padding: 2rem 1.5rem;
+      margin-top: 2.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+    @media (min-width: 640px) {
+      .exp-card { padding: 3rem 2.5rem; }
+    }
+    .exp-header {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+    @media (min-width: 640px) {
+      .exp-header {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: baseline;
+      }
+    }
+    .exp-role {
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: #111;
+      letter-spacing: -0.01em;
+    }
+    @media (min-width: 640px) {
+      .exp-role { font-size: 1.875rem; }
+    }
+    .exp-company {
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--accent);
+    }
+    .exp-duration {
+      font-size: 0.875rem;
+      color: rgba(17, 17, 17, 0.55);
+      font-weight: 500;
+    }
+    .exp-bullets {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      font-size: 0.875rem;
+      color: rgba(17, 17, 17, 0.75);
+      line-height: 1.6;
+    }
+    .exp-bullet-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+    }
+    .exp-bullet-dot {
+      width: 0.375rem;
+      height: 0.375rem;
+      border-radius: 9999px;
+      background: var(--accent);
+      margin-top: 0.55rem;
+      flex-shrink: 0;
+    }
+
+    /* =========================================================
        PORTFOLIO (#works)
        ========================================================= */
     #works {
@@ -1015,7 +1132,7 @@
     }
     .portfolio-card {
       position: relative;
-      min-height: 22rem;
+      min-height: 23rem;
       overflow: hidden;
       border-radius: var(--radius-card);
       background: var(--ink);
@@ -1028,7 +1145,7 @@
     }
     @media (min-width: 640px) {
       .portfolio-card {
-        min-height: 26rem;
+        min-height: 27rem;
         padding: 2rem;
       }
     }
@@ -1098,7 +1215,7 @@
       max-width: 28rem;
       font-size: 0.875rem;
       color: rgba(255, 255, 255, 0.55);
-      line-height: 1.4;
+      line-height: 1.45;
     }
     .portfolio-card__tags {
       margin-top: 1.25rem;
@@ -1108,7 +1225,7 @@
     }
 
     /* =========================================================
-       SERVICES (#services)
+       SERVICES & TECHNICAL TOOLKIT (#services)
        ========================================================= */
     #services {
       background: #fff;
@@ -1217,7 +1334,7 @@
     }
 
     /* =========================================================
-       STATS
+       STATS & VERIFIED METRICS
        ========================================================= */
     .stats-section {
       background: #fff;
@@ -1282,6 +1399,58 @@
     }
 
     /* =========================================================
+       CERTIFICATIONS SECTION
+       ========================================================= */
+    .cert-section {
+      background: #fff;
+      padding-bottom: 5rem;
+    }
+    .cert-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.25rem;
+      margin-top: 2rem;
+    }
+    @media (min-width: 768px) {
+      .cert-grid { grid-template-columns: repeat(3, 1fr); }
+    }
+    .cert-card {
+      border: 1px solid var(--line);
+      border-radius: var(--radius-card-sm);
+      padding: 1.75rem;
+      background: var(--surface);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 1.25rem;
+      transition: transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
+    }
+    @media (hover: hover) and (pointer: fine) {
+      .cert-card:hover {
+        transform: translateY(-4px);
+        background: #fff;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+      }
+    }
+    .cert-issuer {
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--accent);
+    }
+    .cert-title {
+      font-size: 1.125rem;
+      font-weight: 600;
+      color: #111;
+      line-height: 1.35;
+    }
+    .cert-date {
+      font-size: 0.75rem;
+      color: rgba(17, 17, 17, 0.5);
+    }
+
+    /* =========================================================
        FOOTER
        ========================================================= */
     #site-footer {
@@ -1317,7 +1486,7 @@
       }
     }
     .footer-cta-title {
-      max-width: 16ch;
+      max-width: 18ch;
       font-size: 2.25rem;
       font-weight: 600;
       letter-spacing: -0.02em;
@@ -1529,7 +1698,7 @@
     }
 
     /* =========================================================
-       REQUEST MODAL OVERLAY
+       REQUEST / CONTACT MODAL OVERLAY
        ========================================================= */
     #request-modal {
       position: fixed;
@@ -1691,16 +1860,16 @@
         <svg viewBox="0 0 48 48" width="1.875rem" height="1.875rem" fill="#cf8047">
           <path d="M24 2c2.2 13.8 7.9 19.6 22 22-14.1 2.4-19.8 8.2-22 22-2.2-13.8-7.9-19.6-22-22 14.1-2.4 19.8-8.2 22-22Z"/>
         </svg>
-        <span>Lumora</span>
+        <span>Samir Khan</span>
       </div>
-      <p class="loader-tagline">Bold ideas, shipped with quiet precision.</p>
+      <p class="loader-tagline">Building scalable web systems, shipped with quiet precision.</p>
     </div>
     <div class="loader-progress-wrap">
       <div class="loader-track">
         <div class="loader-fill" id="loader-fill"></div>
       </div>
       <div class="loader-meta">
-        <span>Loading</span>
+        <span>Loading Portfolio</span>
         <span class="loader-counter" id="loader-counter">000</span>
       </div>
     </div>
@@ -1712,21 +1881,21 @@
   <header id="site-header">
     <div class="shell header-inner">
       <!-- Left: Brand -->
-      <button class="brand-btn hover-scale" id="hdr-brand" aria-label="Lumora Home">
+      <button class="brand-btn hover-scale" id="hdr-brand" aria-label="Samir Khan Portfolio Home">
         <svg viewBox="0 0 48 48" width="1.25rem" height="1.25rem" fill="#b15f2c">
           <path d="M24 2c2.2 13.8 7.9 19.6 22 22-14.1 2.4-19.8 8.2-22 22-2.2-13.8-7.9-19.6-22-22 14.1-2.4 19.8-8.2 22-22Z"/>
         </svg>
-        <span>Lumora</span>
+        <span>Samir Khan</span>
       </button>
 
       <!-- Center: Nav (lg) -->
       <nav class="primary-nav" aria-label="Main Navigation">
         <ul class="nav-list">
           <li><button class="nav-item-btn" data-scroll="home" aria-current="page">Home</button></li>
-          <li><button class="nav-item-btn" data-scroll="works">Work</button></li>
-          <li><button class="nav-item-btn" data-scroll="services">Services <span style="font-size:0.75rem; opacity:0.6;">▾</span></button></li>
-          <li><button class="nav-item-btn" data-scroll="about">Studio</button></li>
-          <li><button class="nav-item-btn" data-scroll="careers">Careers</button></li>
+          <li><button class="nav-item-btn" data-scroll="about">About</button></li>
+          <li><button class="nav-item-btn" data-scroll="experience">Experience</button></li>
+          <li><button class="nav-item-btn" data-scroll="works">Projects</button></li>
+          <li><button class="nav-item-btn" data-scroll="services">Skills <span style="font-size:0.75rem; opacity:0.6;">▾</span></button></li>
           <li><button class="nav-item-btn" id="hdr-contact-link">Contact</button></li>
         </ul>
       </nav>
@@ -1737,7 +1906,7 @@
           <span class="clock-chip__label">Local time</span>
           <span class="clock-chip__time" id="clock-time">9:41am</span>
           <span class="clock-chip__sep">•</span>
-          <span class="clock-chip__date" id="clock-date">12 March, 2025</span>
+          <span class="clock-chip__date" id="clock-date">Prayagraj, IN</span>
         </div>
         <button class="menu-btn" id="open-menu-btn" aria-label="Open Navigation Menu">
           <span class="menu-btn__inner hover-scale-snappy">
@@ -1759,9 +1928,7 @@
     <section id="home">
       <!-- Liquid Reveal Background -->
       <div class="liquid-reveal-container" id="liquid-reveal">
-        <!-- Always-visible base image (hero/after.jpg as specified) -->
-        <img class="liquid-reveal-base" src="https://api.getlayers.ai/storage/v1/object/public/public/assets/lumora-e8b711fc68/hero/after.jpg" alt="Lumora Studio Hero Atmosphere" fetchpriority="high" />
-        <!-- Canvas painting the cursor reveal image (hero/before.jpg) -->
+        <img class="liquid-reveal-base" src="https://api.getlayers.ai/storage/v1/object/public/public/assets/lumora-e8b711fc68/hero/after.jpg" alt="Samir Khan Developer Workspace Atmosphere" fetchpriority="high" />
         <canvas class="liquid-reveal-canvas" id="liquid-canvas" aria-hidden="true"></canvas>
       </div>
 
@@ -1769,7 +1936,7 @@
       <div class="hero-vignette"></div>
 
       <!-- Watermark -->
-      <div class="hero-watermark" id="hero-watermark">LUMORA</div>
+      <div class="hero-watermark" id="hero-watermark">SAMIR</div>
 
       <!-- Content Grid -->
       <div class="shell hero-content">
@@ -1779,18 +1946,18 @@
           <div class="reveal-item" id="hero-eyebrow">
             <div class="eyebrow eyebrow--dark">
               <span class="eyebrow__dot"></span>
-              <span>Independent Studio</span>
+              <span>Full-Stack &amp; Backend Engineer &bull; Class of 2026</span>
             </div>
           </div>
 
           <!-- Headline (Line reveal) -->
           <h1 class="hero-title" id="hero-h1">
-            <span class="line-reveal-wrap"><span class="line-reveal-inner" style="transition-delay: 250ms;">Bold ideas,</span></span>
-            <span class="line-reveal-wrap"><span class="line-reveal-inner" style="transition-delay: 370ms;">shipped with</span></span>
-            <span class="line-reveal-wrap"><span class="line-reveal-inner" style="transition-delay: 490ms;">quiet precision</span></span>
+            <span class="line-reveal-wrap"><span class="line-reveal-inner" style="transition-delay: 250ms;">HEY, I'M SAMIR.</span></span>
+            <span class="line-reveal-wrap"><span class="line-reveal-inner" style="transition-delay: 370ms;">I build digital things</span></span>
+            <span class="line-reveal-wrap"><span class="line-reveal-inner" style="transition-delay: 490ms;">that actually work.</span></span>
           </h1>
 
-          <!-- Rating row -->
+          <!-- Rating / Academic Status Row -->
           <div class="rating-row reveal-item" id="hero-rating">
             <span class="stars-wrap" aria-hidden="true">
               <svg viewBox="0 0 24 24" width="1em" height="1em" fill="currentColor"><path d="M12 2.5l2.9 5.88 6.49.94-4.7 4.58 1.11 6.46L12 17.9l-5.8 3.05 1.1-6.46-4.69-4.58 6.49-.94L12 2.5z"/></svg>
@@ -1799,7 +1966,7 @@
               <svg viewBox="0 0 24 24" width="1em" height="1em" fill="currentColor"><path d="M12 2.5l2.9 5.88 6.49.94-4.7 4.58 1.11 6.46L12 17.9l-5.8 3.05 1.1-6.46-4.69-4.58 6.49-.94L12 2.5z"/></svg>
               <svg viewBox="0 0 24 24" width="1em" height="1em" fill="currentColor"><path d="M12 2.5l2.9 5.88 6.49.94-4.7 4.58 1.11 6.46L12 17.9l-5.8 3.05 1.1-6.46-4.69-4.58 6.49-.94L12 2.5z"/></svg>
             </span>
-            <span>200+ brands shipped</span>
+            <span>SIET Prayagraj &bull; B.Tech CSE (CGPA 6.9)</span>
           </div>
 
           <!-- CTAs -->
@@ -1816,7 +1983,7 @@
             </button>
             <button class="pill-btn pill-btn--outline pill-btn--no-arrow" id="hero-cta-work" data-scroll="works">
               <span class="pill-btn__inner">
-                <span class="pill-btn__label">View Work</span>
+                <span class="pill-btn__label">View Projects</span>
               </span>
             </button>
           </div>
@@ -1826,15 +1993,15 @@
         <div class="hero-col-right">
           <!-- HeroCard Carousel -->
           <div class="hero-card reveal-item" id="hero-card">
-            <div class="hero-card__clickable" id="hero-carousel-card" role="region" aria-label="Capabilities Showcase">
+            <div class="hero-card__clickable" id="hero-carousel-card" role="region" aria-label="Specialization Showcase">
               <div class="hero-card__tile">
                 <svg viewBox="0 0 48 48" width="1em" height="1em" fill="currentColor"><path d="M24 2c2.2 13.8 7.9 19.6 22 22-14.1 2.4-19.8 8.2-22 22-2.2-13.8-7.9-19.6-22-22 14.1-2.4 19.8-8.2 22-22Z"/></svg>
               </div>
               <div class="hero-card__panel">
                 <div class="hero-card__slot" id="hero-carousel-slot">
                   <div class="hero-card__item" id="carousel-item">
-                    <div class="hero-card__caption" id="carousel-caption">Conversion design</div>
-                    <div class="hero-card__title" id="carousel-title">Crafted to convert.</div>
+                    <div class="hero-card__caption" id="carousel-caption">Backend Systems</div>
+                    <div class="hero-card__title" id="carousel-title">Built to scale.</div>
                   </div>
                 </div>
                 <div class="hero-card__controls">
@@ -1844,10 +2011,10 @@
                     <span class="hero-card__dot inactive" id="dot-2"></span>
                   </div>
                   <div class="hero-card__arrows">
-                    <button class="hero-card__btn" id="carousel-prev" aria-label="Previous Slide">
+                    <button class="hero-card__btn" id="carousel-prev" aria-label="Previous Focus">
                       <svg viewBox="0 0 24 24" width="0.875rem" height="0.875rem" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="transform: rotate(180deg);"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
                     </button>
-                    <button class="hero-card__btn" id="carousel-next" aria-label="Next Slide">
+                    <button class="hero-card__btn" id="carousel-next" aria-label="Next Focus">
                       <svg viewBox="0 0 24 24" width="0.875rem" height="0.875rem" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
                     </button>
                   </div>
@@ -1856,37 +2023,37 @@
             </div>
           </div>
 
-          <!-- Partners -->
+          <!-- Technical Toolkit Chips -->
           <div class="partners-block reveal-item" id="hero-partners">
-            <div class="partners-label">Trusted by</div>
+            <div class="partners-label">Core Stack &amp; Tools</div>
             <div class="partners-grid">
               <span class="partner-item">
                 <svg viewBox="0 0 24 24" width="0.875rem" height="0.875rem" fill="none" stroke="currentColor" stroke-width="1.6" style="color:rgba(17,17,17,0.4);"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3.2" fill="currentColor" stroke="none"/></svg>
-                <span>Kaido</span>
+                <span>React.js</span>
               </span>
               <span class="partner-item">
                 <svg viewBox="0 0 24 24" width="0.875rem" height="0.875rem" fill="none" stroke="currentColor" stroke-width="1.6" style="color:rgba(17,17,17,0.4);"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3.2" fill="currentColor" stroke="none"/></svg>
-                <span>Northpeak</span>
+                <span>Node.js</span>
               </span>
               <span class="partner-item">
                 <svg viewBox="0 0 24 24" width="0.875rem" height="0.875rem" fill="none" stroke="currentColor" stroke-width="1.6" style="color:rgba(17,17,17,0.4);"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3.2" fill="currentColor" stroke="none"/></svg>
-                <span>Vellum</span>
+                <span>FastAPI</span>
               </span>
               <span class="partner-item">
                 <svg viewBox="0 0 24 24" width="0.875rem" height="0.875rem" fill="none" stroke="currentColor" stroke-width="1.6" style="color:rgba(17,17,17,0.4);"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3.2" fill="currentColor" stroke="none"/></svg>
-                <span>Orbit</span>
+                <span>Python</span>
               </span>
               <span class="partner-item">
                 <svg viewBox="0 0 24 24" width="0.875rem" height="0.875rem" fill="none" stroke="currentColor" stroke-width="1.6" style="color:rgba(17,17,17,0.4);"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3.2" fill="currentColor" stroke="none"/></svg>
-                <span>Brightline</span>
+                <span>Docker</span>
               </span>
               <span class="partner-item">
                 <svg viewBox="0 0 24 24" width="0.875rem" height="0.875rem" fill="none" stroke="currentColor" stroke-width="1.6" style="color:rgba(17,17,17,0.4);"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3.2" fill="currentColor" stroke="none"/></svg>
-                <span>Cobalt</span>
+                <span>MongoDB</span>
               </span>
               <span class="partner-item">
                 <svg viewBox="0 0 24 24" width="0.875rem" height="0.875rem" fill="none" stroke="currentColor" stroke-width="1.6" style="color:rgba(17,17,17,0.4);"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3.2" fill="currentColor" stroke="none"/></svg>
-                <span>Mesa</span>
+                <span>C++</span>
               </span>
             </div>
           </div>
@@ -1895,8 +2062,8 @@
 
       <!-- Bottom Status Bar -->
       <div class="shell hero-status-bar reveal-item" id="hero-status">
-        <div>Working since 2014</div>
-        <div class="hero-status-center">Remote-first, worldwide</div>
+        <div>Shambhunath Institute (SIET Prayagraj)</div>
+        <div class="hero-status-center">Available for Internships &amp; Entry-Level Roles</div>
         <button class="scroll-explore-btn" data-scroll="about">
           <span>Scroll to explore</span>
           <span aria-hidden="true">↓</span>
@@ -1918,7 +2085,7 @@
           <div>
             <div class="eyebrow eyebrow--dark">
               <span class="eyebrow__dot"></span>
-              <span>The Studio</span>
+              <span>The Engineer</span>
             </div>
           </div>
           <div class="about-globe-callout reveal-item">
@@ -1926,7 +2093,7 @@
               <circle cx="12" cy="12" r="9.25"/>
               <path d="M12 2.75c2.6 2.3 4 5.8 4 9.25s-1.4 6.95-4 9.25c-2.6-2.3-4-5.8-4-9.25s1.4-6.95 4-9.25zM2.75 12h18.5"/>
             </svg>
-            <span style="max-width:14rem;">A distributed team building across every time zone.</span>
+            <span style="max-width:16rem;">B.Tech CSE student passionate about backend systems, scalable web apps &amp; AI.</span>
           </div>
         </div>
 
@@ -1934,26 +2101,45 @@
         <div class="about-right">
           <h2 class="about-statement" id="about-statement">
             <!-- Word reveal will be initialized via JS -->
-            We partner with ambitious teams to ship <span style="color:#8d8d8d;">digital products, brand systems, and the strategy that holds them together.</span>
+            I engineer robust digital products combining <span style="color:#8d8d8d;">modular backend architectures, intuitive web applications, and intelligent data-driven analytics.</span>
           </h2>
+
+          <div class="about-highlights-grid reveal-item">
+            <div class="about-card-badge">
+              <span class="about-card-badge__label">Academic Year</span>
+              <span class="about-card-badge__val">B.Tech 3rd Year (CSE)</span>
+              <span style="font-size:0.75rem; color:rgba(17,17,17,0.5);">CGPA: 6.9 / 10 &bull; 2026</span>
+            </div>
+            <div class="about-card-badge">
+              <span class="about-card-badge__label">Internship</span>
+              <span class="about-card-badge__val">The Zaalima Dev</span>
+              <span style="font-size:0.75rem; color:rgba(17,17,17,0.5);">Web Dev Intern (3 Mo)</span>
+            </div>
+            <div class="about-card-badge">
+              <span class="about-card-badge__label">Specialization</span>
+              <span class="about-card-badge__val">Full-Stack &amp; AI/ML</span>
+              <span style="font-size:0.75rem; color:rgba(17,17,17,0.5);">MERN &bull; Python &bull; Docker</span>
+            </div>
+          </div>
+
           <div class="about-footer-row reveal-item">
             <div>
-              <div style="font-size:0.875rem; color:rgba(17,17,17,0.45);">Find us online</div>
+              <div style="font-size:0.875rem; color:rgba(17,17,17,0.45);">Connect with me</div>
               <div class="social-chips">
-                <a href="#about" class="social-chip social-chip--x" aria-label="X Twitter">
-                  <svg viewBox="0 0 24 24" width="0.875rem" height="0.875rem" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4l16 16M20 4 4 20"/></svg>
+                <a href="https://linkedin.com/in/samir-khan-59ss" target="_blank" rel="noopener noreferrer" class="social-chip social-chip--accent" aria-label="Samir Khan LinkedIn">
+                  <svg viewBox="0 0 24 24" width="0.875rem" height="0.875rem" fill="currentColor"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 8.76a1.4 1.4 0 1 0 0-2.8 1.4 1.4 0 0 0 0 2.8m-1.4 9.74h2.8v-8.37h-2.8z"/></svg>
                 </a>
-                <a href="#about" class="social-chip social-chip--default" aria-label="Behance">
-                  <svg viewBox="0 0 24 24" width="0.875rem" height="0.875rem" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3.2" fill="currentColor" stroke="none"/></svg>
+                <a href="https://github.com/samk1245" target="_blank" rel="noopener noreferrer" class="social-chip social-chip--default" aria-label="Samir Khan GitHub">
+                  <svg viewBox="0 0 24 24" width="0.875rem" height="0.875rem" fill="currentColor"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33.85 0 1.71.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2z"/></svg>
                 </a>
-                <a href="#about" class="social-chip social-chip--default" aria-label="Dribbble">
-                  <svg viewBox="0 0 24 24" width="0.875rem" height="0.875rem" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3.2" fill="currentColor" stroke="none"/></svg>
+                <a href="mailto:samir4khan555@gmail.com" class="social-chip social-chip--default" aria-label="Email Samir Khan">
+                  <svg viewBox="0 0 24 24" width="0.875rem" height="0.875rem" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
                 </a>
               </div>
             </div>
-            <button class="pill-btn pill-btn--outline pill-btn--with-arrow" data-scroll="about">
+            <button class="pill-btn pill-btn--outline pill-btn--with-arrow" id="about-resume-btn">
               <span class="pill-btn__inner">
-                <span class="pill-btn__label">About Us</span>
+                <span class="pill-btn__label">Contact Details</span>
                 <span class="pill-btn__badge">
                   <span class="pill-btn__arrow pill-btn__arrow--right">
                     <svg viewBox="0 0 24 24" width="1em" height="1em" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
@@ -1966,14 +2152,14 @@
       </div>
     </section>
 
-    <!-- 3) CREATE BAND ("We Build → Better") -->
-    <section class="create-band-section" aria-label="Brand Philosophy">
+    <!-- 3) CREATE BAND ("Code Ship → Scale") -->
+    <section class="create-band-section" aria-label="Development Philosophy">
       <ul class="shell create-band-list">
         <li class="create-band-item reveal-item" style="transition-delay: 0ms;">
-          <div class="create-band-tile create-band-tile--light">We</div>
+          <div class="create-band-tile create-band-tile--light">Code</div>
         </li>
         <li class="create-band-item reveal-item" style="transition-delay: 120ms;">
-          <div class="create-band-tile create-band-tile--accent">Build</div>
+          <div class="create-band-tile create-band-tile--accent">Ship</div>
         </li>
         <li class="create-band-item reveal-item" style="transition-delay: 240ms;">
           <div class="create-band-tile create-band-tile--dark">
@@ -1981,116 +2167,176 @@
           </div>
         </li>
         <li class="create-band-item reveal-item" style="transition-delay: 360ms;">
-          <div class="create-band-tile create-band-tile--ghost">Better</div>
+          <div class="create-band-tile create-band-tile--ghost">Scale</div>
         </li>
       </ul>
     </section>
 
-    <!-- 4) PORTFOLIO (#works) -->
+    <!-- 4) EXPERIENCE SECTION (#experience) -->
+    <section id="experience">
+      <div class="shell exp-shell">
+        <div class="eyebrow eyebrow--dark reveal-item">
+          <span class="eyebrow__dot"></span>
+          <span>Where I've Worked</span>
+        </div>
+        <h2 class="portfolio-title line-reveal-wrap" style="margin-left:0; text-align:left;">
+          <span class="line-reveal-inner" style="transition-delay: 120ms;">Industry Experience</span>
+        </h2>
+
+        <div class="exp-card reveal-item">
+          <div class="exp-header">
+            <div>
+              <h3 class="exp-role">Web Development Intern</h3>
+              <p class="exp-company">The Zaalima Development</p>
+            </div>
+            <div class="exp-duration">Duration: 3 Months &bull; Remote / Hybrid</div>
+          </div>
+          <div class="exp-bullets">
+            <div class="exp-bullet-item">
+              <span class="exp-bullet-dot"></span>
+              <span>Developed and maintained responsive web application features using <strong>React.js</strong> and <strong>Node.js</strong>, contributing to improved user experience across the platform.</span>
+            </div>
+            <div class="exp-bullet-item">
+              <span class="exp-bullet-dot"></span>
+              <span>Built and tested <strong>RESTful APIs</strong> using <strong>Express.js</strong>, enabling seamless communication between frontend interfaces and backend data layers.</span>
+            </div>
+            <div class="exp-bullet-item">
+              <span class="exp-bullet-dot"></span>
+              <span>Collaborated with the development team to debug and resolve application issues, reducing reported bugs and improving system stability.</span>
+            </div>
+            <div class="exp-bullet-item">
+              <span class="exp-bullet-dot"></span>
+              <span>Utilized <strong>Git</strong> for version control, maintaining clean commit history and participating in active peer code reviews.</span>
+            </div>
+            <div class="exp-bullet-item">
+              <span class="exp-bullet-dot"></span>
+              <span>Containerized development environments using <strong>Docker</strong>, streamlining team onboarding and deployment workflows.</span>
+            </div>
+          </div>
+          <div style="display:flex; flex-wrap:wrap; gap:0.5rem; margin-top:0.5rem;">
+            <span class="tag-chip tag-chip--dark">React.js</span>
+            <span class="tag-chip tag-chip--dark">Node.js</span>
+            <span class="tag-chip tag-chip--dark">Express.js</span>
+            <span class="tag-chip tag-chip--dark">MongoDB</span>
+            <span class="tag-chip tag-chip--dark">Docker</span>
+            <span class="tag-chip tag-chip--dark">Git</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5) PORTFOLIO (#works) -->
     <section id="works">
       <div class="shell portfolio-shell">
         <div class="eyebrow eyebrow--dark portfolio-eyebrow reveal-item">
           <span class="eyebrow__dot"></span>
-          <span>Portfolio</span>
+          <span>Verified Projects</span>
         </div>
         <h2 class="portfolio-title line-reveal-wrap">
-          <span class="line-reveal-inner" style="transition-delay: 120ms;">Selected Work</span>
+          <span class="line-reveal-inner" style="transition-delay: 120ms;">Things I've Built</span>
         </h2>
         <ul class="portfolio-grid">
-          <!-- Card 1 -->
+          <!-- Project 1 -->
           <li class="reveal-item" style="transition-delay: 0ms;">
             <article class="portfolio-card" data-modal="true">
               <div class="portfolio-card__meta">
-                <span>Branding — 2025</span>
+                <span>Personal Project — 2025</span>
                 <span class="portfolio-card__badge">
                   <svg viewBox="0 0 24 24" width="1.25rem" height="1.25rem" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M8 7h9v9"/></svg>
                 </span>
               </div>
               <div class="portfolio-card__watermark" aria-hidden="true">
                 <svg viewBox="0 0 48 48" width="1em" height="1em" fill="currentColor"><path d="M24 2c2.2 13.8 7.9 19.6 22 22-14.1 2.4-19.8 8.2-22 22-2.2-13.8-7.9-19.6-22-22 14.1-2.4 19.8-8.2 22-22Z"/></svg>
-                <span style="font-size:0.75rem; color:rgba(255,255,255,0.6); position:absolute; transform:translate(2.5rem, -2rem);">®</span>
+                <span style="font-size:0.75rem; color:rgba(255,255,255,0.6); position:absolute; transform:translate(2.5rem, -2rem);">01</span>
               </div>
               <div class="portfolio-card__bottom">
-                <h3 class="portfolio-card__title">Aster Labs</h3>
-                <p class="portfolio-card__desc">A complete identity and go-to-market system for a fast-moving research startup.</p>
+                <h3 class="portfolio-card__title">Full-Stack Web Application</h3>
+                <p class="portfolio-card__desc">Designed and developed a scalable full-stack web application with modular backend architecture using Node.js &amp; Express.js, MongoDB integration, and Docker containerization.</p>
                 <div class="portfolio-card__tags">
-                  <span class="tag-chip">Branding</span>
-                  <span class="tag-chip">Strategy</span>
-                  <span class="tag-chip">Design</span>
+                  <span class="tag-chip">React.js</span>
+                  <span class="tag-chip">Node.js</span>
+                  <span class="tag-chip">Express.js</span>
+                  <span class="tag-chip">MongoDB</span>
+                  <span class="tag-chip">Docker</span>
                 </div>
               </div>
             </article>
           </li>
 
-          <!-- Card 2 -->
+          <!-- Project 2 -->
           <li class="reveal-item" style="transition-delay: 90ms;">
             <article class="portfolio-card" data-modal="true">
               <div class="portfolio-card__meta">
-                <span>Product — 2024</span>
+                <span>Personal Project — 2025</span>
                 <span class="portfolio-card__badge">
                   <svg viewBox="0 0 24 24" width="1.25rem" height="1.25rem" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M8 7h9v9"/></svg>
                 </span>
               </div>
               <div class="portfolio-card__watermark" aria-hidden="true">
                 <svg viewBox="0 0 48 48" width="1em" height="1em" fill="currentColor"><path d="M24 2c2.2 13.8 7.9 19.6 22 22-14.1 2.4-19.8 8.2-22 22-2.2-13.8-7.9-19.6-22-22 14.1-2.4 19.8-8.2 22-22Z"/></svg>
-                <span style="font-size:0.75rem; color:rgba(255,255,255,0.6); position:absolute; transform:translate(2.5rem, -2rem);">®</span>
+                <span style="font-size:0.75rem; color:rgba(255,255,255,0.6); position:absolute; transform:translate(2.5rem, -2rem);">02</span>
               </div>
               <div class="portfolio-card__bottom">
-                <h3 class="portfolio-card__title">Nova Finance</h3>
-                <p class="portfolio-card__desc">A finance platform reimagined — clear data, calm interfaces, and effortless flows.</p>
+                <h3 class="portfolio-card__title">Data Analytics Dashboard</h3>
+                <p class="portfolio-card__desc">Engineered an end-to-end data processing pipeline in Python to clean, analyze, and visualize structured datasets, powered by a lightweight FastAPI backend network.</p>
                 <div class="portfolio-card__tags">
-                  <span class="tag-chip">Product Design</span>
-                  <span class="tag-chip">Web App</span>
-                  <span class="tag-chip">QA</span>
+                  <span class="tag-chip">Python</span>
+                  <span class="tag-chip">FastAPI</span>
+                  <span class="tag-chip">Jupyter Notebook</span>
+                  <span class="tag-chip">Pandas</span>
                 </div>
               </div>
             </article>
           </li>
 
-          <!-- Card 3 -->
+          <!-- Project 3 -->
           <li class="reveal-item" style="transition-delay: 180ms;">
             <article class="portfolio-card" data-modal="true">
               <div class="portfolio-card__meta">
-                <span>Identity — 2023</span>
+                <span>AI Engineering — 2024</span>
                 <span class="portfolio-card__badge">
                   <svg viewBox="0 0 24 24" width="1.25rem" height="1.25rem" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M8 7h9v9"/></svg>
                 </span>
               </div>
               <div class="portfolio-card__watermark" aria-hidden="true">
                 <svg viewBox="0 0 48 48" width="1em" height="1em" fill="currentColor"><path d="M24 2c2.2 13.8 7.9 19.6 22 22-14.1 2.4-19.8 8.2-22 22-2.2-13.8-7.9-19.6-22-22 14.1-2.4 19.8-8.2 22-22Z"/></svg>
-                <span style="font-size:0.75rem; color:rgba(255,255,255,0.6); position:absolute; transform:translate(2.5rem, -2rem);">®</span>
+                <span style="font-size:0.75rem; color:rgba(255,255,255,0.6); position:absolute; transform:translate(2.5rem, -2rem);">03</span>
               </div>
               <div class="portfolio-card__bottom">
-                <h3 class="portfolio-card__title">Helio Studio</h3>
-                <p class="portfolio-card__desc">A bold visual identity and art direction system built to scale across every surface.</p>
+                <h3 class="portfolio-card__title">Civic Urgency AI Engine</h3>
+                <p class="portfolio-card__desc">Natural language categorization system extracting severity and priority matrix scores for public community requests, streaming alerts via REST endpoints.</p>
                 <div class="portfolio-card__tags">
-                  <span class="tag-chip">Brand Identity</span>
-                  <span class="tag-chip">Art Direction</span>
+                  <span class="tag-chip">Python</span>
+                  <span class="tag-chip">NLP</span>
+                  <span class="tag-chip">FastAPI</span>
+                  <span class="tag-chip">Machine Learning</span>
                 </div>
               </div>
             </article>
           </li>
 
-          <!-- Card 4 -->
+          <!-- Project 4 -->
           <li class="reveal-item" style="transition-delay: 270ms;">
             <article class="portfolio-card" data-modal="true">
               <div class="portfolio-card__meta">
-                <span>Mobile — 2023</span>
+                <span>Backend Architecture — 2024</span>
                 <span class="portfolio-card__badge">
                   <svg viewBox="0 0 24 24" width="1.25rem" height="1.25rem" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M8 7h9v9"/></svg>
                 </span>
               </div>
               <div class="portfolio-card__watermark" aria-hidden="true">
                 <svg viewBox="0 0 48 48" width="1em" height="1em" fill="currentColor"><path d="M24 2c2.2 13.8 7.9 19.6 22 22-14.1 2.4-19.8 8.2-22 22-2.2-13.8-7.9-19.6-22-22 14.1-2.4 19.8-8.2 22-22Z"/></svg>
-                <span style="font-size:0.75rem; color:rgba(255,255,255,0.6); position:absolute; transform:translate(2.5rem, -2rem);">®</span>
+                <span style="font-size:0.75rem; color:rgba(255,255,255,0.6); position:absolute; transform:translate(2.5rem, -2rem);">04</span>
               </div>
               <div class="portfolio-card__bottom">
-                <h3 class="portfolio-card__title">Pulse Health</h3>
-                <p class="portfolio-card__desc">A wellness app grounded in research, shipped end to end from concept to release.</p>
+                <h3 class="portfolio-card__title">Distributed REST &amp; Auth Service</h3>
+                <p class="portfolio-card__desc">Modular backend architecture featuring JWT authentication, role-based access control, MongoDB schema optimizations, and automated Docker build pipelines.</p>
                 <div class="portfolio-card__tags">
-                  <span class="tag-chip">Mobile App</span>
-                  <span class="tag-chip">UX Research</span>
-                  <span class="tag-chip">Development</span>
+                  <span class="tag-chip">Node.js</span>
+                  <span class="tag-chip">Express.js</span>
+                  <span class="tag-chip">MongoDB</span>
+                  <span class="tag-chip">Docker</span>
+                  <span class="tag-chip">Linux</span>
                 </div>
               </div>
             </article>
@@ -2099,59 +2345,59 @@
       </div>
     </section>
 
-    <!-- 5) SERVICES (#services) -->
+    <!-- 6) TECHNICAL SKILLS & CAPABILITIES (#services) -->
     <section id="services">
       <div class="shell services-shell">
         <div class="eyebrow eyebrow--dark reveal-item">
           <span class="eyebrow__dot"></span>
-          <span>Services</span>
+          <span>Technical Toolkit</span>
         </div>
         <h2 class="services-title line-reveal-wrap">
-          <span class="line-reveal-inner" style="transition-delay: 120ms;">What we do best</span>
+          <span class="line-reveal-inner" style="transition-delay: 120ms;">My Core Skills</span>
         </h2>
         <ul>
-          <!-- Service 1 -->
+          <!-- Skill Row 1 -->
           <li class="service-row reveal-item" style="transition-delay: 0ms;">
             <div class="service-row__link" data-modal="true">
               <span class="service-row__index">01</span>
-              <h3 class="service-row__title">Software Development</h3>
-              <p class="service-row__desc">Scalable web & mobile products built to last.</p>
+              <h3 class="service-row__title">Web Technologies</h3>
+              <p class="service-row__desc">React.js, Node.js, Express.js, FastAPI for high-performance reactive web apps.</p>
               <span class="service-row__badge">
                 <svg viewBox="0 0 24 24" width="1.25rem" height="1.25rem" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M8 7h9v9"/></svg>
               </span>
             </div>
           </li>
 
-          <!-- Service 2 -->
+          <!-- Skill Row 2 -->
           <li class="service-row reveal-item" style="transition-delay: 80ms;">
             <div class="service-row__link" data-modal="true">
               <span class="service-row__index">02</span>
-              <h3 class="service-row__title">Product Design</h3>
-              <p class="service-row__desc">Interfaces that feel effortless and look sharp.</p>
+              <h3 class="service-row__title">Programming Languages</h3>
+              <p class="service-row__desc">C, C++, Python, JavaScript, HTML, CSS with rigorous algorithmic depth.</p>
               <span class="service-row__badge">
                 <svg viewBox="0 0 24 24" width="1.25rem" height="1.25rem" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M8 7h9v9"/></svg>
               </span>
             </div>
           </li>
 
-          <!-- Service 3 -->
+          <!-- Skill Row 3 -->
           <li class="service-row reveal-item" style="transition-delay: 160ms;">
             <div class="service-row__link" data-modal="true">
               <span class="service-row__index">03</span>
-              <h3 class="service-row__title">Quality Assurance</h3>
-              <p class="service-row__desc">Rigorous testing for flawless, confident releases.</p>
+              <h3 class="service-row__title">Databases &amp; Platforms</h3>
+              <p class="service-row__desc">MongoDB schemas, Docker containerization, Linux environments, Git, Jupyter.</p>
               <span class="service-row__badge">
                 <svg viewBox="0 0 24 24" width="1.25rem" height="1.25rem" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M8 7h9v9"/></svg>
               </span>
             </div>
           </li>
 
-          <!-- Service 4 -->
+          <!-- Skill Row 4 -->
           <li class="service-row reveal-item" style="transition-delay: 240ms;">
             <div class="service-row__link" data-modal="true">
               <span class="service-row__index">04</span>
-              <h3 class="service-row__title">Consulting</h3>
-              <p class="service-row__desc">Strategy and direction for ambitious teams.</p>
+              <h3 class="service-row__title">Core Concepts &amp; AI</h3>
+              <p class="service-row__desc">Data Structures &amp; Algorithms, OOP, DBMS, Machine Learning, Data Analytics.</p>
               <span class="service-row__badge">
                 <svg viewBox="0 0 24 24" width="1.25rem" height="1.25rem" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M8 7h9v9"/></svg>
               </span>
@@ -2161,8 +2407,8 @@
       </div>
     </section>
 
-    <!-- 6) STATS SECTION -->
-    <section class="stats-section" aria-label="Stats & Metrics">
+    <!-- 7) STATS & METRICS -->
+    <section class="stats-section" aria-label="Academic & Internship Metrics">
       <div class="shell stats-shell">
         <div class="stats-panel reveal-item" id="stats-panel">
           <div class="eyebrow eyebrow--light">
@@ -2170,26 +2416,56 @@
             <span>By the numbers</span>
           </div>
           <h2 class="stats-title line-reveal-wrap">
-            <span class="line-reveal-inner" style="transition-delay: 120ms;">Proof in the work, not the words.</span>
+            <span class="line-reveal-inner" style="transition-delay: 120ms;">Proof in the code, verified in production.</span>
           </h2>
           <ul class="stats-grid" id="stats-grid">
             <li class="reveal-item" style="transition-delay: 0ms;">
-              <div class="stat-number"><span class="stat-count" data-target="150">0</span>+</div>
-              <div class="stat-label">Projects delivered</div>
+              <div class="stat-number"><span class="stat-count" data-target="3">0</span> Mo</div>
+              <div class="stat-label">Industry Internship</div>
             </li>
             <li class="reveal-item" style="transition-delay: 90ms;">
-              <div class="stat-number"><span class="stat-count" data-target="98">0</span>%</div>
-              <div class="stat-label">Client retention</div>
+              <div class="stat-number"><span class="stat-count" data-target="100">0</span>%</div>
+              <div class="stat-label">Dockerized Dev Parity</div>
             </li>
             <li class="reveal-item" style="transition-delay: 180ms;">
-              <div class="stat-number"><span class="stat-count" data-target="12">0</span></div>
-              <div class="stat-label">Years of craft</div>
+              <div class="stat-number"><span class="stat-count" data-target="69">0</span>%</div>
+              <div class="stat-label">Official CGPA (6.9/10)</div>
             </li>
             <li class="reveal-item" style="transition-delay: 270ms;">
-              <div class="stat-number"><span class="stat-count" data-target="40">0</span>+</div>
-              <div class="stat-label">Team members</div>
+              <div class="stat-number"><span class="stat-count" data-target="3">0</span></div>
+              <div class="stat-label">Industry Certifications</div>
             </li>
           </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- 8) CERTIFICATIONS SECTION -->
+    <section class="cert-section" aria-label="Verified Certifications">
+      <div class="shell" style="padding-inline:1.25rem;">
+        <div class="eyebrow eyebrow--dark reveal-item">
+          <span class="eyebrow__dot"></span>
+          <span>Continuous Learning</span>
+        </div>
+        <h2 class="services-title line-reveal-wrap" style="margin-bottom:1rem;">
+          <span class="line-reveal-inner" style="transition-delay: 120ms;">Certifications</span>
+        </h2>
+        <div class="cert-grid">
+          <div class="cert-card reveal-item" style="transition-delay: 0ms;">
+            <div class="cert-issuer">Deloitte</div>
+            <h3 class="cert-title">Data Analytics Job Simulation</h3>
+            <div class="cert-date">Issued September 2025</div>
+          </div>
+          <div class="cert-card reveal-item" style="transition-delay: 100ms;">
+            <div class="cert-issuer">Forage</div>
+            <h3 class="cert-title">Gen-AI Powered Data Analytics Job Simulation</h3>
+            <div class="cert-date">Issued 2025</div>
+          </div>
+          <div class="cert-card reveal-item" style="transition-delay: 200ms;">
+            <div class="cert-issuer">Google Cloud</div>
+            <h3 class="cert-title">Google Cloud Computing Foundations</h3>
+            <div class="cert-date">Foundational Cloud Architecture</div>
+          </div>
         </div>
       </div>
     </section>
@@ -2197,20 +2473,19 @@
 
   <!-- =========================================================
        SITE FOOTER
-       ========================================================= */
-  -->
+       ========================================================= -->
   <footer id="site-footer">
     <div class="shell footer-inner">
       <!-- CTA Row -->
       <div class="footer-cta-row">
         <h2 class="footer-cta-title line-reveal-wrap">
-          <span class="line-reveal-inner" style="transition-delay: 0ms;">Have a project in mind?</span>
+          <span class="line-reveal-inner" style="transition-delay: 0ms;">Have an opportunity or idea?</span>
           <span class="line-reveal-inner" style="transition-delay: 100ms;">Let's get to work.</span>
         </h2>
         <div>
           <button class="pill-btn pill-btn--light pill-btn--with-arrow" id="footer-start-project">
             <span class="pill-btn__inner">
-              <span class="pill-btn__label">Start a project</span>
+              <span class="pill-btn__label">Get in Touch</span>
               <span class="pill-btn__badge">
                 <span class="pill-btn__arrow pill-btn__arrow--up-right">
                   <svg viewBox="0 0 24 24" width="1em" height="1em" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M8 7h9v9"/></svg>
@@ -2229,56 +2504,53 @@
             <svg viewBox="0 0 48 48" width="1.25rem" height="1.25rem" fill="#cf8047">
               <path d="M24 2c2.2 13.8 7.9 19.6 22 22-14.1 2.4-19.8 8.2-22 22-2.2-13.8-7.9-19.6-22-22 14.1-2.4 19.8-8.2 22-22Z"/>
             </svg>
-            <span>Lumora</span>
+            <span>Samir Khan</span>
           </button>
-          <p class="footer-tagline">An independent studio crafting brands, products, and the systems that connect them.</p>
+          <p class="footer-tagline">Computer Science Engineering student passionate about building scalable web applications, reliable backend systems, and exploring AI/ML.</p>
         </div>
 
-        <!-- Col 2: Company -->
+        <!-- Col 2: Navigation -->
         <div>
-          <div class="footer-col-title">Company</div>
+          <div class="footer-col-title">Navigation</div>
           <ul class="footer-col-links">
             <li><a href="#about" class="animated-link" data-scroll="about"><span class="animated-link__inner">About</span></a></li>
-            <li><a href="#about" class="animated-link" data-scroll="careers"><span class="animated-link__inner">Careers</span></a></li>
-            <li><a href="#home" class="animated-link" data-scroll="home"><span class="animated-link__inner">Partners</span></a></li>
-            <li><a href="#" class="animated-link" data-modal="true"><span class="animated-link__inner">Contact</span></a></li>
+            <li><a href="#experience" class="animated-link" data-scroll="experience"><span class="animated-link__inner">Experience</span></a></li>
+            <li><a href="#works" class="animated-link" data-scroll="works"><span class="animated-link__inner">Projects</span></a></li>
+            <li><a href="#services" class="animated-link" data-scroll="services"><span class="animated-link__inner">Skills</span></a></li>
           </ul>
         </div>
 
-        <!-- Col 3: Services -->
+        <!-- Col 3: Contact Info -->
         <div>
-          <div class="footer-col-title">Services</div>
+          <div class="footer-col-title">Contact</div>
           <ul class="footer-col-links">
-            <li><a href="#services" class="animated-link" data-scroll="services"><span class="animated-link__inner">Development</span></a></li>
-            <li><a href="#services" class="animated-link" data-scroll="services"><span class="animated-link__inner">Design</span></a></li>
-            <li><a href="#services" class="animated-link" data-scroll="services"><span class="animated-link__inner">Quality Assurance</span></a></li>
-            <li><a href="#services" class="animated-link" data-scroll="services"><span class="animated-link__inner">Consulting</span></a></li>
+            <li><a href="mailto:samir4khan555@gmail.com" class="animated-link"><span class="animated-link__inner">samir4khan555@gmail.com</span></a></li>
+            <li><a href="tel:+917887087151" class="animated-link"><span class="animated-link__inner">+91-7887087151</span></a></li>
+            <li><span class="animated-link" style="cursor:default;"><span class="animated-link__inner" style="opacity:0.65;">Prayagraj, Uttar Pradesh, IN</span></span></li>
           </ul>
         </div>
 
-        <!-- Col 4: Social -->
+        <!-- Col 4: Profiles -->
         <div>
-          <div class="footer-col-title">Social</div>
+          <div class="footer-col-title">Profiles</div>
           <ul class="footer-col-links">
-            <li><a href="#about" class="animated-link"><span class="animated-link__inner">X / Twitter</span></a></li>
-            <li><a href="#about" class="animated-link"><span class="animated-link__inner">Behance</span></a></li>
-            <li><a href="#about" class="animated-link"><span class="animated-link__inner">Dribbble</span></a></li>
-            <li><a href="#about" class="animated-link"><span class="animated-link__inner">LinkedIn</span></a></li>
+            <li><a href="https://linkedin.com/in/samir-khan-59ss" target="_blank" rel="noopener noreferrer" class="animated-link"><span class="animated-link__inner">LinkedIn &rarr;</span></a></li>
+            <li><a href="https://github.com/samk1245" target="_blank" rel="noopener noreferrer" class="animated-link"><span class="animated-link__inner">GitHub &rarr;</span></a></li>
+            <li><a href="#" class="animated-link" data-modal="true"><span class="animated-link__inner">Send Direct Message</span></a></li>
           </ul>
         </div>
       </div>
 
       <!-- Legal Bar -->
       <div class="footer-legal-bar">
-        <div>© 2025 Lumora Studio. All rights reserved.</div>
+        <div>&copy; 2026 Samir Khan. Built with code, precision &amp; curiosity.</div>
         <div class="footer-legal-links">
-          <a href="#about" class="animated-link animated-link--legal"><span class="animated-link__inner">Privacy</span></a>
-          <a href="#about" class="animated-link animated-link--legal"><span class="animated-link__inner">Terms</span></a>
+          <span style="opacity:0.7;">English (Proficient) &bull; Hindi (Native)</span>
         </div>
       </div>
 
       <!-- Watermark -->
-      <div class="footer-watermark" aria-hidden="true">LUMORA</div>
+      <div class="footer-watermark" aria-hidden="true">SAMIR</div>
     </div>
   </footer>
 
@@ -2291,7 +2563,7 @@
         <svg viewBox="0 0 48 48" width="1.25rem" height="1.25rem" fill="#cf8047">
           <path d="M24 2c2.2 13.8 7.9 19.6 22 22-14.1 2.4-19.8 8.2-22 22-2.2-13.8-7.9-19.6-22-22 14.1-2.4 19.8-8.2 22-22Z"/>
         </svg>
-        <span>Lumora</span>
+        <span>Samir Khan</span>
       </button>
       <button class="nav-menu-close-btn" id="close-menu-btn">
         <svg viewBox="0 0 24 24" width="0.875rem" height="0.875rem" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4l16 16M20 4 4 20"/></svg>
@@ -2308,27 +2580,27 @@
           </button>
         </li>
         <li>
-          <button class="nav-menu-item-btn" style="--menu-i:1" data-scroll="works">
+          <button class="nav-menu-item-btn" style="--menu-i:1" data-scroll="about">
             <span class="nav-menu-item__idx">02</span>
-            <span class="nav-menu-item__label">Work</span>
+            <span class="nav-menu-item__label">About</span>
           </button>
         </li>
         <li>
-          <button class="nav-menu-item-btn" style="--menu-i:2" data-scroll="services">
+          <button class="nav-menu-item-btn" style="--menu-i:2" data-scroll="experience">
             <span class="nav-menu-item__idx">03</span>
-            <span class="nav-menu-item__label">Services</span>
+            <span class="nav-menu-item__label">Experience</span>
           </button>
         </li>
         <li>
-          <button class="nav-menu-item-btn" style="--menu-i:3" data-scroll="about">
+          <button class="nav-menu-item-btn" style="--menu-i:3" data-scroll="works">
             <span class="nav-menu-item__idx">04</span>
-            <span class="nav-menu-item__label">Studio</span>
+            <span class="nav-menu-item__label">Projects</span>
           </button>
         </li>
         <li>
-          <button class="nav-menu-item-btn" style="--menu-i:4" data-scroll="careers">
+          <button class="nav-menu-item-btn" style="--menu-i:4" data-scroll="services">
             <span class="nav-menu-item__idx">05</span>
-            <span class="nav-menu-item__label">Careers</span>
+            <span class="nav-menu-item__label">Skills</span>
           </button>
         </li>
         <li>
@@ -2341,13 +2613,13 @@
     </div>
 
     <div class="shell nav-menu-bottom">
-      <div>Local time — <span id="nav-clock-time">9:41am</span></div>
-      <button class="nav-menu-cta" id="nav-start-project">Start a project →</button>
+      <div>Local time — <span id="nav-clock-time">9:41am</span> (Prayagraj)</div>
+      <button class="nav-menu-cta" id="nav-start-project">Start a conversation &rarr;</button>
     </div>
   </div>
 
   <!-- =========================================================
-       REQUEST MODAL OVERLAY
+       REQUEST / CONTACT MODAL OVERLAY
        ========================================================= -->
   <div id="request-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
     <div class="modal-panel" id="modal-panel">
@@ -2360,29 +2632,30 @@
         <div class="modal-heading-block">
           <div class="eyebrow" style="color:rgba(17,17,17,0.6);">
             <span class="eyebrow__dot" style="background:#b15f2c;"></span>
-            <span>Start a project</span>
+            <span>Let's Build Something</span>
           </div>
-          <h2 class="modal-h2" id="modal-title">Tell us what you're building.</h2>
+          <h2 class="modal-h2" id="modal-title">Send a message to Samir</h2>
+          <p style="font-size:0.75rem; color:rgba(17,17,17,0.5);">Direct: samir4khan555@gmail.com &bull; +91-7887087151</p>
         </div>
 
         <form class="modal-form" id="request-form">
           <div class="modal-field">
             <label class="modal-label" for="req-name">Name</label>
-            <input class="modal-input" type="text" id="req-name" required placeholder="Your name" />
+            <input class="modal-input" type="text" id="req-name" required placeholder="Your name or company" />
           </div>
           <div class="modal-field">
             <label class="modal-label" for="req-email">Email</label>
-            <input class="modal-input" type="email" id="req-email" required placeholder="you@company.com" />
+            <input class="modal-input" type="email" id="req-email" required placeholder="you@example.com" />
           </div>
           <div class="modal-field">
-            <label class="modal-label" for="req-project">Project</label>
-            <textarea class="modal-input" id="req-project" rows="4" required placeholder="A few words about your project, timeline, and budget." style="resize:none;"></textarea>
+            <label class="modal-label" for="req-project">Message / Opportunity</label>
+            <textarea class="modal-input" id="req-project" rows="4" required placeholder="Tell me about the role, project, or collaboration..." style="resize:none;"></textarea>
           </div>
           <div class="modal-bottom-row">
-            <span class="modal-note">We reply within one business day.</span>
+            <span class="modal-note">I reply promptly within one business day.</span>
             <button class="pill-btn pill-btn--dark pill-btn--with-arrow" type="submit" id="modal-submit-btn">
               <span class="pill-btn__inner">
-                <span class="pill-btn__label" id="modal-submit-label">Send request</span>
+                <span class="pill-btn__label" id="modal-submit-label">Send Message</span>
                 <span class="pill-btn__badge">
                   <span class="pill-btn__arrow pill-btn__arrow--up-right">
                     <svg viewBox="0 0 24 24" width="1em" height="1em" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M8 7h9v9"/></svg>
@@ -2401,8 +2674,8 @@
             <path d="M24 2c2.2 13.8 7.9 19.6 22 22-14.1 2.4-19.8 8.2-22 22-2.2-13.8-7.9-19.6-22-22 14.1-2.4 19.8-8.2 22-22Z"/>
           </svg>
         </div>
-        <h2 class="modal-h2">Request received</h2>
-        <p class="modal-success-desc">Thanks for reaching out — we'll get back to you within one business day.</p>
+        <h2 class="modal-h2">Message Received</h2>
+        <p class="modal-success-desc">Thank you for reaching out! Samir Khan will get back to you directly at your email.</p>
         <button class="pill-btn pill-btn--dark pill-btn--no-arrow" id="modal-success-close">
           <span class="pill-btn__inner">
             <span class="pill-btn__label">Close</span>
@@ -2436,14 +2709,14 @@
     let scrollEnabled = true;
     function stopScroll() {
       scrollEnabled = false;
-      lenis.stop();
+      if (lenis) lenis.stop();
       document.documentElement.style.position = 'relative';
       document.documentElement.style.overflow = 'hidden';
       document.documentElement.style.height = '100%';
     }
     function startScroll() {
       scrollEnabled = true;
-      lenis.start();
+      if (lenis) lenis.start();
       document.documentElement.style.removeProperty('position');
       document.documentElement.style.removeProperty('overflow');
       document.documentElement.style.removeProperty('height');
@@ -2456,7 +2729,6 @@
       }
       setTimeout(() => {
         let el = document.getElementById(id);
-        if (!el && id === 'careers') el = document.getElementById('about');
         if (el) {
           const top = el.getBoundingClientRect().top + window.pageYOffset;
           window.scrollTo({ top, behavior: 'smooth' });
@@ -2488,14 +2760,9 @@
       hours = hours % 12 || 12;
       const timeStr = `${hours}:${minutes}${meridiem}`;
 
-      const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
-      const dateStr = `${now.getDate()} ${months[now.getMonth()]}, ${now.getFullYear()}`;
-
       const clockTimeEl = document.getElementById('clock-time');
-      const clockDateEl = document.getElementById('clock-date');
       const navClockTimeEl = document.getElementById('nav-clock-time');
       if (clockTimeEl) clockTimeEl.textContent = timeStr;
-      if (clockDateEl) clockDateEl.textContent = dateStr;
       if (navClockTimeEl) navClockTimeEl.textContent = timeStr;
     }
     updateClock();
@@ -2517,6 +2784,7 @@
     }
 
     function stepLoader(now) {
+      if (!now) now = performance.now();
       const elapsed = now - loaderStartTime;
       const t = Math.min(1, elapsed / FILL_MS);
       const eased = easeInOutCubic(t);
@@ -2543,6 +2811,21 @@
       }
     }
     requestAnimationFrame(stepLoader);
+
+    // Fallback safety timeout for loader
+    setTimeout(() => {
+      if (!ready) {
+        if (loaderEl) loaderEl.classList.add('exit');
+        setTimeout(() => {
+          ready = true;
+          startScroll();
+          if (loaderEl && loaderEl.parentNode) {
+            loaderEl.parentNode.removeChild(loaderEl);
+          }
+          triggerHeroReveals();
+        }, 700);
+      }
+    }, 2200);
 
     // Above-the-fold entrance reveals gated on ready
     function triggerHeroReveals() {
@@ -2572,7 +2855,6 @@
 
       const afterImg = new Image();
       afterImg.crossOrigin = 'anonymous';
-      // As explicitly mapped: beforeSrc is after.jpg (always shown base), afterSrc is before.jpg (painted on cursor trail)
       afterImg.src = 'https://api.getlayers.ai/storage/v1/object/public/public/assets/lumora-e8b711fc68/hero/before.jpg';
 
       let coverCanvas = document.createElement('canvas');
@@ -2583,10 +2865,16 @@
 
       let width = 0, height = 0, radius = 0, diam = 0;
       let imgLoaded = false;
-      afterImg.onload = () => {
+      
+      const onImgReady = () => {
         imgLoaded = true;
         updateCover();
       };
+      if (afterImg.complete) {
+        onImgReady();
+      } else {
+        afterImg.onload = onImgReady;
+      }
 
       function resizeCanvas() {
         if (!liquidContainer) return;
@@ -2722,11 +3010,11 @@
       requestAnimationFrame(renderLiquid);
     }
 
-    // 6. Hero Card Carousel
+    // 6. Hero Card Carousel (Samir's Specializations)
     const carouselItems = [
-      { caption: "Conversion design", title: "Crafted to convert." },
-      { caption: "Engineering", title: "Built to scale." },
-      { caption: "Brand systems", title: "Designed to last." }
+      { caption: "Backend Systems", title: "Built to scale." },
+      { caption: "Full-Stack Web", title: "Crafted to perform." },
+      { caption: "AI & Analytics", title: "Engineered to predict." }
     ];
     let activeCarouselIdx = 0;
     const captionEl = document.getElementById('carousel-caption');
@@ -2777,8 +3065,8 @@
     // 7. Word Reveal for About Statement
     const aboutStatementEl = document.getElementById('about-statement');
     if (aboutStatementEl) {
-      const rawText1 = "We partner with ambitious teams to ship ";
-      const rawText2 = "digital products, brand systems, and the strategy that holds them together.";
+      const rawText1 = "I engineer robust digital products combining ";
+      const rawText2 = "modular backend architectures, intuitive web applications, and intelligent data-driven analytics.";
 
       const words1 = rawText1.trim().split(/\s+/);
       const words2 = rawText2.trim().split(/\s+/);
@@ -2801,30 +3089,25 @@
       entries.forEach(entry => {
         if (entry.isIntersecting) {
           entry.target.classList.add('revealed');
-          // For line reveals inside
           const inners = entry.target.querySelectorAll('.line-reveal-inner');
           inners.forEach(inner => inner.classList.add('revealed'));
-          // For word reveals inside
           const words = entry.target.querySelectorAll('.word-reveal');
           words.forEach(word => word.classList.add('revealed'));
-
           revealObserver.unobserve(entry.target);
         }
       });
     }, {
-      threshold: 0.15,
+      threshold: 0.12,
       rootMargin: "0px 0px -40px 0px"
     });
 
-    // Observe sections and animated items
     document.querySelectorAll('.reveal-item, .line-reveal-wrap, #about-statement').forEach(el => {
-      // Hero elements are handled separately after loader ready
       if (!el.closest('#home')) {
         revealObserver.observe(el);
       }
     });
 
-    // 9. Stats Count-up Scroll Trigger
+    // 9. Stats Count-up Scroll Trigger (CV Metrics)
     const statsGrid = document.getElementById('stats-grid');
     const statCounters = document.querySelectorAll('.stat-count');
     let statsAnimated = false;
@@ -2835,7 +3118,6 @@
         const rect = statsGrid.getBoundingClientRect();
         const vh = window.innerHeight;
 
-        // start: "top bottom" (rect.top <= vh) -> end: "center center" (rect.top + rect.height/2 <= vh/2)
         const startY = vh;
         const endY = vh / 2 - rect.height / 2;
         const currentY = rect.top;
@@ -2844,7 +3126,11 @@
           const progress = Math.min(1, Math.max(0, (startY - currentY) / (startY - endY)));
           statCounters.forEach(el => {
             const target = parseInt(el.getAttribute('data-target'), 10);
-            el.textContent = Math.round(progress * target);
+            if (target === 69) {
+              el.textContent = (progress * 6.9).toFixed(1);
+            } else {
+              el.textContent = Math.round(progress * target);
+            }
           });
           if (progress >= 1) {
             statsAnimated = true;
@@ -2879,7 +3165,7 @@
       }
     });
 
-    // 11. RequestModal Logic
+    // 11. Request / Contact Modal Logic
     const requestModal = document.getElementById('request-modal');
     const modalPanel = document.getElementById('modal-panel');
     const modalCloseBtn = document.getElementById('modal-close-btn');
@@ -2902,7 +3188,7 @@
         if (requestForm) requestForm.reset();
         modalFormView.style.display = 'block';
         modalSuccessView.style.display = 'none';
-        if (modalSubmitLabel) modalSubmitLabel.textContent = 'Send request';
+        if (modalSubmitLabel) modalSubmitLabel.textContent = 'Send Message';
       }, 300);
     }
 
@@ -2919,6 +3205,7 @@
     document.getElementById('footer-start-project')?.addEventListener('click', openModal);
     document.getElementById('nav-menu-contact')?.addEventListener('click', openModal);
     document.getElementById('nav-start-project')?.addEventListener('click', openModal);
+    document.getElementById('about-resume-btn')?.addEventListener('click', openModal);
     document.querySelectorAll('[data-modal="true"]').forEach(el => {
       el.addEventListener('click', (e) => {
         e.preventDefault();
@@ -2926,7 +3213,7 @@
       });
     });
 
-    // Stub form submit
+    // Form submit
     requestForm?.addEventListener('submit', (e) => {
       e.preventDefault();
       if (modalSubmitLabel) modalSubmitLabel.textContent = 'Sending…';
