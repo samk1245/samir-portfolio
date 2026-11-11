@@ -1,115 +1,57 @@
 @import "tailwindcss";
 
 @layer base {
-  :root {
-    --bg-main: #E8EBF1;
-    --text-main: #12141B;
-    --cobalt: #2F4BF0;
-    --mustard: #F2B31B;
-    --light-gray: #F6F7FA;
-    --card-bg: #FFFFFF;
-    --card-border: rgba(18, 20, 27, 0.08);
-  }
-
-  .dark {
-    --bg-main: #0E1015;
-    --text-main: #EEF0F5;
-    --cobalt: #2F4BF0;
-    --mustard: #F2B31B;
-    --light-gray: #171A21;
-    --card-bg: #171A21;
-    --card-border: rgba(238, 240, 245, 0.08);
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
   }
 
   html {
     scroll-behavior: smooth;
-    font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-family: 'Kanit', sans-serif;
+    background-color: #0C0C0C;
+    color: #FFFFFF;
   }
 
   body {
-    background-color: var(--bg-main);
-    color: var(--text-main);
+    background-color: #0C0C0C;
+    color: #FFFFFF;
+    font-family: 'Kanit', sans-serif;
     overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
-}
 
-/* Mustard-Yellow Marker Highlighter Effect */
-.mustard-marker {
-  position: relative;
-  display: inline-block;
-  white-space: nowrap;
-}
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
 
-.mustard-marker::before {
-  content: "";
-  position: absolute;
-  left: -0.1em;
-  right: -0.1em;
-  bottom: 0.08em;
-  height: 0.38em;
-  background-color: #F2B31B;
-  z-index: -1;
-  transform: rotate(-1.2deg);
-  border-radius: 6px;
-  opacity: 0.95;
-  transition: transform 0.3s ease;
-}
-
-.mustard-marker:hover::before {
-  transform: rotate(0.5deg) scaleY(1.15);
-}
-
-/* Subtle Editorial Background Grid */
-.editorial-grid {
-  background-size: 48px 48px;
-  background-image: 
-    linear-gradient(to right, rgba(18, 20, 27, 0.04) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(18, 20, 27, 0.04) 1px, transparent 1px);
-}
-
-.dark .editorial-grid {
-  background-image: 
-    linear-gradient(to right, rgba(238, 240, 245, 0.04) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(238, 240, 245, 0.04) 1px, transparent 1px);
+  button {
+    font-family: inherit;
+    cursor: pointer;
+    border: none;
+    background: none;
+  }
 }
 
 /* Custom Scrollbar */
 ::-webkit-scrollbar {
-  width: 9px;
+  width: 8px;
 }
 
 ::-webkit-scrollbar-track {
-  background: transparent;
+  background: #0C0C0C;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgba(47, 75, 240, 0.3);
+  background: #27272A;
   border-radius: 9999px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(47, 75, 240, 0.7);
+  background: #3F3F46;
 }
-
-@keyframes slideInRight {
-  from {
-    transform: translateX(100%);
-    opacity: 0;
-  }
-  to {
-    transform: translateX(0);
-    opacity: 1;
-  }
-}
-
-@keyframes slideUp {
-  from {
-    transform: translateY(40px) scale(0.96);
-    opacity: 0;
-  }
-  to {
-    transform: translateY(0) scale(1);
-    opacity: 1;
-  }
-}
-
