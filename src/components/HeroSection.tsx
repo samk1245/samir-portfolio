@@ -29,7 +29,7 @@ export function HeroSection() {
 
       {/* =========================================================
           NAVBAR
-          Links: About, Price, Projects, Contact
+          Links: About, Projects, Contact
           ========================================================= */}
       <header
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
@@ -54,7 +54,7 @@ export function HeroSection() {
             </span>
           </a>
 
-          {/* Desktop Nav: Exactly 4 Links (About, Price, Projects, Contact) */}
+          {/* Desktop Nav: Links (About, Projects, Contact) */}
           <nav className="hidden md:flex items-center gap-10">
             <ul className="flex items-center gap-8 text-sm font-semibold tracking-wider uppercase text-neutral-300">
               {navLinks.map((link) => (

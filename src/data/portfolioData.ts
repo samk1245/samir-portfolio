@@ -47,7 +47,6 @@ export const personalInfo = {
 
 export const navLinks = [
   { label: "About", href: "#about" },
-  { label: "Price", href: "#services" }, // Price maps to Services section as requested
   { label: "Projects", href: "#projects" },
   { label: "Contact", href: "#contact" }, // Contact maps to Contact section / footer
 ];
