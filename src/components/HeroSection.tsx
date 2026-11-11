@@ -45,8 +45,8 @@ export function HeroSection() {
             href="#hero"
             className="group flex items-center gap-3 text-white tracking-wider font-extrabold uppercase text-lg sm:text-xl"
           >
-            <div className="w-10 h-10 rounded-full bg-gradient-to-b from-white/30 via-white/10 to-transparent p-[1.5px] transition-transform duration-300 group-hover:scale-105 shadow-inner">
-              <div className="w-full h-full bg-[#121212] rounded-full flex items-center justify-center font-black text-xs text-white">
+            <div className="w-10 h-10 rounded-full bg-gradient-to-tr from-indigo-500 via-purple-500 to-pink-500 p-[1.5px] transition-transform duration-300 group-hover:scale-105">
+              <div className="w-full h-full bg-[#0C0C0C] rounded-full flex items-center justify-center font-black text-xs text-white">
                 SK
               </div>
             </div>
@@ -56,13 +56,13 @@ export function HeroSection() {
           </a>
 
           {/* Desktop Nav: Links (About, Projects, Contact) */}
-          <nav className="hidden md:flex items-center gap-8">
+          <nav className="hidden md:flex items-center gap-10">
             <ul className="flex items-center gap-8 text-sm font-semibold tracking-wider uppercase text-neutral-300">
               {navLinks.map((link) => (
                 <li key={link.label}>
                   <a
                     href={link.href}
-                    className="hover:text-white transition-colors relative py-1 after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[2px] after:bg-white hover:after:w-full after:transition-all"
+                    className="hover:text-white transition-colors relative py-1 after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[2px] after:bg-gradient-to-r after:from-indigo-500 after:to-purple-500 hover:after:w-full after:transition-all"
                   >
                     {link.label}
                   </a>
@@ -84,19 +84,13 @@ export function HeroSection() {
                 <ArrowUpRight className="w-3.5 h-3.5 text-neutral-400" />
               </a>
 
-              {/* Soft Touch Let's Talk Button */}
+              {/* Let's Talk Button */}
               <a
                 href="mailto:samir4khan555@gmail.com"
-                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-black font-bold text-xs tracking-wider uppercase transition-all duration-300 hover:scale-105 cursor-pointer"
-                style={{
-                  background: "linear-gradient(180deg, #FFFFFF 0%, #E6E9EE 100%)",
-                  boxShadow:
-                    "0 2px 6px -1px rgba(0, 0, 0, 0.12), 0 6px 18px -2px rgba(255, 255, 255, 0.18), inset 0 1px 1px rgba(255, 255, 255, 1)",
-                  border: "1px solid rgba(255, 255, 255, 0.9)",
-                }}
+                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-white/10 hover:bg-white text-white hover:text-black font-semibold text-xs tracking-wider uppercase border border-white/15 transition-all duration-300 hover:scale-105"
               >
                 <span>Let's Talk</span>
-                <ArrowUpRight className="w-3.5 h-3.5 text-black" />
+                <ArrowUpRight className="w-3.5 h-3.5" />
               </a>
             </div>
           </nav>
@@ -204,7 +198,7 @@ export function HeroSection() {
               <Magnet strength={0.25} className="w-full flex justify-center">
                 <div className="relative w-[300px] sm:w-[380px] md:w-[420px] aspect-[4/5] rounded-[2.5rem] p-3 bg-gradient-to-b from-white/15 via-white/5 to-transparent border border-white/10 shadow-[0_25px_60px_-15px_rgba(0,0,0,0.8)] overflow-hidden group">
                   {/* Subtle 3D Depth Backlight Glow */}
-                  <div className="absolute inset-0 bg-gradient-to-tr from-white/10 via-neutral-500/10 to-transparent opacity-60 group-hover:opacity-90 transition-opacity duration-500 -z-10 blur-xl" />
+                  <div className="absolute inset-0 bg-gradient-to-tr from-indigo-500/20 via-purple-500/20 to-pink-500/10 opacity-70 group-hover:opacity-100 transition-opacity duration-500 -z-10 blur-xl" />
 
                   {/* Inner Image Container */}
                   <div className="w-full h-full rounded-[2rem] overflow-hidden relative bg-neutral-900">

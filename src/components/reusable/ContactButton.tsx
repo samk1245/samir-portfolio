@@ -13,22 +13,20 @@ export function ContactButton({
   return (
     <a
       href="mailto:samir4khan555@gmail.com"
-      className={`group relative inline-flex items-center justify-center gap-3 px-7 sm:px-8 py-3.5 sm:py-4 rounded-full font-bold text-black text-sm sm:text-base tracking-wide uppercase transition-all duration-300 hover:scale-105 active:scale-95 cursor-pointer select-none ${className}`}
+      className={`group relative inline-flex items-center justify-center gap-2.5 px-8 py-4 rounded-full font-semibold text-white text-base tracking-wide uppercase overflow-hidden shadow-xl transition-all duration-300 hover:scale-105 active:scale-95 cursor-pointer ${className}`}
       style={{
         background:
-          "linear-gradient(180deg, #FFFFFF 0%, #E6E9EE 100%)",
-        boxShadow:
-          "0 2px 6px -1px rgba(0, 0, 0, 0.12), 0 8px 28px -4px rgba(255, 255, 255, 0.22), inset 0 1px 1.5px rgba(255, 255, 255, 1), inset 0 -1.5px 2px rgba(0, 0, 0, 0.08)",
-        border: "1px solid rgba(255, 255, 255, 0.9)",
+          "linear-gradient(135deg, #6366F1 0%, #8B5CF6 50%, #EC4899 100%)",
+        boxShadow: "0 10px 30px -5px rgba(139, 92, 246, 0.45)",
       }}
     >
-      <span className="relative z-10 font-extrabold tracking-wider">{text}</span>
-      <span className="relative z-10 w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-black/10 group-hover:bg-black group-hover:text-white flex items-center justify-center transition-all duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5">
-        <ArrowUpRight className="w-4 h-4 text-black group-hover:text-white transition-colors duration-300" />
+      <span className="relative z-10 font-bold">{text}</span>
+      <span className="relative z-10 w-8 h-8 rounded-full bg-white/20 flex items-center justify-center transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5">
+        <ArrowUpRight className="w-4 h-4 text-white" />
       </span>
-      {/* Soft touch ambient micro-sheen */}
-      <div className="absolute inset-0 rounded-full bg-white/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
-      <div className="absolute -inset-1 rounded-full blur-md bg-white/20 opacity-0 group-hover:opacity-80 transition-opacity -z-10 pointer-events-none" />
+      {/* Ambient hover shine */}
+      <div className="absolute inset-0 bg-white/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+      <div className="absolute -inset-1 rounded-full blur-md bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 opacity-40 group-hover:opacity-80 transition-opacity -z-10" />
     </a>
   );
 }

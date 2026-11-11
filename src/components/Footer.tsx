@@ -16,13 +16,13 @@ export function Footer() {
       className="relative w-full bg-[#0C0C0C] text-white pt-24 pb-16 px-6 sm:px-8 lg:px-12 border-t border-white/10 overflow-hidden"
     >
       {/* Ambient footer glow */}
-      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] rounded-full bg-gradient-to-t from-white/5 via-neutral-500/5 to-transparent blur-[140px] pointer-events-none" />
+      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] rounded-full bg-gradient-to-t from-indigo-500/10 via-purple-500/5 to-transparent blur-[140px] pointer-events-none" />
 
       <div className="max-w-6xl mx-auto w-full relative z-10 flex flex-col justify-between gap-16">
         {/* Top CTA Row */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 pb-16 border-b border-white/10">
           <div className="space-y-4 max-w-xl">
-            <span className="text-xs font-mono font-bold tracking-widest uppercase text-neutral-400 block">
+            <span className="text-xs font-mono font-bold tracking-widest uppercase text-indigo-400 block">
               Available For Opportunities &bull; Class of 2026
             </span>
             <h2 className="text-4xl sm:text-6xl md:text-7xl font-black uppercase tracking-tighter leading-[0.9] text-white font-['Kanit',sans-serif]">
@@ -70,14 +70,14 @@ export function Footer() {
                 href={`mailto:${personalInfo.email}`}
                 className="flex items-center gap-2 text-neutral-300 hover:text-white transition-colors"
               >
-                <Mail className="w-3.5 h-3.5 text-neutral-400" />
+                <Mail className="w-3.5 h-3.5 text-indigo-400" />
                 <span>{personalInfo.email}</span>
               </a>
               <a
                 href={`tel:${personalInfo.phone}`}
                 className="flex items-center gap-2 text-neutral-300 hover:text-white transition-colors"
               >
-                <Phone className="w-3.5 h-3.5 text-neutral-400" />
+                <Phone className="w-3.5 h-3.5 text-purple-400" />
                 <span>{personalInfo.phone}</span>
               </a>
             </div>

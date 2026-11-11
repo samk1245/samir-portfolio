@@ -106,7 +106,7 @@ export function AboutSection() {
                 <button
                   type="button"
                   onClick={() => setShowResponsibilities(!showResponsibilities)}
-                  className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/5 hover:bg-white/15 border border-white/10 text-xs text-neutral-300 hover:text-white font-medium mb-3 transition-all cursor-pointer shadow-sm active:scale-95"
+                  className="inline-flex items-center gap-1.5 text-xs text-purple-400 hover:text-purple-300 font-semibold mb-3 transition-colors cursor-pointer"
                 >
                   <span>
                     {showResponsibilities
