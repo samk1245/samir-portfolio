@@ -42,7 +42,7 @@ export const personalInfo = {
     "Seeking software development, full-stack development, backend development, and AI/ML internship opportunities.",
   linkedin: "https://linkedin.com/in/samir-khan-59ss",
   github: "https://github.com/samk1245",
-  portraitUrl: "/images/samir-suit.jpg",
+  portraitUrl: `${import.meta.env.BASE_URL}images/samir-suit.jpg`,
 };
 
 export const navLinks = [
