@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { personalInfo, experienceInfo, technicalSkills, certifications } from "@/data/portfolioData";
 import { AnimatedText } from "./reusable/AnimatedText";
 import { ContactButton } from "./reusable/ContactButton";
+import { DownloadCVButton } from "./reusable/DownloadCVButton";
 import { FadeIn } from "./reusable/FadeIn";
 import { GraduationCap, Briefcase, Award, Sparkles, CheckCircle2, ChevronDown, ChevronUp } from "lucide-react";
 
@@ -105,7 +106,7 @@ export function AboutSection() {
                 <button
                   type="button"
                   onClick={() => setShowResponsibilities(!showResponsibilities)}
-                  className="inline-flex items-center gap-1.5 text-xs text-purple-400 hover:text-purple-300 font-semibold mb-3 transition-colors cursor-pointer"
+                  className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/5 hover:bg-white/15 border border-white/10 text-xs text-neutral-300 hover:text-white font-medium mb-3 transition-all cursor-pointer shadow-sm active:scale-95"
                 >
                   <span>
                     {showResponsibilities
@@ -159,7 +160,7 @@ export function AboutSection() {
           </div>
         </FadeIn>
 
-        {/* Contact CTA */}
+        {/* Contact & CV CTA */}
         <FadeIn delay={0.4} direction="up" distance={20}>
           <div className="flex flex-wrap items-center justify-between gap-6 pt-4">
             <div>
@@ -170,7 +171,10 @@ export function AboutSection() {
                 Direct email: <span className="text-white font-mono">{personalInfo.email}</span>
               </p>
             </div>
-            <ContactButton text="Contact Me" />
+            <div className="flex flex-wrap items-center gap-4">
+              <DownloadCVButton text="Download CV" />
+              <ContactButton text="Contact Me" />
+            </div>
           </div>
         </FadeIn>
       </div>
